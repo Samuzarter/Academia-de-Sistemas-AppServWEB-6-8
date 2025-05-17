@@ -1,0 +1,1008 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Academia_SistemasModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AsignacionInstructores">
+          <Key>
+            <PropertyRef Name="IdAsignacion" />
+          </Key>
+          <Property Name="IdAsignacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdInstructor" Type="int" />
+          <Property Name="IdProgramacion" Type="int" />
+          <Property Name="FechaAsignacion" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Calificaciones">
+          <Key>
+            <PropertyRef Name="IdCalificacion" />
+          </Key>
+          <Property Name="IdCalificacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdInscripcion" Type="int" />
+          <Property Name="Nota" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="Observaciones" Type="nvarchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CategoriasCursos">
+          <Key>
+            <PropertyRef Name="IdCategoria" />
+          </Key>
+          <Property Name="IdCategoria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Compras">
+          <Key>
+            <PropertyRef Name="IdCompra" />
+          </Key>
+          <Property Name="IdCompra" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdProveedor" Type="int" />
+          <Property Name="IdEquipo" Type="int" />
+          <Property Name="FechaCompra" Type="datetime" Nullable="false" />
+          <Property Name="Cantidad" Type="int" Nullable="false" />
+          <Property Name="CostoUnitario" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cursos">
+          <Key>
+            <PropertyRef Name="IdCurso" />
+          </Key>
+          <Property Name="IdCurso" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdModalidad" Type="int" />
+          <Property Name="IdCategoria" Type="int" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Duracion" Type="int" Nullable="false" />
+          <Property Name="Costo" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Equipos">
+          <Key>
+            <PropertyRef Name="IdEquipo" />
+          </Key>
+          <Property Name="IdEquipo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Categoria" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Estudiantes">
+          <Key>
+            <PropertyRef Name="IdEstudiante" />
+          </Key>
+          <Property Name="IdEstudiante" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Apellido" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Correo" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Telefono" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Direccion" Type="nvarchar" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Inscripciones">
+          <Key>
+            <PropertyRef Name="IdInscripcion" />
+          </Key>
+          <Property Name="IdInscripcion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdEstudiante" Type="int" />
+          <Property Name="IdProgramacion" Type="int" />
+          <Property Name="FechaInscripcion" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Instructores">
+          <Key>
+            <PropertyRef Name="Idinstructor" />
+          </Key>
+          <Property Name="Idinstructor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Apellido" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Correo" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Telefono" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Especialidad" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="InventarioEquipos">
+          <Key>
+            <PropertyRef Name="IdInventario" />
+          </Key>
+          <Property Name="IdInventario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdEquipo" Type="int" />
+          <Property Name="IdSede" Type="int" />
+          <Property Name="Cantidad" Type="int" Nullable="false" />
+          <Property Name="FechaAsignacion" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Modalidades">
+          <Key>
+            <PropertyRef Name="IdModalidad" />
+          </Key>
+          <Property Name="IdModalidad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pagos">
+          <Key>
+            <PropertyRef Name="IdCPago" />
+          </Key>
+          <Property Name="IdCPago" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdInscripcion" Type="int" />
+          <Property Name="FechaPago" Type="datetime" Nullable="false" />
+          <Property Name="Monto" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="MetodoPago" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProgramacionesCursos">
+          <Key>
+            <PropertyRef Name="IdProgramacion" />
+          </Key>
+          <Property Name="IdProgramacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdCurso" Type="int" />
+          <Property Name="IdSede" Type="int" />
+          <Property Name="FechaInicio" Type="datetime" Nullable="false" />
+          <Property Name="FechaFin" Type="datetime" Nullable="false" />
+          <Property Name="Cupos" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Proveedores">
+          <Key>
+            <PropertyRef Name="IdProveedor" />
+          </Key>
+          <Property Name="IdProveedor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Telefono" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Correo" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Direccion" Type="nvarchar" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sedes">
+          <Key>
+            <PropertyRef Name="IdSede" />
+          </Key>
+          <Property Name="IdSede" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Ciudad" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Direccion" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Telefono" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Asignacio__IdIns__5441852A">
+          <End Role="Instructores" Type="Self.Instructores" Multiplicity="0..1" />
+          <End Role="AsignacionInstructores" Type="Self.AsignacionInstructores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Instructores">
+              <PropertyRef Name="Idinstructor" />
+            </Principal>
+            <Dependent Role="AsignacionInstructores">
+              <PropertyRef Name="IdInstructor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Asignacio__IdPro__5535A963">
+          <End Role="ProgramacionesCursos" Type="Self.ProgramacionesCursos" Multiplicity="0..1" />
+          <End Role="AsignacionInstructores" Type="Self.AsignacionInstructores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProgramacionesCursos">
+              <PropertyRef Name="IdProgramacion" />
+            </Principal>
+            <Dependent Role="AsignacionInstructores">
+              <PropertyRef Name="IdProgramacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Calificac__IdIns__5BE2A6F2">
+          <End Role="Inscripciones" Type="Self.Inscripciones" Multiplicity="0..1" />
+          <End Role="Calificaciones" Type="Self.Calificaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Inscripciones">
+              <PropertyRef Name="IdInscripcion" />
+            </Principal>
+            <Dependent Role="Calificaciones">
+              <PropertyRef Name="IdInscripcion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Compras__IdEquip__45F365D3">
+          <End Role="Equipos" Type="Self.Equipos" Multiplicity="0..1" />
+          <End Role="Compras" Type="Self.Compras" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipos">
+              <PropertyRef Name="IdEquipo" />
+            </Principal>
+            <Dependent Role="Compras">
+              <PropertyRef Name="IdEquipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Compras__IdProve__44FF419A">
+          <End Role="Proveedores" Type="Self.Proveedores" Multiplicity="0..1" />
+          <End Role="Compras" Type="Self.Compras" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proveedores">
+              <PropertyRef Name="IdProveedor" />
+            </Principal>
+            <Dependent Role="Compras">
+              <PropertyRef Name="IdProveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cursos__IdCatego__4D94879B">
+          <End Role="CategoriasCursos" Type="Self.CategoriasCursos" Multiplicity="0..1" />
+          <End Role="Cursos" Type="Self.Cursos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoriasCursos">
+              <PropertyRef Name="IdCategoria" />
+            </Principal>
+            <Dependent Role="Cursos">
+              <PropertyRef Name="IdCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cursos__IdModali__4CA06362">
+          <End Role="Modalidades" Type="Self.Modalidades" Multiplicity="0..1" />
+          <End Role="Cursos" Type="Self.Cursos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modalidades">
+              <PropertyRef Name="IdModalidad" />
+            </Principal>
+            <Dependent Role="Cursos">
+              <PropertyRef Name="IdModalidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Inscripci__IdEst__5812160E">
+          <End Role="Estudiantes" Type="Self.Estudiantes" Multiplicity="0..1" />
+          <End Role="Inscripciones" Type="Self.Inscripciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estudiantes">
+              <PropertyRef Name="IdEstudiante" />
+            </Principal>
+            <Dependent Role="Inscripciones">
+              <PropertyRef Name="IdEstudiante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Inscripci__IdPro__59063A47">
+          <End Role="ProgramacionesCursos" Type="Self.ProgramacionesCursos" Multiplicity="0..1" />
+          <End Role="Inscripciones" Type="Self.Inscripciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProgramacionesCursos">
+              <PropertyRef Name="IdProgramacion" />
+            </Principal>
+            <Dependent Role="Inscripciones">
+              <PropertyRef Name="IdProgramacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Inventari__IdEqu__48CFD27E">
+          <End Role="Equipos" Type="Self.Equipos" Multiplicity="0..1" />
+          <End Role="InventarioEquipos" Type="Self.InventarioEquipos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipos">
+              <PropertyRef Name="IdEquipo" />
+            </Principal>
+            <Dependent Role="InventarioEquipos">
+              <PropertyRef Name="IdEquipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Inventari__IdSed__49C3F6B7">
+          <End Role="Sedes" Type="Self.Sedes" Multiplicity="0..1" />
+          <End Role="InventarioEquipos" Type="Self.InventarioEquipos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sedes">
+              <PropertyRef Name="IdSede" />
+            </Principal>
+            <Dependent Role="InventarioEquipos">
+              <PropertyRef Name="IdSede" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pagos__IdInscrip__5EBF139D">
+          <End Role="Inscripciones" Type="Self.Inscripciones" Multiplicity="0..1" />
+          <End Role="Pagos" Type="Self.Pagos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Inscripciones">
+              <PropertyRef Name="IdInscripcion" />
+            </Principal>
+            <Dependent Role="Pagos">
+              <PropertyRef Name="IdInscripcion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Programac__IdCur__5070F446">
+          <End Role="Cursos" Type="Self.Cursos" Multiplicity="0..1" />
+          <End Role="ProgramacionesCursos" Type="Self.ProgramacionesCursos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cursos">
+              <PropertyRef Name="IdCurso" />
+            </Principal>
+            <Dependent Role="ProgramacionesCursos">
+              <PropertyRef Name="IdCurso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Programac__IdSed__5165187F">
+          <End Role="Sedes" Type="Self.Sedes" Multiplicity="0..1" />
+          <End Role="ProgramacionesCursos" Type="Self.ProgramacionesCursos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sedes">
+              <PropertyRef Name="IdSede" />
+            </Principal>
+            <Dependent Role="ProgramacionesCursos">
+              <PropertyRef Name="IdSede" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Academia_SistemasModelStoreContainer">
+          <EntitySet Name="AsignacionInstructores" EntityType="Self.AsignacionInstructores" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Calificaciones" EntityType="Self.Calificaciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CategoriasCursos" EntityType="Self.CategoriasCursos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Compras" EntityType="Self.Compras" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cursos" EntityType="Self.Cursos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Equipos" EntityType="Self.Equipos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Estudiantes" EntityType="Self.Estudiantes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Inscripciones" EntityType="Self.Inscripciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Instructores" EntityType="Self.Instructores" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InventarioEquipos" EntityType="Self.InventarioEquipos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Modalidades" EntityType="Self.Modalidades" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pagos" EntityType="Self.Pagos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProgramacionesCursos" EntityType="Self.ProgramacionesCursos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Proveedores" EntityType="Self.Proveedores" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sedes" EntityType="Self.Sedes" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Asignacio__IdIns__5441852A" Association="Self.FK__Asignacio__IdIns__5441852A">
+            <End Role="Instructores" EntitySet="Instructores" />
+            <End Role="AsignacionInstructores" EntitySet="AsignacionInstructores" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Asignacio__IdPro__5535A963" Association="Self.FK__Asignacio__IdPro__5535A963">
+            <End Role="ProgramacionesCursos" EntitySet="ProgramacionesCursos" />
+            <End Role="AsignacionInstructores" EntitySet="AsignacionInstructores" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Calificac__IdIns__5BE2A6F2" Association="Self.FK__Calificac__IdIns__5BE2A6F2">
+            <End Role="Inscripciones" EntitySet="Inscripciones" />
+            <End Role="Calificaciones" EntitySet="Calificaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Compras__IdEquip__45F365D3" Association="Self.FK__Compras__IdEquip__45F365D3">
+            <End Role="Equipos" EntitySet="Equipos" />
+            <End Role="Compras" EntitySet="Compras" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Compras__IdProve__44FF419A" Association="Self.FK__Compras__IdProve__44FF419A">
+            <End Role="Proveedores" EntitySet="Proveedores" />
+            <End Role="Compras" EntitySet="Compras" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cursos__IdCatego__4D94879B" Association="Self.FK__Cursos__IdCatego__4D94879B">
+            <End Role="CategoriasCursos" EntitySet="CategoriasCursos" />
+            <End Role="Cursos" EntitySet="Cursos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cursos__IdModali__4CA06362" Association="Self.FK__Cursos__IdModali__4CA06362">
+            <End Role="Modalidades" EntitySet="Modalidades" />
+            <End Role="Cursos" EntitySet="Cursos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Inscripci__IdEst__5812160E" Association="Self.FK__Inscripci__IdEst__5812160E">
+            <End Role="Estudiantes" EntitySet="Estudiantes" />
+            <End Role="Inscripciones" EntitySet="Inscripciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Inscripci__IdPro__59063A47" Association="Self.FK__Inscripci__IdPro__59063A47">
+            <End Role="ProgramacionesCursos" EntitySet="ProgramacionesCursos" />
+            <End Role="Inscripciones" EntitySet="Inscripciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Inventari__IdEqu__48CFD27E" Association="Self.FK__Inventari__IdEqu__48CFD27E">
+            <End Role="Equipos" EntitySet="Equipos" />
+            <End Role="InventarioEquipos" EntitySet="InventarioEquipos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Inventari__IdSed__49C3F6B7" Association="Self.FK__Inventari__IdSed__49C3F6B7">
+            <End Role="Sedes" EntitySet="Sedes" />
+            <End Role="InventarioEquipos" EntitySet="InventarioEquipos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pagos__IdInscrip__5EBF139D" Association="Self.FK__Pagos__IdInscrip__5EBF139D">
+            <End Role="Inscripciones" EntitySet="Inscripciones" />
+            <End Role="Pagos" EntitySet="Pagos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Programac__IdCur__5070F446" Association="Self.FK__Programac__IdCur__5070F446">
+            <End Role="Cursos" EntitySet="Cursos" />
+            <End Role="ProgramacionesCursos" EntitySet="ProgramacionesCursos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Programac__IdSed__5165187F" Association="Self.FK__Programac__IdSed__5165187F">
+            <End Role="Sedes" EntitySet="Sedes" />
+            <End Role="ProgramacionesCursos" EntitySet="ProgramacionesCursos" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Academia_SistemasModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AsignacionInstructore">
+          <Key>
+            <PropertyRef Name="IdAsignacion" />
+          </Key>
+          <Property Name="IdAsignacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdInstructor" Type="Int32" />
+          <Property Name="IdProgramacion" Type="Int32" />
+          <Property Name="FechaAsignacion" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Instructore" Relationship="Self.FK__Asignacio__IdIns__5441852A" FromRole="AsignacionInstructores" ToRole="Instructores" />
+          <NavigationProperty Name="ProgramacionesCurso" Relationship="Self.FK__Asignacio__IdPro__5535A963" FromRole="AsignacionInstructores" ToRole="ProgramacionesCursos" />
+        </EntityType>
+        <EntityType Name="Calificacione">
+          <Key>
+            <PropertyRef Name="IdCalificacion" />
+          </Key>
+          <Property Name="IdCalificacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdInscripcion" Type="Int32" />
+          <Property Name="Nota" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="Observaciones" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Inscripcione" Relationship="Self.FK__Calificac__IdIns__5BE2A6F2" FromRole="Calificaciones" ToRole="Inscripciones" />
+        </EntityType>
+        <EntityType Name="CategoriasCurso">
+          <Key>
+            <PropertyRef Name="IdCategoria" />
+          </Key>
+          <Property Name="IdCategoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Cursos" Relationship="Self.FK__Cursos__IdCatego__4D94879B" FromRole="CategoriasCursos" ToRole="Cursos" />
+        </EntityType>
+        <EntityType Name="Compra">
+          <Key>
+            <PropertyRef Name="IdCompra" />
+          </Key>
+          <Property Name="IdCompra" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdProveedor" Type="Int32" />
+          <Property Name="IdEquipo" Type="Int32" />
+          <Property Name="FechaCompra" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Cantidad" Type="Int32" Nullable="false" />
+          <Property Name="CostoUnitario" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <NavigationProperty Name="Equipos" Relationship="Self.FK__Compras__IdEquip__45F365D3" FromRole="Compras" ToRole="Equipos" />
+          <NavigationProperty Name="Proveedore" Relationship="Self.FK__Compras__IdProve__44FF419A" FromRole="Compras" ToRole="Proveedores" />
+        </EntityType>
+        <EntityType Name="Curso">
+          <Key>
+            <PropertyRef Name="IdCurso" />
+          </Key>
+          <Property Name="IdCurso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdModalidad" Type="Int32" />
+          <Property Name="IdCategoria" Type="Int32" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Duracion" Type="Int32" Nullable="false" />
+          <Property Name="Costo" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <NavigationProperty Name="CategoriasCurso" Relationship="Self.FK__Cursos__IdCatego__4D94879B" FromRole="Cursos" ToRole="CategoriasCursos" />
+          <NavigationProperty Name="Modalidade" Relationship="Self.FK__Cursos__IdModali__4CA06362" FromRole="Cursos" ToRole="Modalidades" />
+          <NavigationProperty Name="ProgramacionesCursos" Relationship="Self.FK__Programac__IdCur__5070F446" FromRole="Cursos" ToRole="ProgramacionesCursos" />
+        </EntityType>
+        <EntityType Name="Equipos">
+          <Key>
+            <PropertyRef Name="IdEquipo" />
+          </Key>
+          <Property Name="IdEquipo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Categoria" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Compras" Relationship="Self.FK__Compras__IdEquip__45F365D3" FromRole="Equipos" ToRole="Compras" />
+          <NavigationProperty Name="InventarioEquipos" Relationship="Self.FK__Inventari__IdEqu__48CFD27E" FromRole="Equipos" ToRole="InventarioEquipos" />
+        </EntityType>
+        <EntityType Name="Estudiante">
+          <Key>
+            <PropertyRef Name="IdEstudiante" />
+          </Key>
+          <Property Name="IdEstudiante" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Apellido" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Correo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Telefono" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Direccion" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Inscripciones" Relationship="Self.FK__Inscripci__IdEst__5812160E" FromRole="Estudiantes" ToRole="Inscripciones" />
+        </EntityType>
+        <EntityType Name="Inscripcione">
+          <Key>
+            <PropertyRef Name="IdInscripcion" />
+          </Key>
+          <Property Name="IdInscripcion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdEstudiante" Type="Int32" />
+          <Property Name="IdProgramacion" Type="Int32" />
+          <Property Name="FechaInscripcion" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Calificaciones" Relationship="Self.FK__Calificac__IdIns__5BE2A6F2" FromRole="Inscripciones" ToRole="Calificaciones" />
+          <NavigationProperty Name="Estudiante" Relationship="Self.FK__Inscripci__IdEst__5812160E" FromRole="Inscripciones" ToRole="Estudiantes" />
+          <NavigationProperty Name="ProgramacionesCurso" Relationship="Self.FK__Inscripci__IdPro__59063A47" FromRole="Inscripciones" ToRole="ProgramacionesCursos" />
+          <NavigationProperty Name="Pagos" Relationship="Self.FK__Pagos__IdInscrip__5EBF139D" FromRole="Inscripciones" ToRole="Pagos" />
+        </EntityType>
+        <EntityType Name="Instructore">
+          <Key>
+            <PropertyRef Name="Idinstructor" />
+          </Key>
+          <Property Name="Idinstructor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Apellido" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Correo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Telefono" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Especialidad" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AsignacionInstructores" Relationship="Self.FK__Asignacio__IdIns__5441852A" FromRole="Instructores" ToRole="AsignacionInstructores" />
+        </EntityType>
+        <EntityType Name="InventarioEquipos">
+          <Key>
+            <PropertyRef Name="IdInventario" />
+          </Key>
+          <Property Name="IdInventario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdEquipo" Type="Int32" />
+          <Property Name="IdSede" Type="Int32" />
+          <Property Name="Cantidad" Type="Int32" Nullable="false" />
+          <Property Name="FechaAsignacion" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Equipos" Relationship="Self.FK__Inventari__IdEqu__48CFD27E" FromRole="InventarioEquipos" ToRole="Equipos" />
+          <NavigationProperty Name="Sede" Relationship="Self.FK__Inventari__IdSed__49C3F6B7" FromRole="InventarioEquipos" ToRole="Sedes" />
+        </EntityType>
+        <EntityType Name="Modalidade">
+          <Key>
+            <PropertyRef Name="IdModalidad" />
+          </Key>
+          <Property Name="IdModalidad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Cursos" Relationship="Self.FK__Cursos__IdModali__4CA06362" FromRole="Modalidades" ToRole="Cursos" />
+        </EntityType>
+        <EntityType Name="Pago">
+          <Key>
+            <PropertyRef Name="IdCPago" />
+          </Key>
+          <Property Name="IdCPago" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdInscripcion" Type="Int32" />
+          <Property Name="FechaPago" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Monto" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="MetodoPago" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Inscripcione" Relationship="Self.FK__Pagos__IdInscrip__5EBF139D" FromRole="Pagos" ToRole="Inscripciones" />
+        </EntityType>
+        <EntityType Name="ProgramacionesCurso">
+          <Key>
+            <PropertyRef Name="IdProgramacion" />
+          </Key>
+          <Property Name="IdProgramacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdCurso" Type="Int32" />
+          <Property Name="IdSede" Type="Int32" />
+          <Property Name="FechaInicio" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FechaFin" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Cupos" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AsignacionInstructores" Relationship="Self.FK__Asignacio__IdPro__5535A963" FromRole="ProgramacionesCursos" ToRole="AsignacionInstructores" />
+          <NavigationProperty Name="Curso" Relationship="Self.FK__Programac__IdCur__5070F446" FromRole="ProgramacionesCursos" ToRole="Cursos" />
+          <NavigationProperty Name="Inscripciones" Relationship="Self.FK__Inscripci__IdPro__59063A47" FromRole="ProgramacionesCursos" ToRole="Inscripciones" />
+          <NavigationProperty Name="Sede" Relationship="Self.FK__Programac__IdSed__5165187F" FromRole="ProgramacionesCursos" ToRole="Sedes" />
+        </EntityType>
+        <EntityType Name="Proveedore">
+          <Key>
+            <PropertyRef Name="IdProveedor" />
+          </Key>
+          <Property Name="IdProveedor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Telefono" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Correo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Direccion" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Compras" Relationship="Self.FK__Compras__IdProve__44FF419A" FromRole="Proveedores" ToRole="Compras" />
+        </EntityType>
+        <EntityType Name="Sede">
+          <Key>
+            <PropertyRef Name="IdSede" />
+          </Key>
+          <Property Name="IdSede" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Ciudad" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Direccion" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Telefono" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="InventarioEquipos" Relationship="Self.FK__Inventari__IdSed__49C3F6B7" FromRole="Sedes" ToRole="InventarioEquipos" />
+          <NavigationProperty Name="ProgramacionesCursos" Relationship="Self.FK__Programac__IdSed__5165187F" FromRole="Sedes" ToRole="ProgramacionesCursos" />
+        </EntityType>
+        <Association Name="FK__Asignacio__IdIns__5441852A">
+          <End Role="Instructores" Type="Self.Instructore" Multiplicity="0..1" />
+          <End Role="AsignacionInstructores" Type="Self.AsignacionInstructore" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Instructores">
+              <PropertyRef Name="Idinstructor" />
+            </Principal>
+            <Dependent Role="AsignacionInstructores">
+              <PropertyRef Name="IdInstructor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Asignacio__IdPro__5535A963">
+          <End Role="ProgramacionesCursos" Type="Self.ProgramacionesCurso" Multiplicity="0..1" />
+          <End Role="AsignacionInstructores" Type="Self.AsignacionInstructore" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProgramacionesCursos">
+              <PropertyRef Name="IdProgramacion" />
+            </Principal>
+            <Dependent Role="AsignacionInstructores">
+              <PropertyRef Name="IdProgramacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Calificac__IdIns__5BE2A6F2">
+          <End Role="Inscripciones" Type="Self.Inscripcione" Multiplicity="0..1" />
+          <End Role="Calificaciones" Type="Self.Calificacione" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Inscripciones">
+              <PropertyRef Name="IdInscripcion" />
+            </Principal>
+            <Dependent Role="Calificaciones">
+              <PropertyRef Name="IdInscripcion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cursos__IdCatego__4D94879B">
+          <End Role="CategoriasCursos" Type="Self.CategoriasCurso" Multiplicity="0..1" />
+          <End Role="Cursos" Type="Self.Curso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoriasCursos">
+              <PropertyRef Name="IdCategoria" />
+            </Principal>
+            <Dependent Role="Cursos">
+              <PropertyRef Name="IdCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Compras__IdEquip__45F365D3">
+          <End Role="Equipos" Type="Self.Equipos" Multiplicity="0..1" />
+          <End Role="Compras" Type="Self.Compra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipos">
+              <PropertyRef Name="IdEquipo" />
+            </Principal>
+            <Dependent Role="Compras">
+              <PropertyRef Name="IdEquipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Compras__IdProve__44FF419A">
+          <End Role="Proveedores" Type="Self.Proveedore" Multiplicity="0..1" />
+          <End Role="Compras" Type="Self.Compra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proveedores">
+              <PropertyRef Name="IdProveedor" />
+            </Principal>
+            <Dependent Role="Compras">
+              <PropertyRef Name="IdProveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cursos__IdModali__4CA06362">
+          <End Role="Modalidades" Type="Self.Modalidade" Multiplicity="0..1" />
+          <End Role="Cursos" Type="Self.Curso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modalidades">
+              <PropertyRef Name="IdModalidad" />
+            </Principal>
+            <Dependent Role="Cursos">
+              <PropertyRef Name="IdModalidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Programac__IdCur__5070F446">
+          <End Role="Cursos" Type="Self.Curso" Multiplicity="0..1" />
+          <End Role="ProgramacionesCursos" Type="Self.ProgramacionesCurso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cursos">
+              <PropertyRef Name="IdCurso" />
+            </Principal>
+            <Dependent Role="ProgramacionesCursos">
+              <PropertyRef Name="IdCurso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Inventari__IdEqu__48CFD27E">
+          <End Role="Equipos" Type="Self.Equipos" Multiplicity="0..1" />
+          <End Role="InventarioEquipos" Type="Self.InventarioEquipos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipos">
+              <PropertyRef Name="IdEquipo" />
+            </Principal>
+            <Dependent Role="InventarioEquipos">
+              <PropertyRef Name="IdEquipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Inscripci__IdEst__5812160E">
+          <End Role="Estudiantes" Type="Self.Estudiante" Multiplicity="0..1" />
+          <End Role="Inscripciones" Type="Self.Inscripcione" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estudiantes">
+              <PropertyRef Name="IdEstudiante" />
+            </Principal>
+            <Dependent Role="Inscripciones">
+              <PropertyRef Name="IdEstudiante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Inscripci__IdPro__59063A47">
+          <End Role="ProgramacionesCursos" Type="Self.ProgramacionesCurso" Multiplicity="0..1" />
+          <End Role="Inscripciones" Type="Self.Inscripcione" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProgramacionesCursos">
+              <PropertyRef Name="IdProgramacion" />
+            </Principal>
+            <Dependent Role="Inscripciones">
+              <PropertyRef Name="IdProgramacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pagos__IdInscrip__5EBF139D">
+          <End Role="Inscripciones" Type="Self.Inscripcione" Multiplicity="0..1" />
+          <End Role="Pagos" Type="Self.Pago" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Inscripciones">
+              <PropertyRef Name="IdInscripcion" />
+            </Principal>
+            <Dependent Role="Pagos">
+              <PropertyRef Name="IdInscripcion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Inventari__IdSed__49C3F6B7">
+          <End Role="Sedes" Type="Self.Sede" Multiplicity="0..1" />
+          <End Role="InventarioEquipos" Type="Self.InventarioEquipos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sedes">
+              <PropertyRef Name="IdSede" />
+            </Principal>
+            <Dependent Role="InventarioEquipos">
+              <PropertyRef Name="IdSede" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Programac__IdSed__5165187F">
+          <End Role="Sedes" Type="Self.Sede" Multiplicity="0..1" />
+          <End Role="ProgramacionesCursos" Type="Self.ProgramacionesCurso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sedes">
+              <PropertyRef Name="IdSede" />
+            </Principal>
+            <Dependent Role="ProgramacionesCursos">
+              <PropertyRef Name="IdSede" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Academia_SistemasEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AsignacionInstructores" EntityType="Self.AsignacionInstructore" />
+          <EntitySet Name="Calificaciones" EntityType="Self.Calificacione" />
+          <EntitySet Name="CategoriasCursos" EntityType="Self.CategoriasCurso" />
+          <EntitySet Name="Compras" EntityType="Self.Compra" />
+          <EntitySet Name="Cursos" EntityType="Self.Curso" />
+          <EntitySet Name="Equipos" EntityType="Self.Equipos" />
+          <EntitySet Name="Estudiantes" EntityType="Self.Estudiante" />
+          <EntitySet Name="Inscripciones" EntityType="Self.Inscripcione" />
+          <EntitySet Name="Instructores" EntityType="Self.Instructore" />
+          <EntitySet Name="InventarioEquipos" EntityType="Self.InventarioEquipos" />
+          <EntitySet Name="Modalidades" EntityType="Self.Modalidade" />
+          <EntitySet Name="Pagos" EntityType="Self.Pago" />
+          <EntitySet Name="ProgramacionesCursos" EntityType="Self.ProgramacionesCurso" />
+          <EntitySet Name="Proveedores" EntityType="Self.Proveedore" />
+          <EntitySet Name="Sedes" EntityType="Self.Sede" />
+          <AssociationSet Name="FK__Asignacio__IdIns__5441852A" Association="Self.FK__Asignacio__IdIns__5441852A">
+            <End Role="Instructores" EntitySet="Instructores" />
+            <End Role="AsignacionInstructores" EntitySet="AsignacionInstructores" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Asignacio__IdPro__5535A963" Association="Self.FK__Asignacio__IdPro__5535A963">
+            <End Role="ProgramacionesCursos" EntitySet="ProgramacionesCursos" />
+            <End Role="AsignacionInstructores" EntitySet="AsignacionInstructores" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Calificac__IdIns__5BE2A6F2" Association="Self.FK__Calificac__IdIns__5BE2A6F2">
+            <End Role="Inscripciones" EntitySet="Inscripciones" />
+            <End Role="Calificaciones" EntitySet="Calificaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cursos__IdCatego__4D94879B" Association="Self.FK__Cursos__IdCatego__4D94879B">
+            <End Role="CategoriasCursos" EntitySet="CategoriasCursos" />
+            <End Role="Cursos" EntitySet="Cursos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Compras__IdEquip__45F365D3" Association="Self.FK__Compras__IdEquip__45F365D3">
+            <End Role="Equipos" EntitySet="Equipos" />
+            <End Role="Compras" EntitySet="Compras" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Compras__IdProve__44FF419A" Association="Self.FK__Compras__IdProve__44FF419A">
+            <End Role="Proveedores" EntitySet="Proveedores" />
+            <End Role="Compras" EntitySet="Compras" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cursos__IdModali__4CA06362" Association="Self.FK__Cursos__IdModali__4CA06362">
+            <End Role="Modalidades" EntitySet="Modalidades" />
+            <End Role="Cursos" EntitySet="Cursos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Programac__IdCur__5070F446" Association="Self.FK__Programac__IdCur__5070F446">
+            <End Role="Cursos" EntitySet="Cursos" />
+            <End Role="ProgramacionesCursos" EntitySet="ProgramacionesCursos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Inventari__IdEqu__48CFD27E" Association="Self.FK__Inventari__IdEqu__48CFD27E">
+            <End Role="Equipos" EntitySet="Equipos" />
+            <End Role="InventarioEquipos" EntitySet="InventarioEquipos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Inscripci__IdEst__5812160E" Association="Self.FK__Inscripci__IdEst__5812160E">
+            <End Role="Estudiantes" EntitySet="Estudiantes" />
+            <End Role="Inscripciones" EntitySet="Inscripciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Inscripci__IdPro__59063A47" Association="Self.FK__Inscripci__IdPro__59063A47">
+            <End Role="ProgramacionesCursos" EntitySet="ProgramacionesCursos" />
+            <End Role="Inscripciones" EntitySet="Inscripciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pagos__IdInscrip__5EBF139D" Association="Self.FK__Pagos__IdInscrip__5EBF139D">
+            <End Role="Inscripciones" EntitySet="Inscripciones" />
+            <End Role="Pagos" EntitySet="Pagos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Inventari__IdSed__49C3F6B7" Association="Self.FK__Inventari__IdSed__49C3F6B7">
+            <End Role="Sedes" EntitySet="Sedes" />
+            <End Role="InventarioEquipos" EntitySet="InventarioEquipos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Programac__IdSed__5165187F" Association="Self.FK__Programac__IdSed__5165187F">
+            <End Role="Sedes" EntitySet="Sedes" />
+            <End Role="ProgramacionesCursos" EntitySet="ProgramacionesCursos" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Academia_SistemasModelStoreContainer" CdmEntityContainer="Academia_SistemasEntities">
+          <EntitySetMapping Name="AsignacionInstructores">
+            <EntityTypeMapping TypeName="Academia_SistemasModel.AsignacionInstructore">
+              <MappingFragment StoreEntitySet="AsignacionInstructores">
+                <ScalarProperty Name="IdAsignacion" ColumnName="IdAsignacion" />
+                <ScalarProperty Name="IdInstructor" ColumnName="IdInstructor" />
+                <ScalarProperty Name="IdProgramacion" ColumnName="IdProgramacion" />
+                <ScalarProperty Name="FechaAsignacion" ColumnName="FechaAsignacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Calificaciones">
+            <EntityTypeMapping TypeName="Academia_SistemasModel.Calificacione">
+              <MappingFragment StoreEntitySet="Calificaciones">
+                <ScalarProperty Name="IdCalificacion" ColumnName="IdCalificacion" />
+                <ScalarProperty Name="IdInscripcion" ColumnName="IdInscripcion" />
+                <ScalarProperty Name="Nota" ColumnName="Nota" />
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CategoriasCursos">
+            <EntityTypeMapping TypeName="Academia_SistemasModel.CategoriasCurso">
+              <MappingFragment StoreEntitySet="CategoriasCursos">
+                <ScalarProperty Name="IdCategoria" ColumnName="IdCategoria" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Compras">
+            <EntityTypeMapping TypeName="Academia_SistemasModel.Compra">
+              <MappingFragment StoreEntitySet="Compras">
+                <ScalarProperty Name="IdCompra" ColumnName="IdCompra" />
+                <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
+                <ScalarProperty Name="IdEquipo" ColumnName="IdEquipo" />
+                <ScalarProperty Name="FechaCompra" ColumnName="FechaCompra" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="CostoUnitario" ColumnName="CostoUnitario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cursos">
+            <EntityTypeMapping TypeName="Academia_SistemasModel.Curso">
+              <MappingFragment StoreEntitySet="Cursos">
+                <ScalarProperty Name="IdCurso" ColumnName="IdCurso" />
+                <ScalarProperty Name="IdModalidad" ColumnName="IdModalidad" />
+                <ScalarProperty Name="IdCategoria" ColumnName="IdCategoria" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Duracion" ColumnName="Duracion" />
+                <ScalarProperty Name="Costo" ColumnName="Costo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Equipos">
+            <EntityTypeMapping TypeName="Academia_SistemasModel.Equipos">
+              <MappingFragment StoreEntitySet="Equipos">
+                <ScalarProperty Name="IdEquipo" ColumnName="IdEquipo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Estudiantes">
+            <EntityTypeMapping TypeName="Academia_SistemasModel.Estudiante">
+              <MappingFragment StoreEntitySet="Estudiantes">
+                <ScalarProperty Name="IdEstudiante" ColumnName="IdEstudiante" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Inscripciones">
+            <EntityTypeMapping TypeName="Academia_SistemasModel.Inscripcione">
+              <MappingFragment StoreEntitySet="Inscripciones">
+                <ScalarProperty Name="IdInscripcion" ColumnName="IdInscripcion" />
+                <ScalarProperty Name="IdEstudiante" ColumnName="IdEstudiante" />
+                <ScalarProperty Name="IdProgramacion" ColumnName="IdProgramacion" />
+                <ScalarProperty Name="FechaInscripcion" ColumnName="FechaInscripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Instructores">
+            <EntityTypeMapping TypeName="Academia_SistemasModel.Instructore">
+              <MappingFragment StoreEntitySet="Instructores">
+                <ScalarProperty Name="Idinstructor" ColumnName="Idinstructor" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Especialidad" ColumnName="Especialidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InventarioEquipos">
+            <EntityTypeMapping TypeName="Academia_SistemasModel.InventarioEquipos">
+              <MappingFragment StoreEntitySet="InventarioEquipos">
+                <ScalarProperty Name="IdInventario" ColumnName="IdInventario" />
+                <ScalarProperty Name="IdEquipo" ColumnName="IdEquipo" />
+                <ScalarProperty Name="IdSede" ColumnName="IdSede" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="FechaAsignacion" ColumnName="FechaAsignacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Modalidades">
+            <EntityTypeMapping TypeName="Academia_SistemasModel.Modalidade">
+              <MappingFragment StoreEntitySet="Modalidades">
+                <ScalarProperty Name="IdModalidad" ColumnName="IdModalidad" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pagos">
+            <EntityTypeMapping TypeName="Academia_SistemasModel.Pago">
+              <MappingFragment StoreEntitySet="Pagos">
+                <ScalarProperty Name="IdCPago" ColumnName="IdCPago" />
+                <ScalarProperty Name="IdInscripcion" ColumnName="IdInscripcion" />
+                <ScalarProperty Name="FechaPago" ColumnName="FechaPago" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+                <ScalarProperty Name="MetodoPago" ColumnName="MetodoPago" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProgramacionesCursos">
+            <EntityTypeMapping TypeName="Academia_SistemasModel.ProgramacionesCurso">
+              <MappingFragment StoreEntitySet="ProgramacionesCursos">
+                <ScalarProperty Name="IdProgramacion" ColumnName="IdProgramacion" />
+                <ScalarProperty Name="IdCurso" ColumnName="IdCurso" />
+                <ScalarProperty Name="IdSede" ColumnName="IdSede" />
+                <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+                <ScalarProperty Name="FechaFin" ColumnName="FechaFin" />
+                <ScalarProperty Name="Cupos" ColumnName="Cupos" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Proveedores">
+            <EntityTypeMapping TypeName="Academia_SistemasModel.Proveedore">
+              <MappingFragment StoreEntitySet="Proveedores">
+                <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sedes">
+            <EntityTypeMapping TypeName="Academia_SistemasModel.Sede">
+              <MappingFragment StoreEntitySet="Sedes">
+                <ScalarProperty Name="IdSede" ColumnName="IdSede" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Ciudad" ColumnName="Ciudad" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
