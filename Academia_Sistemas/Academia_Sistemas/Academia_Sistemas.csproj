@@ -162,6 +162,21 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Clases\clsAsignacionInstructore.cs" />
+    <Compile Include="Clases\clsCalificacione.cs" />
+    <Compile Include="Clases\clsCategoriasCurso.cs" />
+    <Compile Include="Clases\clsCompra.cs" />
+    <Compile Include="Clases\clsCurso.cs" />
+    <Compile Include="Clases\clsEquipos.cs" />
+    <Compile Include="Clases\clsEstudiante.cs" />
+    <Compile Include="Clases\clsInstructore.cs" />
+    <Compile Include="Clases\clsInventarioEquipos.cs" />
+    <Compile Include="Clases\clsModalidade.cs" />
+    <Compile Include="Clases\clsPago.cs" />
+    <Compile Include="Clases\clsProgramacionesCurso.cs" />
+    <Compile Include="Clases\clsProveedore.cs" />
+    <Compile Include="Clases\clsSede.cs" />
+    <Compile Include="Clases\clsinscripcione.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -314,7 +329,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Clases\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\bootstrap.min.js.map" />

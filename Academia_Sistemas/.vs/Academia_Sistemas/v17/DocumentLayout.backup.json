@@ -1,7 +1,68 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\USUARIO\\Desktop\\PROYECTO-FINAL\\Academia-de-Sistemas-AppServWEB-6-8\\Academia_Sistemas\\",
-  "Documents": [],
+  "WorkspaceRootPath": "C:\\Users\\usuario\\Desktop\\Academia-de-Sistemas-AppServWEB-6-8\\Academia_Sistemas\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{9EFB0A40-EF45-441E-B77B-81855E2F1409}|Academia_Sistemas\\Academia_Sistemas.csproj|c:\\users\\usuario\\desktop\\academia-de-sistemas-appservweb-6-8\\academia_sistemas\\academia_sistemas\\clases\\clssede.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9EFB0A40-EF45-441E-B77B-81855E2F1409}|Academia_Sistemas\\Academia_Sistemas.csproj|solutionrelative:academia_sistemas\\clases\\clssede.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9EFB0A40-EF45-441E-B77B-81855E2F1409}|Academia_Sistemas\\Academia_Sistemas.csproj|C:\\Users\\usuario\\Desktop\\Academia-de-Sistemas-AppServWEB-6-8\\Academia_Sistemas\\academia_sistemas\\clases\\clsproveedore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9EFB0A40-EF45-441E-B77B-81855E2F1409}|Academia_Sistemas\\Academia_Sistemas.csproj|solutionrelative:academia_sistemas\\clases\\clsproveedore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9EFB0A40-EF45-441E-B77B-81855E2F1409}|Academia_Sistemas\\Academia_Sistemas.csproj|C:\\Users\\usuario\\Desktop\\Academia-de-Sistemas-AppServWEB-6-8\\Academia_Sistemas\\academia_sistemas\\clases\\clsprogramacionescurso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9EFB0A40-EF45-441E-B77B-81855E2F1409}|Academia_Sistemas\\Academia_Sistemas.csproj|solutionrelative:academia_sistemas\\clases\\clsprogramacionescurso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9EFB0A40-EF45-441E-B77B-81855E2F1409}|Academia_Sistemas\\Academia_Sistemas.csproj|C:\\Users\\usuario\\Desktop\\Academia-de-Sistemas-AppServWEB-6-8\\Academia_Sistemas\\academia_sistemas\\clases\\clspago.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9EFB0A40-EF45-441E-B77B-81855E2F1409}|Academia_Sistemas\\Academia_Sistemas.csproj|solutionrelative:academia_sistemas\\clases\\clspago.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9EFB0A40-EF45-441E-B77B-81855E2F1409}|Academia_Sistemas\\Academia_Sistemas.csproj|C:\\Users\\usuario\\Desktop\\Academia-de-Sistemas-AppServWEB-6-8\\Academia_Sistemas\\academia_sistemas\\clases\\clsmodalidade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9EFB0A40-EF45-441E-B77B-81855E2F1409}|Academia_Sistemas\\Academia_Sistemas.csproj|solutionrelative:academia_sistemas\\clases\\clsmodalidade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9EFB0A40-EF45-441E-B77B-81855E2F1409}|Academia_Sistemas\\Academia_Sistemas.csproj|C:\\Users\\usuario\\Desktop\\Academia-de-Sistemas-AppServWEB-6-8\\Academia_Sistemas\\academia_sistemas\\clases\\clsinventarioequipos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9EFB0A40-EF45-441E-B77B-81855E2F1409}|Academia_Sistemas\\Academia_Sistemas.csproj|solutionrelative:academia_sistemas\\clases\\clsinventarioequipos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9EFB0A40-EF45-441E-B77B-81855E2F1409}|Academia_Sistemas\\Academia_Sistemas.csproj|C:\\Users\\usuario\\Desktop\\Academia-de-Sistemas-AppServWEB-6-8\\Academia_Sistemas\\academia_sistemas\\clases\\clsinstructore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9EFB0A40-EF45-441E-B77B-81855E2F1409}|Academia_Sistemas\\Academia_Sistemas.csproj|solutionrelative:academia_sistemas\\clases\\clsinstructore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9EFB0A40-EF45-441E-B77B-81855E2F1409}|Academia_Sistemas\\Academia_Sistemas.csproj|C:\\Users\\usuario\\Desktop\\Academia-de-Sistemas-AppServWEB-6-8\\Academia_Sistemas\\academia_sistemas\\clases\\clsinscripcione.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9EFB0A40-EF45-441E-B77B-81855E2F1409}|Academia_Sistemas\\Academia_Sistemas.csproj|solutionrelative:academia_sistemas\\clases\\clsinscripcione.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9EFB0A40-EF45-441E-B77B-81855E2F1409}|Academia_Sistemas\\Academia_Sistemas.csproj|C:\\Users\\usuario\\Desktop\\Academia-de-Sistemas-AppServWEB-6-8\\Academia_Sistemas\\academia_sistemas\\clases\\clsestudiante.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9EFB0A40-EF45-441E-B77B-81855E2F1409}|Academia_Sistemas\\Academia_Sistemas.csproj|solutionrelative:academia_sistemas\\clases\\clsestudiante.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9EFB0A40-EF45-441E-B77B-81855E2F1409}|Academia_Sistemas\\Academia_Sistemas.csproj|C:\\Users\\usuario\\Desktop\\Academia-de-Sistemas-AppServWEB-6-8\\Academia_Sistemas\\academia_sistemas\\clases\\clsequipos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9EFB0A40-EF45-441E-B77B-81855E2F1409}|Academia_Sistemas\\Academia_Sistemas.csproj|solutionrelative:academia_sistemas\\clases\\clsequipos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9EFB0A40-EF45-441E-B77B-81855E2F1409}|Academia_Sistemas\\Academia_Sistemas.csproj|C:\\Users\\usuario\\Desktop\\Academia-de-Sistemas-AppServWEB-6-8\\Academia_Sistemas\\academia_sistemas\\clases\\clscurso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9EFB0A40-EF45-441E-B77B-81855E2F1409}|Academia_Sistemas\\Academia_Sistemas.csproj|solutionrelative:academia_sistemas\\clases\\clscurso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9EFB0A40-EF45-441E-B77B-81855E2F1409}|Academia_Sistemas\\Academia_Sistemas.csproj|C:\\Users\\usuario\\Desktop\\Academia-de-Sistemas-AppServWEB-6-8\\Academia_Sistemas\\academia_sistemas\\clases\\clscompra.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9EFB0A40-EF45-441E-B77B-81855E2F1409}|Academia_Sistemas\\Academia_Sistemas.csproj|solutionrelative:academia_sistemas\\clases\\clscompra.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9EFB0A40-EF45-441E-B77B-81855E2F1409}|Academia_Sistemas\\Academia_Sistemas.csproj|C:\\Users\\usuario\\Desktop\\Academia-de-Sistemas-AppServWEB-6-8\\Academia_Sistemas\\academia_sistemas\\clases\\clscategoriascurso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9EFB0A40-EF45-441E-B77B-81855E2F1409}|Academia_Sistemas\\Academia_Sistemas.csproj|solutionrelative:academia_sistemas\\clases\\clscategoriascurso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9EFB0A40-EF45-441E-B77B-81855E2F1409}|Academia_Sistemas\\Academia_Sistemas.csproj|C:\\Users\\usuario\\Desktop\\Academia-de-Sistemas-AppServWEB-6-8\\Academia_Sistemas\\academia_sistemas\\clases\\clsasignacioninstructore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9EFB0A40-EF45-441E-B77B-81855E2F1409}|Academia_Sistemas\\Academia_Sistemas.csproj|solutionrelative:academia_sistemas\\clases\\clsasignacioninstructore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9EFB0A40-EF45-441E-B77B-81855E2F1409}|Academia_Sistemas\\Academia_Sistemas.csproj|C:\\Users\\usuario\\Desktop\\Academia-de-Sistemas-AppServWEB-6-8\\Academia_Sistemas\\academia_sistemas\\clases\\clscalificacione.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9EFB0A40-EF45-441E-B77B-81855E2F1409}|Academia_Sistemas\\Academia_Sistemas.csproj|solutionrelative:academia_sistemas\\clases\\clscalificacione.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,11 +70,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "clsSede.cs",
+              "DocumentMoniker": "C:\\Users\\usuario\\Desktop\\Academia-de-Sistemas-AppServWEB-6-8\\Academia_Sistemas\\Academia_Sistemas\\Clases\\clsSede.cs",
+              "RelativeDocumentMoniker": "Academia_Sistemas\\Clases\\clsSede.cs",
+              "ToolTip": "C:\\Users\\usuario\\Desktop\\Academia-de-Sistemas-AppServWEB-6-8\\Academia_Sistemas\\Academia_Sistemas\\Clases\\clsSede.cs",
+              "RelativeToolTip": "Academia_Sistemas\\Clases\\clsSede.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAAAAgAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T21:02:20.155Z",
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
               "$type": "Bookmark",
@@ -21,15 +92,183 @@
             },
             {
               "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "clsProgramacionesCurso.cs",
+              "DocumentMoniker": "C:\\Users\\usuario\\Desktop\\Academia-de-Sistemas-AppServWEB-6-8\\Academia_Sistemas\\Academia_Sistemas\\Clases\\clsProgramacionesCurso.cs",
+              "RelativeDocumentMoniker": "Academia_Sistemas\\Clases\\clsProgramacionesCurso.cs",
+              "ToolTip": "C:\\Users\\usuario\\Desktop\\Academia-de-Sistemas-AppServWEB-6-8\\Academia_Sistemas\\Academia_Sistemas\\Clases\\clsProgramacionesCurso.cs",
+              "RelativeToolTip": "Academia_Sistemas\\Clases\\clsProgramacionesCurso.cs",
+              "ViewState": "AgIAADIAAAAAAAAAAAAIwDcAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T22:03:03.425Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "clsPago.cs",
+              "DocumentMoniker": "C:\\Users\\usuario\\Desktop\\Academia-de-Sistemas-AppServWEB-6-8\\Academia_Sistemas\\Academia_Sistemas\\Clases\\clsPago.cs",
+              "RelativeDocumentMoniker": "Academia_Sistemas\\Clases\\clsPago.cs",
+              "ToolTip": "C:\\Users\\usuario\\Desktop\\Academia-de-Sistemas-AppServWEB-6-8\\Academia_Sistemas\\Academia_Sistemas\\Clases\\clsPago.cs",
+              "RelativeToolTip": "Academia_Sistemas\\Clases\\clsPago.cs",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAIwDwAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T22:02:34.573Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "clsModalidade.cs",
+              "DocumentMoniker": "C:\\Users\\usuario\\Desktop\\Academia-de-Sistemas-AppServWEB-6-8\\Academia_Sistemas\\Academia_Sistemas\\Clases\\clsModalidade.cs",
+              "RelativeDocumentMoniker": "Academia_Sistemas\\Clases\\clsModalidade.cs",
+              "ToolTip": "C:\\Users\\usuario\\Desktop\\Academia-de-Sistemas-AppServWEB-6-8\\Academia_Sistemas\\Academia_Sistemas\\Clases\\clsModalidade.cs",
+              "RelativeToolTip": "Academia_Sistemas\\Clases\\clsModalidade.cs",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAIwDcAAAA/AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T22:01:59.721Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "clsInventarioEquipos.cs",
+              "DocumentMoniker": "C:\\Users\\usuario\\Desktop\\Academia-de-Sistemas-AppServWEB-6-8\\Academia_Sistemas\\Academia_Sistemas\\Clases\\clsInventarioEquipos.cs",
+              "RelativeDocumentMoniker": "Academia_Sistemas\\Clases\\clsInventarioEquipos.cs",
+              "ToolTip": "C:\\Users\\usuario\\Desktop\\Academia-de-Sistemas-AppServWEB-6-8\\Academia_Sistemas\\Academia_Sistemas\\Clases\\clsInventarioEquipos.cs",
+              "RelativeToolTip": "Academia_Sistemas\\Clases\\clsInventarioEquipos.cs",
+              "ViewState": "AgIAACkAAAAAAAAAAAAwwDMAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T22:01:08.451Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "clsInstructore.cs",
+              "DocumentMoniker": "C:\\Users\\usuario\\Desktop\\Academia-de-Sistemas-AppServWEB-6-8\\Academia_Sistemas\\Academia_Sistemas\\Clases\\clsInstructore.cs",
+              "RelativeDocumentMoniker": "Academia_Sistemas\\Clases\\clsInstructore.cs",
+              "ToolTip": "C:\\Users\\usuario\\Desktop\\Academia-de-Sistemas-AppServWEB-6-8\\Academia_Sistemas\\Academia_Sistemas\\Clases\\clsInstructore.cs",
+              "RelativeToolTip": "Academia_Sistemas\\Clases\\clsInstructore.cs",
+              "ViewState": "AgIAACMAAAAAAAAAAAAwwC0AAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T22:00:37.993Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "clsAsignacionInstructore.cs",
+              "DocumentMoniker": "C:\\Users\\usuario\\Desktop\\Academia-de-Sistemas-AppServWEB-6-8\\Academia_Sistemas\\Academia_Sistemas\\Clases\\clsAsignacionInstructore.cs",
+              "RelativeDocumentMoniker": "Academia_Sistemas\\Clases\\clsAsignacionInstructore.cs",
+              "ToolTip": "C:\\Users\\usuario\\Desktop\\Academia-de-Sistemas-AppServWEB-6-8\\Academia_Sistemas\\Academia_Sistemas\\Clases\\clsAsignacionInstructore.cs",
+              "RelativeToolTip": "Academia_Sistemas\\Clases\\clsAsignacionInstructore.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADwAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T21:46:18.132Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "clsCalificacione.cs",
+              "DocumentMoniker": "C:\\Users\\usuario\\Desktop\\Academia-de-Sistemas-AppServWEB-6-8\\Academia_Sistemas\\Academia_Sistemas\\Clases\\clsCalificacione.cs",
+              "RelativeDocumentMoniker": "Academia_Sistemas\\Clases\\clsCalificacione.cs",
+              "ToolTip": "C:\\Users\\usuario\\Desktop\\Academia-de-Sistemas-AppServWEB-6-8\\Academia_Sistemas\\Academia_Sistemas\\Clases\\clsCalificacione.cs",
+              "RelativeToolTip": "Academia_Sistemas\\Clases\\clsCalificacione.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAQwBYAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T21:44:56.559Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "clsCategoriasCurso.cs",
+              "DocumentMoniker": "C:\\Users\\usuario\\Desktop\\Academia-de-Sistemas-AppServWEB-6-8\\Academia_Sistemas\\Academia_Sistemas\\Clases\\clsCategoriasCurso.cs",
+              "RelativeDocumentMoniker": "Academia_Sistemas\\Clases\\clsCategoriasCurso.cs",
+              "ToolTip": "C:\\Users\\usuario\\Desktop\\Academia-de-Sistemas-AppServWEB-6-8\\Academia_Sistemas\\Academia_Sistemas\\Clases\\clsCategoriasCurso.cs",
+              "RelativeToolTip": "Academia_Sistemas\\Clases\\clsCategoriasCurso.cs",
+              "ViewState": "AgIAACMAAAAAAAAAAAAwwDsAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T21:43:39.942Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "clsCompra.cs",
+              "DocumentMoniker": "C:\\Users\\usuario\\Desktop\\Academia-de-Sistemas-AppServWEB-6-8\\Academia_Sistemas\\Academia_Sistemas\\Clases\\clsCompra.cs",
+              "RelativeDocumentMoniker": "Academia_Sistemas\\Clases\\clsCompra.cs",
+              "ToolTip": "C:\\Users\\usuario\\Desktop\\Academia-de-Sistemas-AppServWEB-6-8\\Academia_Sistemas\\Academia_Sistemas\\Clases\\clsCompra.cs",
+              "RelativeToolTip": "Academia_Sistemas\\Clases\\clsCompra.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAowDgAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T21:42:25.708Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "clsCurso.cs",
+              "DocumentMoniker": "C:\\Users\\usuario\\Desktop\\Academia-de-Sistemas-AppServWEB-6-8\\Academia_Sistemas\\Academia_Sistemas\\Clases\\clsCurso.cs",
+              "RelativeDocumentMoniker": "Academia_Sistemas\\Clases\\clsCurso.cs",
+              "ToolTip": "C:\\Users\\usuario\\Desktop\\Academia-de-Sistemas-AppServWEB-6-8\\Academia_Sistemas\\Academia_Sistemas\\Clases\\clsCurso.cs",
+              "RelativeToolTip": "Academia_Sistemas\\Clases\\clsCurso.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAswCAAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T21:41:18.374Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "clsEquipos.cs",
+              "DocumentMoniker": "C:\\Users\\usuario\\Desktop\\Academia-de-Sistemas-AppServWEB-6-8\\Academia_Sistemas\\Academia_Sistemas\\Clases\\clsEquipos.cs",
+              "RelativeDocumentMoniker": "Academia_Sistemas\\Clases\\clsEquipos.cs",
+              "ToolTip": "C:\\Users\\usuario\\Desktop\\Academia-de-Sistemas-AppServWEB-6-8\\Academia_Sistemas\\Academia_Sistemas\\Clases\\clsEquipos.cs",
+              "RelativeToolTip": "Academia_Sistemas\\Clases\\clsEquipos.cs",
+              "ViewState": "AgIAACwAAAAAAAAAAAAIwC0AAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T21:38:39.946Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "clsEstudiante.cs",
+              "DocumentMoniker": "C:\\Users\\usuario\\Desktop\\Academia-de-Sistemas-AppServWEB-6-8\\Academia_Sistemas\\Academia_Sistemas\\Clases\\clsEstudiante.cs",
+              "RelativeDocumentMoniker": "Academia_Sistemas\\Clases\\clsEstudiante.cs",
+              "ToolTip": "C:\\Users\\usuario\\Desktop\\Academia-de-Sistemas-AppServWEB-6-8\\Academia_Sistemas\\Academia_Sistemas\\Clases\\clsEstudiante.cs",
+              "RelativeToolTip": "Academia_Sistemas\\Clases\\clsEstudiante.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAAYwC0AAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T21:37:17.649Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "clsProveedore.cs",
+              "DocumentMoniker": "C:\\Users\\usuario\\Desktop\\Academia-de-Sistemas-AppServWEB-6-8\\Academia_Sistemas\\Academia_Sistemas\\Clases\\clsProveedore.cs",
+              "RelativeDocumentMoniker": "Academia_Sistemas\\Clases\\clsProveedore.cs",
+              "ToolTip": "C:\\Users\\usuario\\Desktop\\Academia-de-Sistemas-AppServWEB-6-8\\Academia_Sistemas\\Academia_Sistemas\\Clases\\clsProveedore.cs",
+              "RelativeToolTip": "Academia_Sistemas\\Clases\\clsProveedore.cs",
+              "ViewState": "AgIAACkAAAAAAAAAAAAwwDMAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T21:36:53.456Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "clsinscripcione.cs",
+              "DocumentMoniker": "C:\\Users\\usuario\\Desktop\\Academia-de-Sistemas-AppServWEB-6-8\\Academia_Sistemas\\Academia_Sistemas\\Clases\\clsinscripcione.cs",
+              "RelativeDocumentMoniker": "Academia_Sistemas\\Clases\\clsinscripcione.cs",
+              "ToolTip": "C:\\Users\\usuario\\Desktop\\Academia-de-Sistemas-AppServWEB-6-8\\Academia_Sistemas\\Academia_Sistemas\\Clases\\clsinscripcione.cs",
+              "RelativeToolTip": "Academia_Sistemas\\Clases\\clsinscripcione.cs",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAIwDwAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T21:34:07.596Z"
             }
           ]
         }
