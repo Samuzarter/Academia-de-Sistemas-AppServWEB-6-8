@@ -7,7 +7,7 @@ using Academia_Sistemas.Models;
 
 namespace Academia_Sistemas.Clases
 {
-    public class clsAsignacionInstructore
+    public class clsAsignacionInstructores
     {
         private Academia_SistemasEntities dbAsgInst = new Academia_SistemasEntities();
         public AsignacionInstructore asignacionInstructore { get; set; }
@@ -30,7 +30,7 @@ namespace Academia_Sistemas.Clases
         {
             try
             {
-                AsignacionInstructore asi = dbAsgInst.AsignacionInstructores.Where(e => e.IdAsignacion == asignacionInstructore.IdAsignacion).FirstOrDefault();
+                AsignacionInstructore asi = dbAsgInst.AsignacionInstructores.Where(e => e.IdAsignacion == IdAsignacion).FirstOrDefault();
                 return asi;
             }
             catch (Exception ex)

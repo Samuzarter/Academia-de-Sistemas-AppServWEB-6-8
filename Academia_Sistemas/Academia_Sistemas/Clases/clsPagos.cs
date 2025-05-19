@@ -7,17 +7,17 @@ using Academia_Sistemas.Models;
 
 namespace Academia_Sistemas.Clases
 {
-    public class clsPago
+    public class clsPagos
     {
-        private Academia_SistemasEntities dbPago = new Academia_SistemasEntities();
+        private Academia_SistemasEntities dbPagos = new Academia_SistemasEntities();
         public Pago pago { get; set; }
 
         public string Insertar()
         {
             try
             {
-                dbPago.Pagos.Add(pago);
-                dbPago.SaveChanges();
+                dbPagos.Pagos.Add(pago);
+                dbPagos.SaveChanges();
                 return "Pago insertado correctamente";
             }
             catch (Exception ex)
@@ -30,7 +30,7 @@ namespace Academia_Sistemas.Clases
         {
             try
             {
-                Pago pa = dbPago.Pagos.Where(e => e.IdCPago == pago.IdCPago).FirstOrDefault();
+                Pago pa = dbPagos.Pagos.Where(e => e.IdCPago == IdCPago).FirstOrDefault();
                 return pa;
             }
             catch (Exception ex)
@@ -46,8 +46,8 @@ namespace Academia_Sistemas.Clases
             {
                 return "Pago no existe";
             }
-            dbPago.Pagos.AddOrUpdate(pago);
-            dbPago.SaveChanges();
+            dbPagos.Pagos.AddOrUpdate(pago);
+            dbPagos.SaveChanges();
             return "Pago actualizado correctamente";
         }
 
@@ -58,8 +58,8 @@ namespace Academia_Sistemas.Clases
             {
                 return "Pago no existe";
             }
-            dbPago.Pagos.Remove(pa);
-            dbPago.SaveChanges();
+            dbPagos.Pagos.Remove(pa);
+            dbPagos.SaveChanges();
             return "Pago eliminado correctamente";
         }
     }

@@ -5,18 +5,18 @@ using Academia_Sistemas.Models;
 
 namespace Academia_Sistemas.Clases
 {
-    public class clsSede
+    public class clsSedes
     {
 
-        private Academia_SistemasEntities dbSede = new Academia_SistemasEntities();
+        private Academia_SistemasEntities dbSedes = new Academia_SistemasEntities();
         public Sede sede { get; set; }
 
         public string Insertar()
         {
             try
             {
-                dbSede.Sedes.Add(sede);
-                dbSede.SaveChanges();
+                dbSedes.Sedes.Add(sede);
+                dbSedes.SaveChanges();
                 return "Sede insertada correctamente";
             }
             catch (Exception ex)
@@ -29,7 +29,7 @@ namespace Academia_Sistemas.Clases
         {
             try
             {
-                Sede se = dbSede.Sedes.Where(e => e.IdSede == sede.IdSede).FirstOrDefault();
+                Sede se = dbSedes.Sedes.Where(e => e.IdSede == IdSede).FirstOrDefault();
                 return se;
             }
             catch (Exception ex)
@@ -45,8 +45,8 @@ namespace Academia_Sistemas.Clases
             {
                 return "Sede no existe";
             }
-            dbSede.Sedes.AddOrUpdate(sede);
-            dbSede.SaveChanges();
+            dbSedes.Sedes.AddOrUpdate(sede);
+            dbSedes.SaveChanges();
             return "Sede actualizada correctamente";
         }
 
@@ -57,9 +57,9 @@ namespace Academia_Sistemas.Clases
             {
                 return "Sede inexistente";
             }
-            dbSede.Sedes.Remove(se);
-            dbSede.SaveChanges();
-            return "Eliminacion exitosa";
+            dbSedes.Sedes.Remove(se);
+            dbSedes.SaveChanges();
+            return "Sede eliminada correctamente";
         }
 
     }

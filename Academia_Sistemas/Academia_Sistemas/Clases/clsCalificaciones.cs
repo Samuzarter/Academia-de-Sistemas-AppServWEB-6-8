@@ -7,17 +7,17 @@ using Academia_Sistemas.Models;
 
 namespace Academia_Sistemas.Clases
 {
-    public class clsCalificacione
+    public class clsCalificaciones
     {
-        private Academia_SistemasEntities dbCalificacione = new Academia_SistemasEntities();
+        private Academia_SistemasEntities dbCalificaciones = new Academia_SistemasEntities();
         public Calificacione calificacione { get; set; }
 
         public string Insertar()
         {
             try
             {
-                dbCalificacione.Calificaciones.Add(calificacione);
-                dbCalificacione.SaveChanges();
+                dbCalificaciones.Calificaciones.Add(calificacione);
+                dbCalificaciones.SaveChanges();
                 return "Calificacion insertada correctamente";
             }
             catch (Exception ex)
@@ -30,7 +30,7 @@ namespace Academia_Sistemas.Clases
         {
             try
             {
-                Calificacione ca = dbCalificacione.Calificaciones.Where(e => e.IdCalificacion == calificacione.IdCalificacion).FirstOrDefault();
+                Calificacione ca = dbCalificaciones.Calificaciones.Where(e => e.IdCalificacion == IdCalificacion).FirstOrDefault();
                 return ca;
             }
             catch (Exception ex)
@@ -46,8 +46,8 @@ namespace Academia_Sistemas.Clases
             {
                 return "Calificacion no existe";
             }
-            dbCalificacione.Calificaciones.AddOrUpdate(calificacione);
-            dbCalificacione.SaveChanges();
+            dbCalificaciones.Calificaciones.AddOrUpdate(calificacione);
+            dbCalificaciones.SaveChanges();
             return "Calificacion actualizada correctamente";
         }
 
@@ -58,8 +58,8 @@ namespace Academia_Sistemas.Clases
             {
                 return "Calificacion no existe";
             }
-            dbCalificacione.Calificaciones.Remove(ca);
-            dbCalificacione.SaveChanges();
+            dbCalificaciones.Calificaciones.Remove(ca);
+            dbCalificaciones.SaveChanges();
             return "Calificacion eliminada correctamente";
         }
     }
