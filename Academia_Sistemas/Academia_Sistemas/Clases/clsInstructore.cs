@@ -52,7 +52,7 @@ namespace Academia_Sistemas.Clases
             return "Instructore actualizado correctamente";
         }
 
-        public string Borrar()
+        public string Borrar(int Idinstructor)
         {
             Instructore inst = Consultar(instructore.Idinstructor);
             if (inst == null)

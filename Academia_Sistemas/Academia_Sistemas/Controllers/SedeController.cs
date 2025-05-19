@@ -44,7 +44,7 @@ namespace Academia_Sistemas.Controllers
         public string Eliminar(int idsede)
         {
             clsSede clsSede = new clsSede();
-            return clsSede.Borrar();
+            return clsSede.Borrar(idsede);
         }
     }
 }

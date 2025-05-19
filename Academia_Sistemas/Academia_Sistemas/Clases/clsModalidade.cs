@@ -51,7 +51,7 @@ namespace Academia_Sistemas.Clases
             return "Modalidad actualizada correctamente";
         }
 
-        public string Borrar()
+        public string Borrar(int IdModalidad)
         {
             Modalidade mod = Consultar(modalidade.IdModalidad);
             if (mod == null)

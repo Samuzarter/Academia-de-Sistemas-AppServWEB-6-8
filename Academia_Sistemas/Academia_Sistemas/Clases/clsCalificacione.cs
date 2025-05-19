@@ -51,7 +51,7 @@ namespace Academia_Sistemas.Clases
             return "Calificacion actualizada correctamente";
         }
 
-        public string Borrar()
+        public string Borrar(int IdCalificacion)
         {
             Calificacione ca = Consultar(calificacione.IdCalificacion);
             if (ca == null)

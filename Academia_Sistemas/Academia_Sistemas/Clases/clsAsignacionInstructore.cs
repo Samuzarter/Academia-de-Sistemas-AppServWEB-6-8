@@ -51,7 +51,7 @@ namespace Academia_Sistemas.Clases
             return "Asignacion actualizada correctamente";
         }
 
-        public string Borrar()
+        public string Borrar(int IdAsignacion)
         {
             AsignacionInstructore asi = Consultar(asignacionInstructore.IdAsignacion);
             if (asi == null)

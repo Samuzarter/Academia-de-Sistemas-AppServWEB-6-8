@@ -51,7 +51,7 @@ namespace Academia_Sistemas.Clases
             return "Equipo actualizado correctamente";
         }
 
-        public string Borrar()
+        public string Borrar(int IdEquipo)
         {
             Equipos eq = Consultar(equipo.IdEquipo);
             if (eq == null)

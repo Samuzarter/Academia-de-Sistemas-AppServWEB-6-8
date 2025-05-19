@@ -51,7 +51,7 @@ namespace Academia_Sistemas.Clases
             return "Curso actualizado correctamente";
         }
 
-        public string Borrar()
+        public string Borrar(int IdCurso)
         {
             Curso cu = Consultar(curso.IdCurso);
             if (cu == null)

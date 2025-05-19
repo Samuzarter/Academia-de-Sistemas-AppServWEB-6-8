@@ -51,7 +51,7 @@ namespace Academia_Sistemas.Clases
             return "Compra actualizada correctamente";
         }
 
-        public string Borrar()
+        public string Borrar(int IdCompra)
         {
             Compra co = Consultar(compra.IdCompra);
             if (co == null)

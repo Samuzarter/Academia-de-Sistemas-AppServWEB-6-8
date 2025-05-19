@@ -50,16 +50,16 @@ namespace Academia_Sistemas.Clases
             return "Sede actualizada correctamente";
         }
 
-        public string Borrar()
+        public string Borrar(int Id_Sede)
         {
-            Sede se = Consultar(sede.IdSede);
+            Sede se = Consultar(Id_Sede);
             if (se == null)
             {
-                return "Sede no existe";
+                return "Sede inexistente";
             }
             dbSede.Sedes.Remove(se);
             dbSede.SaveChanges();
-            return "Sede eliminada correctamente";
+            return "Eliminacion exitosa";
         }
 
     }

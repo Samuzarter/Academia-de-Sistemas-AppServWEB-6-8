@@ -44,7 +44,7 @@ namespace Academia_Sistemas.Controllers
         public string Eliminar(int idpago)
         {
             clsPago clsPago = new clsPago();
-            return clsPago.Borrar();
+            return clsPago.Borrar(idpago);
         }
     }
 }

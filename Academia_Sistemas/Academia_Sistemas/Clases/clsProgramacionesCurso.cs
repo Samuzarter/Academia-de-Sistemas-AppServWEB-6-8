@@ -49,7 +49,7 @@ namespace Academia_Sistemas.Clases
             return "Proveedor actualizado correctamente";
         }
 
-        public string Borrar()
+        public string Borrar(int IdProgramacion)
         {
             ProgramacionesCurso procu = Consultar(procurso.IdProgramacion);
             if (procu == null)

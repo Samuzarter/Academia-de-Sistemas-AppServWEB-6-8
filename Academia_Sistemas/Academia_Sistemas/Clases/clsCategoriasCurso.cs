@@ -51,7 +51,7 @@ namespace Academia_Sistemas.Clases
             return "Categoria actualizada correctamente";
         }
 
-        public string Borrar()
+        public string Borrar(int IdCategoria)
         {
             CategoriasCurso cat = Consultar(categoriasCurso.IdCategoria);
             if (cat == null)

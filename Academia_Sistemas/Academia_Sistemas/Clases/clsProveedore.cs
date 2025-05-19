@@ -51,7 +51,7 @@ namespace Academia_Sistemas.Clases
             return "Proveedor actualizado correctamente";
         }
 
-        public string Borrar()
+        public string Borrar(int IdProveedor)
         {
             Proveedore pro = Consultar(proveedore.IdProveedor);
             if (pro == null)

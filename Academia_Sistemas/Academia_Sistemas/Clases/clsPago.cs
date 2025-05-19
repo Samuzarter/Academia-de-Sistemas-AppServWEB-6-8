@@ -51,7 +51,7 @@ namespace Academia_Sistemas.Clases
             return "Pago actualizado correctamente";
         }
 
-        public string Borrar()
+        public string Borrar(int IdCPago)
         {
             Pago pa = Consultar(pago.IdCPago);
             if (pa == null)

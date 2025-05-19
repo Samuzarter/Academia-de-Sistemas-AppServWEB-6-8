@@ -51,7 +51,7 @@ namespace Academia_Sistemas.Clases
             return "Inventario actualizado correctamente";
         }
 
-        public string Borrar()
+        public string Borrar(int IdInventarioEquipos)
         {
             InventarioEquipos inv = Consultar(inventario.IdInventario);
             if (inv == null)

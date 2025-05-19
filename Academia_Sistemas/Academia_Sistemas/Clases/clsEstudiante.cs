@@ -51,7 +51,7 @@ namespace Academia_Sistemas.Clases
             return "Estudiante actualizado correctamente";
         }
 
-        public string Borrar()
+        public string Borrar(int IdEstudiante)
         {
             Estudiante es = Consultar(estudiante.IdEstudiante);
             if (es == null)

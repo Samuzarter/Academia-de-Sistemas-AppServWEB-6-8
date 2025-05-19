@@ -51,7 +51,7 @@ namespace Academia_Sistemas.Clases
             return "Inscripcion actualizada correctamente";
         }
 
-        public string Borrar()
+        public string Borrar(int IdInscripcion)
         {
             Inscripcione ins = Consultar(inscripcione.IdInscripcion);
             if (ins == null)
