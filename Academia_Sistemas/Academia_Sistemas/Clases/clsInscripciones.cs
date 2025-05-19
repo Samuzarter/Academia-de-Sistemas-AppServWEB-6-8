@@ -7,17 +7,17 @@ using Academia_Sistemas.Models;
 
 namespace Academia_Sistemas.Clases
 {
-    public class clsinscripcione
+    public class clsInscripciones
     {
-        private Academia_SistemasEntities dbInscripcione = new Academia_SistemasEntities();
+        private Academia_SistemasEntities dbInscripciones = new Academia_SistemasEntities();
         public Inscripcione inscripcione { get; set; }
 
         public string Insertar()
         {
             try
             {
-                dbInscripcione.Inscripciones.Add(inscripcione);
-                dbInscripcione.SaveChanges();
+                dbInscripciones.Inscripciones.Add(inscripcione);
+                dbInscripciones.SaveChanges();
                 return "Inscripcion insertada correctamente";
             }
             catch (Exception ex)
@@ -30,7 +30,7 @@ namespace Academia_Sistemas.Clases
         {
             try
             {
-                Inscripcione ins = dbInscripcione.Inscripciones.Where(e => e.IdInscripcion == inscripcione.IdInscripcion).FirstOrDefault();
+                Inscripcione ins = dbInscripciones.Inscripciones.Where(e => e.IdInscripcion == IdInscripcion).FirstOrDefault();
                 return ins;
             }
             catch (Exception ex)
@@ -46,8 +46,8 @@ namespace Academia_Sistemas.Clases
             {
                 return "Inscripcion no existe";
             }
-            dbInscripcione.Inscripciones.AddOrUpdate(inscripcione);
-            dbInscripcione.SaveChanges();
+            dbInscripciones.Inscripciones.AddOrUpdate(inscripcione);
+            dbInscripciones.SaveChanges();
             return "Inscripcion actualizada correctamente";
         }
 
@@ -58,8 +58,8 @@ namespace Academia_Sistemas.Clases
             {
                 return "Inscripcion no existe";
             }
-            dbInscripcione.Inscripciones.Remove(ins);
-            dbInscripcione.SaveChanges();
+            dbInscripciones.Inscripciones.Remove(ins);
+            dbInscripciones.SaveChanges();
             return "Inscripcione eliminada correctamente";
         }
     }

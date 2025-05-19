@@ -7,17 +7,17 @@ using Academia_Sistemas.Models;
 
 namespace Academia_Sistemas.Clases
 {
-    public class clsCompra
+    public class clsCompras
     {
-        private Academia_SistemasEntities dbCompra = new Academia_SistemasEntities();
+        private Academia_SistemasEntities dbCompras = new Academia_SistemasEntities();
         public Compra compra { get; set; }
 
         public string Insertar()
         {
             try
             {
-                dbCompra.Compras.Add(compra);
-                dbCompra.SaveChanges();
+                dbCompras.Compras.Add(compra);
+                dbCompras.SaveChanges();
                 return "Compra insertada correctamente";
             }
             catch (Exception ex)
@@ -30,7 +30,7 @@ namespace Academia_Sistemas.Clases
         {
             try
             {
-                Compra co = dbCompra.Compras.Where(e => e.IdCompra == compra.IdCompra).FirstOrDefault();
+                Compra co = dbCompras.Compras.Where(e => e.IdCompra == IdCompra).FirstOrDefault();
                 return co;
             }
             catch (Exception ex)
@@ -46,8 +46,8 @@ namespace Academia_Sistemas.Clases
             {
                 return "Compra no existe";
             }
-            dbCompra.Compras.AddOrUpdate(compra);
-            dbCompra.SaveChanges();
+            dbCompras.Compras.AddOrUpdate(compra);
+            dbCompras.SaveChanges();
             return "Compra actualizada correctamente";
         }
 
@@ -58,8 +58,8 @@ namespace Academia_Sistemas.Clases
             {
                 return "Compra no existe";
             }
-            dbCompra.Compras.Remove(co);
-            dbCompra.SaveChanges();
+            dbCompras.Compras.Remove(co);
+            dbCompras.SaveChanges();
             return "Compra eliminada correctamente";
         }
     }

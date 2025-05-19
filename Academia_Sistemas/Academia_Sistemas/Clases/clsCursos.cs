@@ -7,17 +7,17 @@ using Academia_Sistemas.Models;
 
 namespace Academia_Sistemas.Clases
 {
-    public class clsCurso
+    public class clsCursos
     {
-        private Academia_SistemasEntities dbCurso = new Academia_SistemasEntities();
+        private Academia_SistemasEntities dbCursos = new Academia_SistemasEntities();
         public Curso curso { get; set; }
 
         public string Insertar()
         {
             try
             {
-                dbCurso.Cursos.Add(curso);
-                dbCurso.SaveChanges();
+                dbCursos.Cursos.Add(curso);
+                dbCursos.SaveChanges();
                 return "Curso insertado correctamente";
             }
             catch (Exception ex)
@@ -30,7 +30,7 @@ namespace Academia_Sistemas.Clases
         {
             try
             {
-                Curso cu = dbCurso.Cursos.Where(e => e.IdCurso == curso.IdCurso).FirstOrDefault();
+                Curso cu = dbCursos.Cursos.Where(e => e.IdCurso == IdCurso).FirstOrDefault();
                 return cu;
             }
             catch (Exception ex)
@@ -46,8 +46,8 @@ namespace Academia_Sistemas.Clases
             {
                 return "Curso no existe";
             }
-            dbCurso.Cursos.AddOrUpdate(curso);
-            dbCurso.SaveChanges();
+            dbCursos.Cursos.AddOrUpdate(curso);
+            dbCursos.SaveChanges();
             return "Curso actualizado correctamente";
         }
 
@@ -58,8 +58,8 @@ namespace Academia_Sistemas.Clases
             {
                 return "Curso no existe";
             }
-            dbCurso.Cursos.Remove(cu);
-            dbCurso.SaveChanges();
+            dbCursos.Cursos.Remove(cu);
+            dbCursos.SaveChanges();
             return "Curso eliminado correctamente";
         }
     }

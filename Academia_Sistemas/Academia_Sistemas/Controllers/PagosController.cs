@@ -8,16 +8,15 @@ using System.Web.Http;
 
 namespace Academia_Sistemas.Controllers
 {
-    [RoutePrefix("api/Pago")]
-    [Authorize]
-    public class PagoController : ApiController
+    [RoutePrefix("api/Pagos")]
+    public class PagosController : ApiController
     {
 
         [HttpGet]
         [Route("Consultar")]
         public Pago Consultar(int IdPago)
         {
-            clsPago clsPago = new clsPago();
+            clsPagos clsPago = new clsPagos();
             return clsPago.Consultar(IdPago); ;
         }
 
@@ -25,7 +24,7 @@ namespace Academia_Sistemas.Controllers
         [Route("Insertar")]
         public string Insertar(Pago pago)
         {
-            clsPago clsPago = new clsPago();
+            clsPagos clsPago = new clsPagos();
             clsPago.pago = pago;
             return clsPago.Insertar();
         }
@@ -34,7 +33,7 @@ namespace Academia_Sistemas.Controllers
         [Route("Actualizar")]
         public string Actualizar(Pago pago)
         {
-            clsPago clsPago = new clsPago();
+            clsPagos clsPago = new clsPagos();
             clsPago.pago = pago;
             return clsPago.Actualizar();
         }
@@ -43,7 +42,7 @@ namespace Academia_Sistemas.Controllers
         [Route("Eliminar")]
         public string Eliminar(int idpago)
         {
-            clsPago clsPago = new clsPago();
+            clsPagos clsPago = new clsPagos();
             return clsPago.Borrar();
         }
     }

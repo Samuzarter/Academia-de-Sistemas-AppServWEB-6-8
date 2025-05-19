@@ -8,16 +8,15 @@ using Academia_Sistemas.Clases;
 
 namespace Academia_Sistemas.Controllers
 {
-    [RoutePrefix("api/Sede")]
-    [Authorize]
-    public class SedeController : ApiController
+    [RoutePrefix("api/Sedes")]
+    public class SedesController : ApiController
     {
 
         [HttpGet]
         [Route("Consultar")]
         public Sede Consultar(int IdSede)
         {
-            clsSede clsSede = new clsSede();
+            clsSedes clsSede = new clsSedes();
             return clsSede.Consultar(IdSede); ;
         }
 
@@ -25,7 +24,7 @@ namespace Academia_Sistemas.Controllers
         [Route("Insertar")]
         public string Insertar(Sede sede)
         {
-            clsSede clsSede = new clsSede();
+            clsSedes clsSede = new clsSedes();
             clsSede.sede = sede;
             return clsSede.Insertar();
         }
@@ -34,7 +33,7 @@ namespace Academia_Sistemas.Controllers
         [Route("Actualizar")]
         public string Actualizar(Sede sede)
         {
-            clsSede clsSede = new clsSede();
+            clsSedes clsSede = new clsSedes();
             clsSede.sede = sede;
             return clsSede.Actualizar();
         }
@@ -43,7 +42,7 @@ namespace Academia_Sistemas.Controllers
         [Route("Eliminar")]
         public string Eliminar(int idsede)
         {
-            clsSede clsSede = new clsSede();
+            clsSedes clsSede = new clsSedes();
             return clsSede.Borrar();
         }
     }
