@@ -30,7 +30,7 @@ namespace Academia_Sistemas.Clases
         {
             try
             {
-                InventarioEquipos inv = dbInventario.InventarioEquipos.Where(e => e.IdInventario == inventario.IdInventario).FirstOrDefault();
+                InventarioEquipos inv = dbInventario.InventarioEquipos.Where(e => e.IdInventario == IdInventarioEquipos).FirstOrDefault();
                 return inv;
             }
             catch (Exception ex)
@@ -51,7 +51,7 @@ namespace Academia_Sistemas.Clases
             return "Inventario actualizado correctamente";
         }
 
-        public string Borrar()
+        public string Borrar(int IdInventarioEquipos)
         {
             InventarioEquipos inv = Consultar(inventario.IdInventario);
             if (inv == null)

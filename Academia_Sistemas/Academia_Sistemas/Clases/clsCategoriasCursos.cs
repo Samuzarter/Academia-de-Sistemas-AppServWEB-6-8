@@ -7,17 +7,17 @@ using Academia_Sistemas.Models;
 
 namespace Academia_Sistemas.Clases
 {
-    public class clsCategoriasCurso
+    public class clsCategoriasCursos
     {
-        private Academia_SistemasEntities dbCatCurso = new Academia_SistemasEntities();
+        private Academia_SistemasEntities dbCatCursos = new Academia_SistemasEntities();
         public CategoriasCurso categoriasCurso { get; set; }
 
         public string Insertar()
         {
             try
             {
-                dbCatCurso.CategoriasCursos.Add(categoriasCurso);
-                dbCatCurso.SaveChanges();
+                dbCatCursos.CategoriasCursos.Add(categoriasCurso);
+                dbCatCursos.SaveChanges();
                 return "Categoria insertada correctamente";
             }
             catch (Exception ex)
@@ -30,7 +30,7 @@ namespace Academia_Sistemas.Clases
         {
             try
             {
-                CategoriasCurso cat = dbCatCurso.CategoriasCursos.Where(e => e.IdCategoria == categoriasCurso.IdCategoria).FirstOrDefault();
+                CategoriasCurso cat = dbCatCursos.CategoriasCursos.Where(e => e.IdCategoria == IdCategoria).FirstOrDefault();
                 return cat;
             }
             catch (Exception ex)
@@ -46,20 +46,20 @@ namespace Academia_Sistemas.Clases
             {
                 return "Categoria no existe";
             }
-            dbCatCurso.CategoriasCursos.AddOrUpdate(categoriasCurso);
-            dbCatCurso.SaveChanges();
+            dbCatCursos.CategoriasCursos.AddOrUpdate(categoriasCurso);
+            dbCatCursos.SaveChanges();
             return "Categoria actualizada correctamente";
         }
 
-        public string Borrar()
+        public string Borrar(int IdCategoria)
         {
             CategoriasCurso cat = Consultar(categoriasCurso.IdCategoria);
             if (cat == null)
             {
                 return "Categoria no existe";
             }
-            dbCatCurso.CategoriasCursos.Remove(cat);
-            dbCatCurso.SaveChanges();
+            dbCatCursos.CategoriasCursos.Remove(cat);
+            dbCatCursos.SaveChanges();
             return "Categoria eliminada correctamente";
         }
     }

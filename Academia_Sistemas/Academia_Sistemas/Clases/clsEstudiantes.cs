@@ -7,17 +7,17 @@ using Academia_Sistemas.Models;
 
 namespace Academia_Sistemas.Clases
 {
-    public class clsEstudiante
+    public class clsEstudiantes
     {
-        private Academia_SistemasEntities dbEstudiante = new Academia_SistemasEntities();
+        private Academia_SistemasEntities dbEstudiantes = new Academia_SistemasEntities();
         public Estudiante estudiante { get; set; }
 
         public string Insertar()
         {
             try
             {
-                dbEstudiante.Estudiantes.Add(estudiante);
-                dbEstudiante.SaveChanges();
+                dbEstudiantes.Estudiantes.Add(estudiante);
+                dbEstudiantes.SaveChanges();
                 return "Estudiante insertado correctamente";
             }
             catch (Exception ex)
@@ -30,7 +30,7 @@ namespace Academia_Sistemas.Clases
         {
             try
             {
-                Estudiante es = dbEstudiante.Estudiantes.Where(e => e.IdEstudiante == estudiante.IdEstudiante).FirstOrDefault();
+                Estudiante es = dbEstudiantes.Estudiantes.Where(e => e.IdEstudiante == IdEstudiante).FirstOrDefault();
                 return es;
             }
             catch (Exception ex)
@@ -46,20 +46,20 @@ namespace Academia_Sistemas.Clases
             {
                 return "Estudiante no existe";
             }
-            dbEstudiante.Estudiantes.AddOrUpdate(estudiante);
-            dbEstudiante.SaveChanges();
+            dbEstudiantes.Estudiantes.AddOrUpdate(estudiante);
+            dbEstudiantes.SaveChanges();
             return "Estudiante actualizado correctamente";
         }
 
-        public string Borrar()
+        public string Borrar(int IdEstudiante)
         {
             Estudiante es = Consultar(estudiante.IdEstudiante);
             if (es == null)
             {
                 return "Estudiante no existe";
             }
-            dbEstudiante.Estudiantes.Remove(es);
-            dbEstudiante.SaveChanges();
+            dbEstudiantes.Estudiantes.Remove(es);
+            dbEstudiantes.SaveChanges();
             return "Estudiante eliminado correctamente";
         }
     }

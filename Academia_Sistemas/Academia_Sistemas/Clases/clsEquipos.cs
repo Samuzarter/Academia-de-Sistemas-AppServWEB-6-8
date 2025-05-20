@@ -7,7 +7,7 @@ using Academia_Sistemas.Models;
 
 namespace Academia_Sistemas.Clases
 {
-    public class clsEquiposs
+    public class clsEquipos
     {
         private Academia_SistemasEntities dbEquipos = new Academia_SistemasEntities();
         public Equipos equipo { get; set; }
@@ -30,7 +30,7 @@ namespace Academia_Sistemas.Clases
         {
             try
             {
-                Equipos eq = dbEquipos.Equipos.Where(e => e.IdEquipo == equipo.IdEquipo).FirstOrDefault();
+                Equipos eq = dbEquipos.Equipos.Where(e => e.IdEquipo == IdEquipo).FirstOrDefault();
                 return eq;
             }
             catch (Exception ex)
@@ -51,7 +51,7 @@ namespace Academia_Sistemas.Clases
             return "Equipo actualizado correctamente";
         }
 
-        public string Borrar()
+        public string Borrar(int IdEquipo)
         {
             Equipos eq = Consultar(equipo.IdEquipo);
             if (eq == null)

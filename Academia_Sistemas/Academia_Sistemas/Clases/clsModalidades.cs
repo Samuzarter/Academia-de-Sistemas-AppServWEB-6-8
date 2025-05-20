@@ -7,7 +7,7 @@ using Academia_Sistemas.Models;
 
 namespace Academia_Sistemas.Clases
 {
-    public class clsModalidade
+    public class clsModalidades
     {
         private Academia_SistemasEntities dbModalidad = new Academia_SistemasEntities();
         public Modalidade modalidade { get; set; }
@@ -30,7 +30,7 @@ namespace Academia_Sistemas.Clases
         {
             try
             {
-                Modalidade mod = dbModalidad.Modalidades.Where(e => e.IdModalidad == modalidade.IdModalidad).FirstOrDefault();
+                Modalidade mod = dbModalidad.Modalidades.Where(e => e.IdModalidad == IdModalidad).FirstOrDefault();
                 return mod;
             }
             catch (Exception ex)
@@ -51,7 +51,7 @@ namespace Academia_Sistemas.Clases
             return "Modalidad actualizada correctamente";
         }
 
-        public string Borrar()
+        public string Borrar(int IdModalidad)
         {
             Modalidade mod = Consultar(modalidade.IdModalidad);
             if (mod == null)

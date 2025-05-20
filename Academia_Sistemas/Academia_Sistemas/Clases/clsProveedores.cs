@@ -7,17 +7,17 @@ using Academia_Sistemas.Models;
 
 namespace Academia_Sistemas.Clases
 {
-    public class clsProveedore
+    public class clsProveedores
     {
-        private Academia_SistemasEntities dbProveedore = new Academia_SistemasEntities();
+        private Academia_SistemasEntities dbProveedores = new Academia_SistemasEntities();
         public Proveedore proveedore { get; set; }
 
         public string Insertar()
         {
             try
             {
-                dbProveedore.Proveedores.Add(proveedore);
-                dbProveedore.SaveChanges();
+                dbProveedores.Proveedores.Add(proveedore);
+                dbProveedores.SaveChanges();
                 return "Proveedor insertado correctamente";
             }
             catch (Exception ex)
@@ -30,7 +30,7 @@ namespace Academia_Sistemas.Clases
         {
             try
             {
-                Proveedore pro = dbProveedore.Proveedores.Where(e => e.IdProveedor == proveedore.IdProveedor).FirstOrDefault();
+                Proveedore pro = dbProveedores.Proveedores.Where(e => e.IdProveedor == Idproveedor).FirstOrDefault();
                 return pro;
             }
             catch (Exception ex)
@@ -46,20 +46,20 @@ namespace Academia_Sistemas.Clases
             {
                 return "Proveedor no existe";
             }
-            dbProveedore.Proveedores.AddOrUpdate(proveedore);
-            dbProveedore.SaveChanges();
+            dbProveedores.Proveedores.AddOrUpdate(proveedore);
+            dbProveedores.SaveChanges();
             return "Proveedor actualizado correctamente";
         }
 
-        public string Borrar()
+        public string Borrar(int IdProveedor)
         {
             Proveedore pro = Consultar(proveedore.IdProveedor);
             if (pro == null)
             {
                 return "Proveedore no existe";
             }
-            dbProveedore.Proveedores.Remove(pro);
-            dbProveedore.SaveChanges();
+            dbProveedores.Proveedores.Remove(pro);
+            dbProveedores.SaveChanges();
             return "Proveedore eliminada correctamente";
 
         }

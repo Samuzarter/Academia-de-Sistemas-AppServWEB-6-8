@@ -7,18 +7,18 @@ using Academia_Sistemas.Models;
 
 namespace Academia_Sistemas.Clases
 {
-    public class clsInstructore
+    public class clsInstructores
 
     {
-        private Academia_SistemasEntities dbinstructore = new Academia_SistemasEntities();
+        private Academia_SistemasEntities dbinstructores = new Academia_SistemasEntities();
         public Instructore instructore { get; set; }
 
         public string Insertar()
         {
             try
             {
-                dbinstructore.Instructores.Add(instructore);
-                dbinstructore.SaveChanges();
+                dbinstructores.Instructores.Add(instructore);
+                dbinstructores.SaveChanges();
                 return "Instructor insertado correctamente";
             }
             catch (Exception ex)
@@ -31,7 +31,7 @@ namespace Academia_Sistemas.Clases
         {
             try
             {
-                Instructore inst = dbinstructore.Instructores.Where(e => e.Idinstructor == instructore.Idinstructor).FirstOrDefault();
+                Instructore inst = dbinstructores.Instructores.Where(e => e.Idinstructor == Idinstructor).FirstOrDefault();
                 return inst;
             }
             catch (Exception ex)
@@ -47,20 +47,20 @@ namespace Academia_Sistemas.Clases
             {
                 return "Instructor no existe";
             }
-            dbinstructore.Instructores.AddOrUpdate(instructore);
-            dbinstructore.SaveChanges();
+            dbinstructores.Instructores.AddOrUpdate(instructore);
+            dbinstructores.SaveChanges();
             return "Instructore actualizado correctamente";
         }
 
-        public string Borrar()
+        public string Borrar(int Idinstructor)
         {
             Instructore inst = Consultar(instructore.Idinstructor);
             if (inst == null)
             {
                 return "Instructor no existe";
             }
-            dbinstructore.Instructores.Remove(inst);
-            dbinstructore.SaveChanges();
+            dbinstructores.Instructores.Remove(inst);
+            dbinstructores.SaveChanges();
             return "Instructor eliminado correctamente";
         }
     }

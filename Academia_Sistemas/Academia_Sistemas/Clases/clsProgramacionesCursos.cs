@@ -5,7 +5,7 @@ using Academia_Sistemas.Models;
 
 namespace Academia_Sistemas.Clases
 {
-    public class clsProgramacionesCurso
+    public class clsProgramacionesCursos
     {
         private Academia_SistemasEntities dbProCurso = new Academia_SistemasEntities();
         public ProgramacionesCurso procurso { get; set; }
@@ -28,7 +28,7 @@ namespace Academia_Sistemas.Clases
         {
             try
             {
-                ProgramacionesCurso procu = dbProCurso.ProgramacionesCursos.Where(e => e.IdProgramacion == procurso.IdProgramacion).FirstOrDefault();
+                ProgramacionesCurso procu = dbProCurso.ProgramacionesCursos.Where(e => e.IdProgramacion == IdProgramacion).FirstOrDefault();
                 return procu;
             }
             catch (Exception ex)
@@ -49,7 +49,7 @@ namespace Academia_Sistemas.Clases
             return "Proveedor actualizado correctamente";
         }
 
-        public string Borrar()
+        public string Borrar(int IdProgramacion)
         {
             ProgramacionesCurso procu = Consultar(procurso.IdProgramacion);
             if (procu == null)
