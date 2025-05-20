@@ -43,7 +43,7 @@ namespace Academia_Sistemas.Controllers
         public string Eliminar(int idProveedore)
         {
             clsProveedores clsProveedore = new clsProveedores();
-            return clsProveedore.Borrar();
+            return clsProveedore.Borrar(idProveedore);
         }
     }
 }
