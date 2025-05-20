@@ -43,7 +43,7 @@ namespace Academia_Sistemas.Controllers
         public string Eliminar(int idProgramacionesCurso)
         {
             clsProgramacionesCursos clsProgramacionesCurso = new clsProgramacionesCursos();
-            return clsProgramacionesCurso.Borrar();
+            return clsProgramacionesCurso.Borrar(idProgramacionesCurso);
         }
     }
 }
