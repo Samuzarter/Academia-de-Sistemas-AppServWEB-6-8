@@ -12,16 +12,14 @@ namespace Academia_Sistemas.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Compra
+    public partial class Usuario_Perfil
     {
-        public int IdCompra { get; set; }
-        public Nullable<int> IdProveedor { get; set; }
-        public Nullable<int> IdEquipo { get; set; }
-        public System.DateTime FechaCompra { get; set; }
-        public int Cantidad { get; set; }
-        public decimal CostoUnitario { get; set; }
+        public int Id { get; set; }
+        public Nullable<int> IdUsuario { get; set; }
+        public Nullable<int> IdPerfil { get; set; }
+        public bool Activo { get; set; }
     
-        public virtual Equipos Equipos { get; set; }
-        public virtual Proveedore Proveedore { get; set; }
+        public virtual Perfile Perfile { get; set; }
+        public virtual Usuario Usuario { get; set; }
     }
 }

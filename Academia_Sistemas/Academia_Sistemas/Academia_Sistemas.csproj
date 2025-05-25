@@ -224,7 +224,7 @@
     <Compile Include="Clases\clsEstudiantes.cs" />
     <Compile Include="Clases\clsInstructores.cs" />
     <Compile Include="Clases\clsInventarioEquipos.cs" />
-    <Compile Include="Clases\clsLoginEstudiante.cs" />
+    <Compile Include="Clases\clsLogin.cs" />
     <Compile Include="Clases\clsModalidades.cs" />
     <Compile Include="Clases\clsPagos.cs" />
     <Compile Include="Clases\clsProgramacionesCursos.cs" />
@@ -304,6 +304,9 @@
     <Compile Include="Models\Pago.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Perfile.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ProgramacionesCurso.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -311,6 +314,12 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Sede.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Usuario.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Usuario_Perfil.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -337,8 +346,8 @@
     <Content Include="Global.asax" />
     <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
       <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Models\Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

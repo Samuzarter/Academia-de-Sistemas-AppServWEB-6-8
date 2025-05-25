@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Academia_SistemasModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Academia_Sistemas.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AsignacionInstructores">
           <Key>
             <PropertyRef Name="IdAsignacion" />
@@ -73,6 +73,7 @@
           <Property Name="Correo" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Telefono" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="Direccion" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="IdUsuario" Type="int" />
         </EntityType>
         <EntityType Name="Inscripciones">
           <Key>
@@ -93,6 +94,7 @@
           <Property Name="Correo" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Telefono" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="Especialidad" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="IdUsuario" Type="int" />
         </EntityType>
         <EntityType Name="InventarioEquipos">
           <Key>
@@ -120,6 +122,13 @@
           <Property Name="FechaPago" Type="datetime" Nullable="false" />
           <Property Name="Monto" Type="decimal" Precision="10" Scale="2" Nullable="false" />
           <Property Name="MetodoPago" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Perfiles">
+          <Key>
+            <PropertyRef Name="IdPerfil" />
+          </Key>
+          <Property Name="IdPerfil" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="ProgramacionesCursos">
           <Key>
@@ -151,6 +160,24 @@
           <Property Name="Ciudad" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Direccion" Type="nvarchar" MaxLength="150" Nullable="false" />
           <Property Name="Telefono" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usuario_Perfil">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="IdUsuario" Type="int" />
+          <Property Name="IdPerfil" Type="int" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="IdUsuario" />
+          </Key>
+          <Property Name="IdUsuario" Type="int" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Clave" Type="varchar" MaxLength="255" />
+          <Property Name="Salt" Type="varchar" MaxLength="255" />
         </EntityType>
         <Association Name="FK__Asignacio__IdIns__5441852A">
           <End Role="Instructores" Type="Self.Instructores" Multiplicity="0..1" />
@@ -320,7 +347,55 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Academia_SistemasModelStoreContainer">
+        <Association Name="FK__Usuario_P__IdPer__6754599E">
+          <End Role="Perfiles" Type="Self.Perfiles" Multiplicity="0..1" />
+          <End Role="Usuario_Perfil" Type="Self.Usuario_Perfil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Perfiles">
+              <PropertyRef Name="IdPerfil" />
+            </Principal>
+            <Dependent Role="Usuario_Perfil">
+              <PropertyRef Name="IdPerfil" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Usuario_P__IdUsu__66603565">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
+          <End Role="Usuario_Perfil" Type="Self.Usuario_Perfil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="Usuario_Perfil">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Estudiante_Usuario">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
+          <End Role="Estudiantes" Type="Self.Estudiantes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="Estudiantes">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Instructor_Usuario">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
+          <End Role="Instructores" Type="Self.Instructores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="Instructores">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Academia_SistemasStoreContainer">
           <EntitySet Name="AsignacionInstructores" EntityType="Self.AsignacionInstructores" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Calificaciones" EntityType="Self.Calificaciones" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CategoriasCursos" EntityType="Self.CategoriasCursos" Schema="dbo" store:Type="Tables" />
@@ -333,9 +408,12 @@
           <EntitySet Name="InventarioEquipos" EntityType="Self.InventarioEquipos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Modalidades" EntityType="Self.Modalidades" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Pagos" EntityType="Self.Pagos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Perfiles" EntityType="Self.Perfiles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProgramacionesCursos" EntityType="Self.ProgramacionesCursos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Proveedores" EntityType="Self.Proveedores" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sedes" EntityType="Self.Sedes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario_Perfil" EntityType="Self.Usuario_Perfil" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Asignacio__IdIns__5441852A" Association="Self.FK__Asignacio__IdIns__5441852A">
             <End Role="Instructores" EntitySet="Instructores" />
             <End Role="AsignacionInstructores" EntitySet="AsignacionInstructores" />
@@ -392,12 +470,28 @@
             <End Role="Sedes" EntitySet="Sedes" />
             <End Role="ProgramacionesCursos" EntitySet="ProgramacionesCursos" />
           </AssociationSet>
+          <AssociationSet Name="FK__Usuario_P__IdPer__6754599E" Association="Self.FK__Usuario_P__IdPer__6754599E">
+            <End Role="Perfiles" EntitySet="Perfiles" />
+            <End Role="Usuario_Perfil" EntitySet="Usuario_Perfil" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Usuario_P__IdUsu__66603565" Association="Self.FK__Usuario_P__IdUsu__66603565">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Usuario_Perfil" EntitySet="Usuario_Perfil" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Estudiante_Usuario" Association="Self.FK_Estudiante_Usuario">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Estudiantes" EntitySet="Estudiantes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Instructor_Usuario" Association="Self.FK_Instructor_Usuario">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Instructores" EntitySet="Instructores" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="Academia_SistemasModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="Academia_Sistemas" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="AsignacionInstructore">
           <Key>
             <PropertyRef Name="IdAsignacion" />
@@ -477,7 +571,9 @@
           <Property Name="Correo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Telefono" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Direccion" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdUsuario" Type="Int32" />
           <NavigationProperty Name="Inscripciones" Relationship="Self.FK__Inscripci__IdEst__5812160E" FromRole="Estudiantes" ToRole="Inscripciones" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_Estudiante_Usuario" FromRole="Estudiantes" ToRole="Usuarios" />
         </EntityType>
         <EntityType Name="Inscripcione">
           <Key>
@@ -502,7 +598,9 @@
           <Property Name="Correo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Telefono" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Especialidad" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdUsuario" Type="Int32" />
           <NavigationProperty Name="AsignacionInstructores" Relationship="Self.FK__Asignacio__IdIns__5441852A" FromRole="Instructores" ToRole="AsignacionInstructores" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_Instructor_Usuario" FromRole="Instructores" ToRole="Usuarios" />
         </EntityType>
         <EntityType Name="InventarioEquipos">
           <Key>
@@ -534,6 +632,14 @@
           <Property Name="Monto" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
           <Property Name="MetodoPago" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Inscripcione" Relationship="Self.FK__Pagos__IdInscrip__5EBF139D" FromRole="Pagos" ToRole="Inscripciones" />
+        </EntityType>
+        <EntityType Name="Perfile">
+          <Key>
+            <PropertyRef Name="IdPerfil" />
+          </Key>
+          <Property Name="IdPerfil" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Usuario_Perfil" Relationship="Self.FK__Usuario_P__IdPer__6754599E" FromRole="Perfiles" ToRole="Usuario_Perfil" />
         </EntityType>
         <EntityType Name="ProgramacionesCurso">
           <Key>
@@ -572,6 +678,29 @@
           <Property Name="Telefono" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="InventarioEquipos" Relationship="Self.FK__Inventari__IdSed__49C3F6B7" FromRole="Sedes" ToRole="InventarioEquipos" />
           <NavigationProperty Name="ProgramacionesCursos" Relationship="Self.FK__Programac__IdSed__5165187F" FromRole="Sedes" ToRole="ProgramacionesCursos" />
+        </EntityType>
+        <EntityType Name="Usuario_Perfil">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="IdUsuario" Type="Int32" />
+          <Property Name="IdPerfil" Type="Int32" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Perfile" Relationship="Self.FK__Usuario_P__IdPer__6754599E" FromRole="Usuario_Perfil" ToRole="Perfiles" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__Usuario_P__IdUsu__66603565" FromRole="Usuario_Perfil" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="IdUsuario" />
+          </Key>
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Clave" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Salt" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Estudiantes" Relationship="Self.FK_Estudiante_Usuario" FromRole="Usuarios" ToRole="Estudiantes" />
+          <NavigationProperty Name="Instructores" Relationship="Self.FK_Instructor_Usuario" FromRole="Usuarios" ToRole="Instructores" />
+          <NavigationProperty Name="Usuario_Perfil" Relationship="Self.FK__Usuario_P__IdUsu__66603565" FromRole="Usuarios" ToRole="Usuario_Perfil" />
         </EntityType>
         <Association Name="FK__Asignacio__IdIns__5441852A">
           <End Role="Instructores" Type="Self.Instructore" Multiplicity="0..1" />
@@ -693,6 +822,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Estudiante_Usuario">
+          <End Role="Usuarios" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Estudiantes" Type="Self.Estudiante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="Estudiantes">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Inscripci__IdPro__59063A47">
           <End Role="ProgramacionesCursos" Type="Self.ProgramacionesCurso" Multiplicity="0..1" />
           <End Role="Inscripciones" Type="Self.Inscripcione" Multiplicity="*" />
@@ -717,6 +858,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Instructor_Usuario">
+          <End Role="Usuarios" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Instructores" Type="Self.Instructore" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="Instructores">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Inventari__IdSed__49C3F6B7">
           <End Role="Sedes" Type="Self.Sede" Multiplicity="0..1" />
           <End Role="InventarioEquipos" Type="Self.InventarioEquipos" Multiplicity="*" />
@@ -726,6 +879,18 @@
             </Principal>
             <Dependent Role="InventarioEquipos">
               <PropertyRef Name="IdSede" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Usuario_P__IdPer__6754599E">
+          <End Role="Perfiles" Type="Self.Perfile" Multiplicity="0..1" />
+          <End Role="Usuario_Perfil" Type="Self.Usuario_Perfil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Perfiles">
+              <PropertyRef Name="IdPerfil" />
+            </Principal>
+            <Dependent Role="Usuario_Perfil">
+              <PropertyRef Name="IdPerfil" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -741,7 +906,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Academia_SistemasEntities" annotation:LazyLoadingEnabled="true">
+        <Association Name="FK__Usuario_P__IdUsu__66603565">
+          <End Role="Usuarios" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Usuario_Perfil" Type="Self.Usuario_Perfil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="Usuario_Perfil">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="db19925Entities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AsignacionInstructores" EntityType="Self.AsignacionInstructore" />
           <EntitySet Name="Calificaciones" EntityType="Self.Calificacione" />
           <EntitySet Name="CategoriasCursos" EntityType="Self.CategoriasCurso" />
@@ -754,9 +931,12 @@
           <EntitySet Name="InventarioEquipos" EntityType="Self.InventarioEquipos" />
           <EntitySet Name="Modalidades" EntityType="Self.Modalidade" />
           <EntitySet Name="Pagos" EntityType="Self.Pago" />
+          <EntitySet Name="Perfiles" EntityType="Self.Perfile" />
           <EntitySet Name="ProgramacionesCursos" EntityType="Self.ProgramacionesCurso" />
           <EntitySet Name="Proveedores" EntityType="Self.Proveedore" />
           <EntitySet Name="Sedes" EntityType="Self.Sede" />
+          <EntitySet Name="Usuario_Perfil" EntityType="Self.Usuario_Perfil" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuario" />
           <AssociationSet Name="FK__Asignacio__IdIns__5441852A" Association="Self.FK__Asignacio__IdIns__5441852A">
             <End Role="Instructores" EntitySet="Instructores" />
             <End Role="AsignacionInstructores" EntitySet="AsignacionInstructores" />
@@ -797,6 +977,10 @@
             <End Role="Estudiantes" EntitySet="Estudiantes" />
             <End Role="Inscripciones" EntitySet="Inscripciones" />
           </AssociationSet>
+          <AssociationSet Name="FK_Estudiante_Usuario" Association="Self.FK_Estudiante_Usuario">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Estudiantes" EntitySet="Estudiantes" />
+          </AssociationSet>
           <AssociationSet Name="FK__Inscripci__IdPro__59063A47" Association="Self.FK__Inscripci__IdPro__59063A47">
             <End Role="ProgramacionesCursos" EntitySet="ProgramacionesCursos" />
             <End Role="Inscripciones" EntitySet="Inscripciones" />
@@ -805,13 +989,25 @@
             <End Role="Inscripciones" EntitySet="Inscripciones" />
             <End Role="Pagos" EntitySet="Pagos" />
           </AssociationSet>
+          <AssociationSet Name="FK_Instructor_Usuario" Association="Self.FK_Instructor_Usuario">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Instructores" EntitySet="Instructores" />
+          </AssociationSet>
           <AssociationSet Name="FK__Inventari__IdSed__49C3F6B7" Association="Self.FK__Inventari__IdSed__49C3F6B7">
             <End Role="Sedes" EntitySet="Sedes" />
             <End Role="InventarioEquipos" EntitySet="InventarioEquipos" />
           </AssociationSet>
+          <AssociationSet Name="FK__Usuario_P__IdPer__6754599E" Association="Self.FK__Usuario_P__IdPer__6754599E">
+            <End Role="Perfiles" EntitySet="Perfiles" />
+            <End Role="Usuario_Perfil" EntitySet="Usuario_Perfil" />
+          </AssociationSet>
           <AssociationSet Name="FK__Programac__IdSed__5165187F" Association="Self.FK__Programac__IdSed__5165187F">
             <End Role="Sedes" EntitySet="Sedes" />
             <End Role="ProgramacionesCursos" EntitySet="ProgramacionesCursos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Usuario_P__IdUsu__66603565" Association="Self.FK__Usuario_P__IdUsu__66603565">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Usuario_Perfil" EntitySet="Usuario_Perfil" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -819,9 +1015,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Academia_SistemasModelStoreContainer" CdmEntityContainer="Academia_SistemasEntities">
+        <EntityContainerMapping StorageEntityContainer="Academia_SistemasStoreContainer" CdmEntityContainer="db19925Entities1">
           <EntitySetMapping Name="AsignacionInstructores">
-            <EntityTypeMapping TypeName="Academia_SistemasModel.AsignacionInstructore">
+            <EntityTypeMapping TypeName="Academia_Sistemas.AsignacionInstructore">
               <MappingFragment StoreEntitySet="AsignacionInstructores">
                 <ScalarProperty Name="IdAsignacion" ColumnName="IdAsignacion" />
                 <ScalarProperty Name="IdInstructor" ColumnName="IdInstructor" />
@@ -831,7 +1027,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Calificaciones">
-            <EntityTypeMapping TypeName="Academia_SistemasModel.Calificacione">
+            <EntityTypeMapping TypeName="Academia_Sistemas.Calificacione">
               <MappingFragment StoreEntitySet="Calificaciones">
                 <ScalarProperty Name="IdCalificacion" ColumnName="IdCalificacion" />
                 <ScalarProperty Name="IdInscripcion" ColumnName="IdInscripcion" />
@@ -841,7 +1037,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CategoriasCursos">
-            <EntityTypeMapping TypeName="Academia_SistemasModel.CategoriasCurso">
+            <EntityTypeMapping TypeName="Academia_Sistemas.CategoriasCurso">
               <MappingFragment StoreEntitySet="CategoriasCursos">
                 <ScalarProperty Name="IdCategoria" ColumnName="IdCategoria" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -850,7 +1046,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Compras">
-            <EntityTypeMapping TypeName="Academia_SistemasModel.Compra">
+            <EntityTypeMapping TypeName="Academia_Sistemas.Compra">
               <MappingFragment StoreEntitySet="Compras">
                 <ScalarProperty Name="IdCompra" ColumnName="IdCompra" />
                 <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
@@ -862,7 +1058,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Cursos">
-            <EntityTypeMapping TypeName="Academia_SistemasModel.Curso">
+            <EntityTypeMapping TypeName="Academia_Sistemas.Curso">
               <MappingFragment StoreEntitySet="Cursos">
                 <ScalarProperty Name="IdCurso" ColumnName="IdCurso" />
                 <ScalarProperty Name="IdModalidad" ColumnName="IdModalidad" />
@@ -875,7 +1071,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Equipos">
-            <EntityTypeMapping TypeName="Academia_SistemasModel.Equipos">
+            <EntityTypeMapping TypeName="Academia_Sistemas.Equipos">
               <MappingFragment StoreEntitySet="Equipos">
                 <ScalarProperty Name="IdEquipo" ColumnName="IdEquipo" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -885,7 +1081,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Estudiantes">
-            <EntityTypeMapping TypeName="Academia_SistemasModel.Estudiante">
+            <EntityTypeMapping TypeName="Academia_Sistemas.Estudiante">
               <MappingFragment StoreEntitySet="Estudiantes">
                 <ScalarProperty Name="IdEstudiante" ColumnName="IdEstudiante" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -893,11 +1089,12 @@
                 <ScalarProperty Name="Correo" ColumnName="Correo" />
                 <ScalarProperty Name="Telefono" ColumnName="Telefono" />
                 <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Inscripciones">
-            <EntityTypeMapping TypeName="Academia_SistemasModel.Inscripcione">
+            <EntityTypeMapping TypeName="Academia_Sistemas.Inscripcione">
               <MappingFragment StoreEntitySet="Inscripciones">
                 <ScalarProperty Name="IdInscripcion" ColumnName="IdInscripcion" />
                 <ScalarProperty Name="IdEstudiante" ColumnName="IdEstudiante" />
@@ -907,7 +1104,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Instructores">
-            <EntityTypeMapping TypeName="Academia_SistemasModel.Instructore">
+            <EntityTypeMapping TypeName="Academia_Sistemas.Instructore">
               <MappingFragment StoreEntitySet="Instructores">
                 <ScalarProperty Name="Idinstructor" ColumnName="Idinstructor" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -915,11 +1112,12 @@
                 <ScalarProperty Name="Correo" ColumnName="Correo" />
                 <ScalarProperty Name="Telefono" ColumnName="Telefono" />
                 <ScalarProperty Name="Especialidad" ColumnName="Especialidad" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="InventarioEquipos">
-            <EntityTypeMapping TypeName="Academia_SistemasModel.InventarioEquipos">
+            <EntityTypeMapping TypeName="Academia_Sistemas.InventarioEquipos">
               <MappingFragment StoreEntitySet="InventarioEquipos">
                 <ScalarProperty Name="IdInventario" ColumnName="IdInventario" />
                 <ScalarProperty Name="IdEquipo" ColumnName="IdEquipo" />
@@ -930,7 +1128,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Modalidades">
-            <EntityTypeMapping TypeName="Academia_SistemasModel.Modalidade">
+            <EntityTypeMapping TypeName="Academia_Sistemas.Modalidade">
               <MappingFragment StoreEntitySet="Modalidades">
                 <ScalarProperty Name="IdModalidad" ColumnName="IdModalidad" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -938,7 +1136,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Pagos">
-            <EntityTypeMapping TypeName="Academia_SistemasModel.Pago">
+            <EntityTypeMapping TypeName="Academia_Sistemas.Pago">
               <MappingFragment StoreEntitySet="Pagos">
                 <ScalarProperty Name="IdCPago" ColumnName="IdCPago" />
                 <ScalarProperty Name="IdInscripcion" ColumnName="IdInscripcion" />
@@ -948,8 +1146,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Perfiles">
+            <EntityTypeMapping TypeName="Academia_Sistemas.Perfile">
+              <MappingFragment StoreEntitySet="Perfiles">
+                <ScalarProperty Name="IdPerfil" ColumnName="IdPerfil" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="ProgramacionesCursos">
-            <EntityTypeMapping TypeName="Academia_SistemasModel.ProgramacionesCurso">
+            <EntityTypeMapping TypeName="Academia_Sistemas.ProgramacionesCurso">
               <MappingFragment StoreEntitySet="ProgramacionesCursos">
                 <ScalarProperty Name="IdProgramacion" ColumnName="IdProgramacion" />
                 <ScalarProperty Name="IdCurso" ColumnName="IdCurso" />
@@ -961,7 +1167,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Proveedores">
-            <EntityTypeMapping TypeName="Academia_SistemasModel.Proveedore">
+            <EntityTypeMapping TypeName="Academia_Sistemas.Proveedore">
               <MappingFragment StoreEntitySet="Proveedores">
                 <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -972,13 +1178,33 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Sedes">
-            <EntityTypeMapping TypeName="Academia_SistemasModel.Sede">
+            <EntityTypeMapping TypeName="Academia_Sistemas.Sede">
               <MappingFragment StoreEntitySet="Sedes">
                 <ScalarProperty Name="IdSede" ColumnName="IdSede" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="Ciudad" ColumnName="Ciudad" />
                 <ScalarProperty Name="Direccion" ColumnName="Direccion" />
                 <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuario_Perfil">
+            <EntityTypeMapping TypeName="Academia_Sistemas.Usuario_Perfil">
+              <MappingFragment StoreEntitySet="Usuario_Perfil">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="IdPerfil" ColumnName="IdPerfil" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="Academia_Sistemas.Usuario">
+              <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Clave" ColumnName="Clave" />
+                <ScalarProperty Name="Salt" ColumnName="Salt" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -999,7 +1225,7 @@
         <DesignerProperty Name="EnablePluralization" Value="true" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
-        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->

@@ -12,27 +12,26 @@ namespace Academia_Sistemas.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class ProgramacionesCurso
+    public partial class Usuario
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ProgramacionesCurso()
+        public Usuario()
         {
-            this.AsignacionInstructores = new HashSet<AsignacionInstructore>();
-            this.Inscripciones = new HashSet<Inscripcione>();
+            this.Estudiantes = new HashSet<Estudiante>();
+            this.Instructores = new HashSet<Instructore>();
+            this.Usuario_Perfil = new HashSet<Usuario_Perfil>();
         }
     
-        public int IdProgramacion { get; set; }
-        public Nullable<int> IdCurso { get; set; }
-        public Nullable<int> IdSede { get; set; }
-        public System.DateTime FechaInicio { get; set; }
-        public System.DateTime FechaFin { get; set; }
-        public int Cupos { get; set; }
+        public int IdUsuario { get; set; }
+        public string Username { get; set; }
+        public string Clave { get; set; }
+        public string Salt { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AsignacionInstructore> AsignacionInstructores { get; set; }
-        public virtual Curso Curso { get; set; }
+        public virtual ICollection<Estudiante> Estudiantes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Inscripcione> Inscripciones { get; set; }
-        public virtual Sede Sede { get; set; }
+        public virtual ICollection<Instructore> Instructores { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Usuario_Perfil> Usuario_Perfil { get; set; }
     }
 }

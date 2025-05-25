@@ -12,18 +12,18 @@ namespace Academia_Sistemas.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Modalidade
+    public partial class Perfile
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Modalidade()
+        public Perfile()
         {
-            this.Cursos = new HashSet<Curso>();
+            this.Usuario_Perfil = new HashSet<Usuario_Perfil>();
         }
     
-        public int IdModalidad { get; set; }
+        public int IdPerfil { get; set; }
         public string Nombre { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Curso> Cursos { get; set; }
+        public virtual ICollection<Usuario_Perfil> Usuario_Perfil { get; set; }
     }
 }
