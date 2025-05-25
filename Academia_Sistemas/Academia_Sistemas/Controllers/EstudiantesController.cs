@@ -22,11 +22,35 @@ namespace Academia_Sistemas.Controllers
 
         [HttpPost]
         [Route("Insertar")]
-        public string Insertar(Estudiante Estudiante)
+        public string Insertar(EstudianteUsuarioDTO datos)
         {
-            clsEstudiantes clsEstudiante = new clsEstudiantes();
-            clsEstudiante.estudiante = Estudiante;
-            return clsEstudiante.Insertar();
+            try
+            {
+                if (datos.Usuario == null || datos.Estudiante == null)
+                {
+                    return $"Usuario o Estudiante no fueron ingresados";
+                }
+                clsUsuario UsuarioNuevo = new clsUsuario();
+                UsuarioNuevo.usuario = datos.Usuario;
+
+                string UsuarioCreado = UsuarioNuevo.CrearUsuario(2);
+
+                if (!UsuarioCreado.Contains("exitosamente"))
+                {
+                    return $"Error al crear el usuario: {UsuarioCreado}";
+                }
+
+
+
+                clsEstudiantes clsEstudiante = new clsEstudiantes();
+                clsEstudiante.estudiante = datos.Estudiante;
+                clsEstudiante.estudiante.IdUsuario = UsuarioNuevo.usuario.IdUsuario;
+                return clsEstudiante.Insertar();
+            } catch (Exception ex)
+            {
+                return $"Error al insertar Estudiante con usuario: {ex.Message}";
+            }
+            
         }
 
         [HttpPut]

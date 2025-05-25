@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Academia_SistemasModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="db19925Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AsignacionInstructores">
           <Key>
             <PropertyRef Name="IdAsignacion" />
@@ -73,6 +73,7 @@
           <Property Name="Correo" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Telefono" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="Direccion" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="IdUsuario" Type="int" />
         </EntityType>
         <EntityType Name="Inscripciones">
           <Key>
@@ -93,6 +94,7 @@
           <Property Name="Correo" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Telefono" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="Especialidad" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="IdUsuario" Type="int" />
         </EntityType>
         <EntityType Name="InventarioEquipos">
           <Key>
@@ -120,6 +122,13 @@
           <Property Name="FechaPago" Type="datetime" Nullable="false" />
           <Property Name="Monto" Type="decimal" Precision="10" Scale="2" Nullable="false" />
           <Property Name="MetodoPago" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Perfiles">
+          <Key>
+            <PropertyRef Name="IdPerfil" />
+          </Key>
+          <Property Name="IdPerfil" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <EntityType Name="ProgramacionesCursos">
           <Key>
@@ -152,7 +161,25 @@
           <Property Name="Direccion" Type="nvarchar" MaxLength="150" Nullable="false" />
           <Property Name="Telefono" Type="nvarchar" MaxLength="20" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Asignacio__IdIns__5441852A">
+        <EntityType Name="Usuario_Perfil">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUsuario" Type="int" Nullable="false" />
+          <Property Name="IdPerfil" Type="int" Nullable="false" />
+          <Property Name="Activo" Type="bit" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="IdUsuario" />
+          </Key>
+          <Property Name="IdUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Clave" Type="nvarchar" MaxLength="200" />
+          <Property Name="Salt" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <Association Name="FK__Asignacio__IdIns__59C55456">
           <End Role="Instructores" Type="Self.Instructores" Multiplicity="0..1" />
           <End Role="AsignacionInstructores" Type="Self.AsignacionInstructores" Multiplicity="*" />
           <ReferentialConstraint>
@@ -164,7 +191,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Asignacio__IdPro__5535A963">
+        <Association Name="FK__Asignacio__IdPro__5AB9788F">
           <End Role="ProgramacionesCursos" Type="Self.ProgramacionesCursos" Multiplicity="0..1" />
           <End Role="AsignacionInstructores" Type="Self.AsignacionInstructores" Multiplicity="*" />
           <ReferentialConstraint>
@@ -176,7 +203,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Calificac__IdIns__5BE2A6F2">
+        <Association Name="FK__Calificac__IdIns__6166761E">
           <End Role="Inscripciones" Type="Self.Inscripciones" Multiplicity="0..1" />
           <End Role="Calificaciones" Type="Self.Calificaciones" Multiplicity="*" />
           <ReferentialConstraint>
@@ -188,7 +215,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Compras__IdEquip__45F365D3">
+        <Association Name="FK__Compras__IdEquip__4B7734FF">
           <End Role="Equipos" Type="Self.Equipos" Multiplicity="0..1" />
           <End Role="Compras" Type="Self.Compras" Multiplicity="*" />
           <ReferentialConstraint>
@@ -200,7 +227,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Compras__IdProve__44FF419A">
+        <Association Name="FK__Compras__IdProve__4A8310C6">
           <End Role="Proveedores" Type="Self.Proveedores" Multiplicity="0..1" />
           <End Role="Compras" Type="Self.Compras" Multiplicity="*" />
           <ReferentialConstraint>
@@ -212,7 +239,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Cursos__IdCatego__4D94879B">
+        <Association Name="FK__Cursos__IdCatego__531856C7">
           <End Role="CategoriasCursos" Type="Self.CategoriasCursos" Multiplicity="0..1" />
           <End Role="Cursos" Type="Self.Cursos" Multiplicity="*" />
           <ReferentialConstraint>
@@ -224,7 +251,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Cursos__IdModali__4CA06362">
+        <Association Name="FK__Cursos__IdModali__5224328E">
           <End Role="Modalidades" Type="Self.Modalidades" Multiplicity="0..1" />
           <End Role="Cursos" Type="Self.Cursos" Multiplicity="*" />
           <ReferentialConstraint>
@@ -236,7 +263,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Inscripci__IdEst__5812160E">
+        <Association Name="FK__Estudiant__IdUsu__40F9A68C">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
+          <End Role="Estudiantes" Type="Self.Estudiantes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="Estudiantes">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Inscripci__IdEst__5D95E53A">
           <End Role="Estudiantes" Type="Self.Estudiantes" Multiplicity="0..1" />
           <End Role="Inscripciones" Type="Self.Inscripciones" Multiplicity="*" />
           <ReferentialConstraint>
@@ -248,7 +287,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Inscripci__IdPro__59063A47">
+        <Association Name="FK__Inscripci__IdPro__5E8A0973">
           <End Role="ProgramacionesCursos" Type="Self.ProgramacionesCursos" Multiplicity="0..1" />
           <End Role="Inscripciones" Type="Self.Inscripciones" Multiplicity="*" />
           <ReferentialConstraint>
@@ -260,7 +299,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Inventari__IdEqu__48CFD27E">
+        <Association Name="FK__Instructo__IdUsu__43D61337">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
+          <End Role="Instructores" Type="Self.Instructores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="Instructores">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Inventari__IdEqu__4E53A1AA">
           <End Role="Equipos" Type="Self.Equipos" Multiplicity="0..1" />
           <End Role="InventarioEquipos" Type="Self.InventarioEquipos" Multiplicity="*" />
           <ReferentialConstraint>
@@ -272,7 +323,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Inventari__IdSed__49C3F6B7">
+        <Association Name="FK__Inventari__IdSed__4F47C5E3">
           <End Role="Sedes" Type="Self.Sedes" Multiplicity="0..1" />
           <End Role="InventarioEquipos" Type="Self.InventarioEquipos" Multiplicity="*" />
           <ReferentialConstraint>
@@ -284,7 +335,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Pagos__IdInscrip__5EBF139D">
+        <Association Name="FK__Pagos__IdInscrip__6442E2C9">
           <End Role="Inscripciones" Type="Self.Inscripciones" Multiplicity="0..1" />
           <End Role="Pagos" Type="Self.Pagos" Multiplicity="*" />
           <ReferentialConstraint>
@@ -296,7 +347,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Programac__IdCur__5070F446">
+        <Association Name="FK__Programac__IdCur__55F4C372">
           <End Role="Cursos" Type="Self.Cursos" Multiplicity="0..1" />
           <End Role="ProgramacionesCursos" Type="Self.ProgramacionesCursos" Multiplicity="*" />
           <ReferentialConstraint>
@@ -308,7 +359,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Programac__IdSed__5165187F">
+        <Association Name="FK__Programac__IdSed__56E8E7AB">
           <End Role="Sedes" Type="Self.Sedes" Multiplicity="0..1" />
           <End Role="ProgramacionesCursos" Type="Self.ProgramacionesCursos" Multiplicity="*" />
           <ReferentialConstraint>
@@ -320,7 +371,31 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Academia_SistemasModelStoreContainer">
+        <Association Name="FK__Usuario_P__IdPer__3E1D39E1">
+          <End Role="Perfiles" Type="Self.Perfiles" Multiplicity="1" />
+          <End Role="Usuario_Perfil" Type="Self.Usuario_Perfil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Perfiles">
+              <PropertyRef Name="IdPerfil" />
+            </Principal>
+            <Dependent Role="Usuario_Perfil">
+              <PropertyRef Name="IdPerfil" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Usuario_P__IdUsu__3D2915A8">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="Usuario_Perfil" Type="Self.Usuario_Perfil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="Usuario_Perfil">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="db19925ModelStoreContainer">
           <EntitySet Name="AsignacionInstructores" EntityType="Self.AsignacionInstructores" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Calificaciones" EntityType="Self.Calificaciones" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CategoriasCursos" EntityType="Self.CategoriasCursos" Schema="dbo" store:Type="Tables" />
@@ -333,71 +408,90 @@
           <EntitySet Name="InventarioEquipos" EntityType="Self.InventarioEquipos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Modalidades" EntityType="Self.Modalidades" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Pagos" EntityType="Self.Pagos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Perfiles" EntityType="Self.Perfiles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProgramacionesCursos" EntityType="Self.ProgramacionesCursos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Proveedores" EntityType="Self.Proveedores" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sedes" EntityType="Self.Sedes" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Asignacio__IdIns__5441852A" Association="Self.FK__Asignacio__IdIns__5441852A">
+          <EntitySet Name="Usuario_Perfil" EntityType="Self.Usuario_Perfil" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Asignacio__IdIns__59C55456" Association="Self.FK__Asignacio__IdIns__59C55456">
             <End Role="Instructores" EntitySet="Instructores" />
             <End Role="AsignacionInstructores" EntitySet="AsignacionInstructores" />
           </AssociationSet>
-          <AssociationSet Name="FK__Asignacio__IdPro__5535A963" Association="Self.FK__Asignacio__IdPro__5535A963">
+          <AssociationSet Name="FK__Asignacio__IdPro__5AB9788F" Association="Self.FK__Asignacio__IdPro__5AB9788F">
             <End Role="ProgramacionesCursos" EntitySet="ProgramacionesCursos" />
             <End Role="AsignacionInstructores" EntitySet="AsignacionInstructores" />
           </AssociationSet>
-          <AssociationSet Name="FK__Calificac__IdIns__5BE2A6F2" Association="Self.FK__Calificac__IdIns__5BE2A6F2">
+          <AssociationSet Name="FK__Calificac__IdIns__6166761E" Association="Self.FK__Calificac__IdIns__6166761E">
             <End Role="Inscripciones" EntitySet="Inscripciones" />
             <End Role="Calificaciones" EntitySet="Calificaciones" />
           </AssociationSet>
-          <AssociationSet Name="FK__Compras__IdEquip__45F365D3" Association="Self.FK__Compras__IdEquip__45F365D3">
+          <AssociationSet Name="FK__Compras__IdEquip__4B7734FF" Association="Self.FK__Compras__IdEquip__4B7734FF">
             <End Role="Equipos" EntitySet="Equipos" />
             <End Role="Compras" EntitySet="Compras" />
           </AssociationSet>
-          <AssociationSet Name="FK__Compras__IdProve__44FF419A" Association="Self.FK__Compras__IdProve__44FF419A">
+          <AssociationSet Name="FK__Compras__IdProve__4A8310C6" Association="Self.FK__Compras__IdProve__4A8310C6">
             <End Role="Proveedores" EntitySet="Proveedores" />
             <End Role="Compras" EntitySet="Compras" />
           </AssociationSet>
-          <AssociationSet Name="FK__Cursos__IdCatego__4D94879B" Association="Self.FK__Cursos__IdCatego__4D94879B">
+          <AssociationSet Name="FK__Cursos__IdCatego__531856C7" Association="Self.FK__Cursos__IdCatego__531856C7">
             <End Role="CategoriasCursos" EntitySet="CategoriasCursos" />
             <End Role="Cursos" EntitySet="Cursos" />
           </AssociationSet>
-          <AssociationSet Name="FK__Cursos__IdModali__4CA06362" Association="Self.FK__Cursos__IdModali__4CA06362">
+          <AssociationSet Name="FK__Cursos__IdModali__5224328E" Association="Self.FK__Cursos__IdModali__5224328E">
             <End Role="Modalidades" EntitySet="Modalidades" />
             <End Role="Cursos" EntitySet="Cursos" />
           </AssociationSet>
-          <AssociationSet Name="FK__Inscripci__IdEst__5812160E" Association="Self.FK__Inscripci__IdEst__5812160E">
+          <AssociationSet Name="FK__Estudiant__IdUsu__40F9A68C" Association="Self.FK__Estudiant__IdUsu__40F9A68C">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Estudiantes" EntitySet="Estudiantes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Inscripci__IdEst__5D95E53A" Association="Self.FK__Inscripci__IdEst__5D95E53A">
             <End Role="Estudiantes" EntitySet="Estudiantes" />
             <End Role="Inscripciones" EntitySet="Inscripciones" />
           </AssociationSet>
-          <AssociationSet Name="FK__Inscripci__IdPro__59063A47" Association="Self.FK__Inscripci__IdPro__59063A47">
+          <AssociationSet Name="FK__Inscripci__IdPro__5E8A0973" Association="Self.FK__Inscripci__IdPro__5E8A0973">
             <End Role="ProgramacionesCursos" EntitySet="ProgramacionesCursos" />
             <End Role="Inscripciones" EntitySet="Inscripciones" />
           </AssociationSet>
-          <AssociationSet Name="FK__Inventari__IdEqu__48CFD27E" Association="Self.FK__Inventari__IdEqu__48CFD27E">
+          <AssociationSet Name="FK__Instructo__IdUsu__43D61337" Association="Self.FK__Instructo__IdUsu__43D61337">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Instructores" EntitySet="Instructores" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Inventari__IdEqu__4E53A1AA" Association="Self.FK__Inventari__IdEqu__4E53A1AA">
             <End Role="Equipos" EntitySet="Equipos" />
             <End Role="InventarioEquipos" EntitySet="InventarioEquipos" />
           </AssociationSet>
-          <AssociationSet Name="FK__Inventari__IdSed__49C3F6B7" Association="Self.FK__Inventari__IdSed__49C3F6B7">
+          <AssociationSet Name="FK__Inventari__IdSed__4F47C5E3" Association="Self.FK__Inventari__IdSed__4F47C5E3">
             <End Role="Sedes" EntitySet="Sedes" />
             <End Role="InventarioEquipos" EntitySet="InventarioEquipos" />
           </AssociationSet>
-          <AssociationSet Name="FK__Pagos__IdInscrip__5EBF139D" Association="Self.FK__Pagos__IdInscrip__5EBF139D">
+          <AssociationSet Name="FK__Pagos__IdInscrip__6442E2C9" Association="Self.FK__Pagos__IdInscrip__6442E2C9">
             <End Role="Inscripciones" EntitySet="Inscripciones" />
             <End Role="Pagos" EntitySet="Pagos" />
           </AssociationSet>
-          <AssociationSet Name="FK__Programac__IdCur__5070F446" Association="Self.FK__Programac__IdCur__5070F446">
+          <AssociationSet Name="FK__Programac__IdCur__55F4C372" Association="Self.FK__Programac__IdCur__55F4C372">
             <End Role="Cursos" EntitySet="Cursos" />
             <End Role="ProgramacionesCursos" EntitySet="ProgramacionesCursos" />
           </AssociationSet>
-          <AssociationSet Name="FK__Programac__IdSed__5165187F" Association="Self.FK__Programac__IdSed__5165187F">
+          <AssociationSet Name="FK__Programac__IdSed__56E8E7AB" Association="Self.FK__Programac__IdSed__56E8E7AB">
             <End Role="Sedes" EntitySet="Sedes" />
             <End Role="ProgramacionesCursos" EntitySet="ProgramacionesCursos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Usuario_P__IdPer__3E1D39E1" Association="Self.FK__Usuario_P__IdPer__3E1D39E1">
+            <End Role="Perfiles" EntitySet="Perfiles" />
+            <End Role="Usuario_Perfil" EntitySet="Usuario_Perfil" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Usuario_P__IdUsu__3D2915A8" Association="Self.FK__Usuario_P__IdUsu__3D2915A8">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Usuario_Perfil" EntitySet="Usuario_Perfil" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="Academia_SistemasModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="db19925Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="AsignacionInstructore">
           <Key>
             <PropertyRef Name="IdAsignacion" />
@@ -406,8 +500,8 @@
           <Property Name="IdInstructor" Type="Int32" />
           <Property Name="IdProgramacion" Type="Int32" />
           <Property Name="FechaAsignacion" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Instructore" Relationship="Self.FK__Asignacio__IdIns__5441852A" FromRole="AsignacionInstructores" ToRole="Instructores" />
-          <NavigationProperty Name="ProgramacionesCurso" Relationship="Self.FK__Asignacio__IdPro__5535A963" FromRole="AsignacionInstructores" ToRole="ProgramacionesCursos" />
+          <NavigationProperty Name="Instructore" Relationship="Self.FK__Asignacio__IdIns__59C55456" FromRole="AsignacionInstructores" ToRole="Instructores" />
+          <NavigationProperty Name="ProgramacionesCurso" Relationship="Self.FK__Asignacio__IdPro__5AB9788F" FromRole="AsignacionInstructores" ToRole="ProgramacionesCursos" />
         </EntityType>
         <EntityType Name="Calificacione">
           <Key>
@@ -417,7 +511,7 @@
           <Property Name="IdInscripcion" Type="Int32" />
           <Property Name="Nota" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
           <Property Name="Observaciones" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Inscripcione" Relationship="Self.FK__Calificac__IdIns__5BE2A6F2" FromRole="Calificaciones" ToRole="Inscripciones" />
+          <NavigationProperty Name="Inscripcione" Relationship="Self.FK__Calificac__IdIns__6166761E" FromRole="Calificaciones" ToRole="Inscripciones" />
         </EntityType>
         <EntityType Name="CategoriasCurso">
           <Key>
@@ -426,7 +520,7 @@
           <Property Name="IdCategoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Cursos" Relationship="Self.FK__Cursos__IdCatego__4D94879B" FromRole="CategoriasCursos" ToRole="Cursos" />
+          <NavigationProperty Name="Cursos" Relationship="Self.FK__Cursos__IdCatego__531856C7" FromRole="CategoriasCursos" ToRole="Cursos" />
         </EntityType>
         <EntityType Name="Compra">
           <Key>
@@ -438,8 +532,8 @@
           <Property Name="FechaCompra" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Cantidad" Type="Int32" Nullable="false" />
           <Property Name="CostoUnitario" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
-          <NavigationProperty Name="Equipos" Relationship="Self.FK__Compras__IdEquip__45F365D3" FromRole="Compras" ToRole="Equipos" />
-          <NavigationProperty Name="Proveedore" Relationship="Self.FK__Compras__IdProve__44FF419A" FromRole="Compras" ToRole="Proveedores" />
+          <NavigationProperty Name="Equipos" Relationship="Self.FK__Compras__IdEquip__4B7734FF" FromRole="Compras" ToRole="Equipos" />
+          <NavigationProperty Name="Proveedore" Relationship="Self.FK__Compras__IdProve__4A8310C6" FromRole="Compras" ToRole="Proveedores" />
         </EntityType>
         <EntityType Name="Curso">
           <Key>
@@ -452,9 +546,9 @@
           <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Duracion" Type="Int32" Nullable="false" />
           <Property Name="Costo" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
-          <NavigationProperty Name="CategoriasCurso" Relationship="Self.FK__Cursos__IdCatego__4D94879B" FromRole="Cursos" ToRole="CategoriasCursos" />
-          <NavigationProperty Name="Modalidade" Relationship="Self.FK__Cursos__IdModali__4CA06362" FromRole="Cursos" ToRole="Modalidades" />
-          <NavigationProperty Name="ProgramacionesCursos" Relationship="Self.FK__Programac__IdCur__5070F446" FromRole="Cursos" ToRole="ProgramacionesCursos" />
+          <NavigationProperty Name="CategoriasCurso" Relationship="Self.FK__Cursos__IdCatego__531856C7" FromRole="Cursos" ToRole="CategoriasCursos" />
+          <NavigationProperty Name="Modalidade" Relationship="Self.FK__Cursos__IdModali__5224328E" FromRole="Cursos" ToRole="Modalidades" />
+          <NavigationProperty Name="ProgramacionesCursos" Relationship="Self.FK__Programac__IdCur__55F4C372" FromRole="Cursos" ToRole="ProgramacionesCursos" />
         </EntityType>
         <EntityType Name="Equipos">
           <Key>
@@ -464,8 +558,8 @@
           <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Categoria" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Compras" Relationship="Self.FK__Compras__IdEquip__45F365D3" FromRole="Equipos" ToRole="Compras" />
-          <NavigationProperty Name="InventarioEquipos" Relationship="Self.FK__Inventari__IdEqu__48CFD27E" FromRole="Equipos" ToRole="InventarioEquipos" />
+          <NavigationProperty Name="Compras" Relationship="Self.FK__Compras__IdEquip__4B7734FF" FromRole="Equipos" ToRole="Compras" />
+          <NavigationProperty Name="InventarioEquipos" Relationship="Self.FK__Inventari__IdEqu__4E53A1AA" FromRole="Equipos" ToRole="InventarioEquipos" />
         </EntityType>
         <EntityType Name="Estudiante">
           <Key>
@@ -477,7 +571,9 @@
           <Property Name="Correo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Telefono" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Direccion" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Inscripciones" Relationship="Self.FK__Inscripci__IdEst__5812160E" FromRole="Estudiantes" ToRole="Inscripciones" />
+          <Property Name="IdUsuario" Type="Int32" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__Estudiant__IdUsu__40F9A68C" FromRole="Estudiantes" ToRole="Usuarios" />
+          <NavigationProperty Name="Inscripciones" Relationship="Self.FK__Inscripci__IdEst__5D95E53A" FromRole="Estudiantes" ToRole="Inscripciones" />
         </EntityType>
         <EntityType Name="Inscripcione">
           <Key>
@@ -487,10 +583,10 @@
           <Property Name="IdEstudiante" Type="Int32" />
           <Property Name="IdProgramacion" Type="Int32" />
           <Property Name="FechaInscripcion" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Calificaciones" Relationship="Self.FK__Calificac__IdIns__5BE2A6F2" FromRole="Inscripciones" ToRole="Calificaciones" />
-          <NavigationProperty Name="Estudiante" Relationship="Self.FK__Inscripci__IdEst__5812160E" FromRole="Inscripciones" ToRole="Estudiantes" />
-          <NavigationProperty Name="ProgramacionesCurso" Relationship="Self.FK__Inscripci__IdPro__59063A47" FromRole="Inscripciones" ToRole="ProgramacionesCursos" />
-          <NavigationProperty Name="Pagos" Relationship="Self.FK__Pagos__IdInscrip__5EBF139D" FromRole="Inscripciones" ToRole="Pagos" />
+          <NavigationProperty Name="Calificaciones" Relationship="Self.FK__Calificac__IdIns__6166761E" FromRole="Inscripciones" ToRole="Calificaciones" />
+          <NavigationProperty Name="Estudiante" Relationship="Self.FK__Inscripci__IdEst__5D95E53A" FromRole="Inscripciones" ToRole="Estudiantes" />
+          <NavigationProperty Name="ProgramacionesCurso" Relationship="Self.FK__Inscripci__IdPro__5E8A0973" FromRole="Inscripciones" ToRole="ProgramacionesCursos" />
+          <NavigationProperty Name="Pagos" Relationship="Self.FK__Pagos__IdInscrip__6442E2C9" FromRole="Inscripciones" ToRole="Pagos" />
         </EntityType>
         <EntityType Name="Instructore">
           <Key>
@@ -502,7 +598,9 @@
           <Property Name="Correo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Telefono" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Especialidad" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="AsignacionInstructores" Relationship="Self.FK__Asignacio__IdIns__5441852A" FromRole="Instructores" ToRole="AsignacionInstructores" />
+          <Property Name="IdUsuario" Type="Int32" />
+          <NavigationProperty Name="AsignacionInstructores" Relationship="Self.FK__Asignacio__IdIns__59C55456" FromRole="Instructores" ToRole="AsignacionInstructores" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__Instructo__IdUsu__43D61337" FromRole="Instructores" ToRole="Usuarios" />
         </EntityType>
         <EntityType Name="InventarioEquipos">
           <Key>
@@ -513,8 +611,8 @@
           <Property Name="IdSede" Type="Int32" />
           <Property Name="Cantidad" Type="Int32" Nullable="false" />
           <Property Name="FechaAsignacion" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Equipos" Relationship="Self.FK__Inventari__IdEqu__48CFD27E" FromRole="InventarioEquipos" ToRole="Equipos" />
-          <NavigationProperty Name="Sede" Relationship="Self.FK__Inventari__IdSed__49C3F6B7" FromRole="InventarioEquipos" ToRole="Sedes" />
+          <NavigationProperty Name="Equipos" Relationship="Self.FK__Inventari__IdEqu__4E53A1AA" FromRole="InventarioEquipos" ToRole="Equipos" />
+          <NavigationProperty Name="Sede" Relationship="Self.FK__Inventari__IdSed__4F47C5E3" FromRole="InventarioEquipos" ToRole="Sedes" />
         </EntityType>
         <EntityType Name="Modalidade">
           <Key>
@@ -522,7 +620,7 @@
           </Key>
           <Property Name="IdModalidad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Cursos" Relationship="Self.FK__Cursos__IdModali__4CA06362" FromRole="Modalidades" ToRole="Cursos" />
+          <NavigationProperty Name="Cursos" Relationship="Self.FK__Cursos__IdModali__5224328E" FromRole="Modalidades" ToRole="Cursos" />
         </EntityType>
         <EntityType Name="Pago">
           <Key>
@@ -533,7 +631,15 @@
           <Property Name="FechaPago" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Monto" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
           <Property Name="MetodoPago" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Inscripcione" Relationship="Self.FK__Pagos__IdInscrip__5EBF139D" FromRole="Pagos" ToRole="Inscripciones" />
+          <NavigationProperty Name="Inscripcione" Relationship="Self.FK__Pagos__IdInscrip__6442E2C9" FromRole="Pagos" ToRole="Inscripciones" />
+        </EntityType>
+        <EntityType Name="Perfile">
+          <Key>
+            <PropertyRef Name="IdPerfil" />
+          </Key>
+          <Property Name="IdPerfil" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Usuario_Perfil" Relationship="Self.FK__Usuario_P__IdPer__3E1D39E1" FromRole="Perfiles" ToRole="Usuario_Perfil" />
         </EntityType>
         <EntityType Name="ProgramacionesCurso">
           <Key>
@@ -545,10 +651,10 @@
           <Property Name="FechaInicio" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="FechaFin" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Cupos" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="AsignacionInstructores" Relationship="Self.FK__Asignacio__IdPro__5535A963" FromRole="ProgramacionesCursos" ToRole="AsignacionInstructores" />
-          <NavigationProperty Name="Curso" Relationship="Self.FK__Programac__IdCur__5070F446" FromRole="ProgramacionesCursos" ToRole="Cursos" />
-          <NavigationProperty Name="Inscripciones" Relationship="Self.FK__Inscripci__IdPro__59063A47" FromRole="ProgramacionesCursos" ToRole="Inscripciones" />
-          <NavigationProperty Name="Sede" Relationship="Self.FK__Programac__IdSed__5165187F" FromRole="ProgramacionesCursos" ToRole="Sedes" />
+          <NavigationProperty Name="AsignacionInstructores" Relationship="Self.FK__Asignacio__IdPro__5AB9788F" FromRole="ProgramacionesCursos" ToRole="AsignacionInstructores" />
+          <NavigationProperty Name="Curso" Relationship="Self.FK__Programac__IdCur__55F4C372" FromRole="ProgramacionesCursos" ToRole="Cursos" />
+          <NavigationProperty Name="Inscripciones" Relationship="Self.FK__Inscripci__IdPro__5E8A0973" FromRole="ProgramacionesCursos" ToRole="Inscripciones" />
+          <NavigationProperty Name="Sede" Relationship="Self.FK__Programac__IdSed__56E8E7AB" FromRole="ProgramacionesCursos" ToRole="Sedes" />
         </EntityType>
         <EntityType Name="Proveedore">
           <Key>
@@ -559,7 +665,7 @@
           <Property Name="Telefono" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Correo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Direccion" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Compras" Relationship="Self.FK__Compras__IdProve__44FF419A" FromRole="Proveedores" ToRole="Compras" />
+          <NavigationProperty Name="Compras" Relationship="Self.FK__Compras__IdProve__4A8310C6" FromRole="Proveedores" ToRole="Compras" />
         </EntityType>
         <EntityType Name="Sede">
           <Key>
@@ -570,10 +676,33 @@
           <Property Name="Ciudad" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Direccion" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Telefono" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="InventarioEquipos" Relationship="Self.FK__Inventari__IdSed__49C3F6B7" FromRole="Sedes" ToRole="InventarioEquipos" />
-          <NavigationProperty Name="ProgramacionesCursos" Relationship="Self.FK__Programac__IdSed__5165187F" FromRole="Sedes" ToRole="ProgramacionesCursos" />
+          <NavigationProperty Name="InventarioEquipos" Relationship="Self.FK__Inventari__IdSed__4F47C5E3" FromRole="Sedes" ToRole="InventarioEquipos" />
+          <NavigationProperty Name="ProgramacionesCursos" Relationship="Self.FK__Programac__IdSed__56E8E7AB" FromRole="Sedes" ToRole="ProgramacionesCursos" />
         </EntityType>
-        <Association Name="FK__Asignacio__IdIns__5441852A">
+        <EntityType Name="Usuario_Perfil">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+          <Property Name="IdPerfil" Type="Int32" Nullable="false" />
+          <Property Name="Activo" Type="Boolean" />
+          <NavigationProperty Name="Perfile" Relationship="Self.FK__Usuario_P__IdPer__3E1D39E1" FromRole="Usuario_Perfil" ToRole="Perfiles" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__Usuario_P__IdUsu__3D2915A8" FromRole="Usuario_Perfil" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="IdUsuario" />
+          </Key>
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Clave" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Salt" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Estudiantes" Relationship="Self.FK__Estudiant__IdUsu__40F9A68C" FromRole="Usuarios" ToRole="Estudiantes" />
+          <NavigationProperty Name="Instructores" Relationship="Self.FK__Instructo__IdUsu__43D61337" FromRole="Usuarios" ToRole="Instructores" />
+          <NavigationProperty Name="Usuario_Perfil" Relationship="Self.FK__Usuario_P__IdUsu__3D2915A8" FromRole="Usuarios" ToRole="Usuario_Perfil" />
+        </EntityType>
+        <Association Name="FK__Asignacio__IdIns__59C55456">
           <End Role="Instructores" Type="Self.Instructore" Multiplicity="0..1" />
           <End Role="AsignacionInstructores" Type="Self.AsignacionInstructore" Multiplicity="*" />
           <ReferentialConstraint>
@@ -585,7 +714,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Asignacio__IdPro__5535A963">
+        <Association Name="FK__Asignacio__IdPro__5AB9788F">
           <End Role="ProgramacionesCursos" Type="Self.ProgramacionesCurso" Multiplicity="0..1" />
           <End Role="AsignacionInstructores" Type="Self.AsignacionInstructore" Multiplicity="*" />
           <ReferentialConstraint>
@@ -597,7 +726,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Calificac__IdIns__5BE2A6F2">
+        <Association Name="FK__Calificac__IdIns__6166761E">
           <End Role="Inscripciones" Type="Self.Inscripcione" Multiplicity="0..1" />
           <End Role="Calificaciones" Type="Self.Calificacione" Multiplicity="*" />
           <ReferentialConstraint>
@@ -609,7 +738,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Cursos__IdCatego__4D94879B">
+        <Association Name="FK__Cursos__IdCatego__531856C7">
           <End Role="CategoriasCursos" Type="Self.CategoriasCurso" Multiplicity="0..1" />
           <End Role="Cursos" Type="Self.Curso" Multiplicity="*" />
           <ReferentialConstraint>
@@ -621,7 +750,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Compras__IdEquip__45F365D3">
+        <Association Name="FK__Compras__IdEquip__4B7734FF">
           <End Role="Equipos" Type="Self.Equipos" Multiplicity="0..1" />
           <End Role="Compras" Type="Self.Compra" Multiplicity="*" />
           <ReferentialConstraint>
@@ -633,7 +762,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Compras__IdProve__44FF419A">
+        <Association Name="FK__Compras__IdProve__4A8310C6">
           <End Role="Proveedores" Type="Self.Proveedore" Multiplicity="0..1" />
           <End Role="Compras" Type="Self.Compra" Multiplicity="*" />
           <ReferentialConstraint>
@@ -645,7 +774,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Cursos__IdModali__4CA06362">
+        <Association Name="FK__Cursos__IdModali__5224328E">
           <End Role="Modalidades" Type="Self.Modalidade" Multiplicity="0..1" />
           <End Role="Cursos" Type="Self.Curso" Multiplicity="*" />
           <ReferentialConstraint>
@@ -657,7 +786,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Programac__IdCur__5070F446">
+        <Association Name="FK__Programac__IdCur__55F4C372">
           <End Role="Cursos" Type="Self.Curso" Multiplicity="0..1" />
           <End Role="ProgramacionesCursos" Type="Self.ProgramacionesCurso" Multiplicity="*" />
           <ReferentialConstraint>
@@ -669,7 +798,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Inventari__IdEqu__48CFD27E">
+        <Association Name="FK__Inventari__IdEqu__4E53A1AA">
           <End Role="Equipos" Type="Self.Equipos" Multiplicity="0..1" />
           <End Role="InventarioEquipos" Type="Self.InventarioEquipos" Multiplicity="*" />
           <ReferentialConstraint>
@@ -681,7 +810,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Inscripci__IdEst__5812160E">
+        <Association Name="FK__Estudiant__IdUsu__40F9A68C">
+          <End Role="Usuarios" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Estudiantes" Type="Self.Estudiante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="Estudiantes">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Inscripci__IdEst__5D95E53A">
           <End Role="Estudiantes" Type="Self.Estudiante" Multiplicity="0..1" />
           <End Role="Inscripciones" Type="Self.Inscripcione" Multiplicity="*" />
           <ReferentialConstraint>
@@ -693,7 +834,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Inscripci__IdPro__59063A47">
+        <Association Name="FK__Inscripci__IdPro__5E8A0973">
           <End Role="ProgramacionesCursos" Type="Self.ProgramacionesCurso" Multiplicity="0..1" />
           <End Role="Inscripciones" Type="Self.Inscripcione" Multiplicity="*" />
           <ReferentialConstraint>
@@ -705,7 +846,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Pagos__IdInscrip__5EBF139D">
+        <Association Name="FK__Pagos__IdInscrip__6442E2C9">
           <End Role="Inscripciones" Type="Self.Inscripcione" Multiplicity="0..1" />
           <End Role="Pagos" Type="Self.Pago" Multiplicity="*" />
           <ReferentialConstraint>
@@ -717,7 +858,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Inventari__IdSed__49C3F6B7">
+        <Association Name="FK__Instructo__IdUsu__43D61337">
+          <End Role="Usuarios" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Instructores" Type="Self.Instructore" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="Instructores">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Inventari__IdSed__4F47C5E3">
           <End Role="Sedes" Type="Self.Sede" Multiplicity="0..1" />
           <End Role="InventarioEquipos" Type="Self.InventarioEquipos" Multiplicity="*" />
           <ReferentialConstraint>
@@ -729,7 +882,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Programac__IdSed__5165187F">
+        <Association Name="FK__Usuario_P__IdPer__3E1D39E1">
+          <End Role="Perfiles" Type="Self.Perfile" Multiplicity="1" />
+          <End Role="Usuario_Perfil" Type="Self.Usuario_Perfil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Perfiles">
+              <PropertyRef Name="IdPerfil" />
+            </Principal>
+            <Dependent Role="Usuario_Perfil">
+              <PropertyRef Name="IdPerfil" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Programac__IdSed__56E8E7AB">
           <End Role="Sedes" Type="Self.Sede" Multiplicity="0..1" />
           <End Role="ProgramacionesCursos" Type="Self.ProgramacionesCurso" Multiplicity="*" />
           <ReferentialConstraint>
@@ -741,7 +906,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Academia_SistemasEntities" annotation:LazyLoadingEnabled="true">
+        <Association Name="FK__Usuario_P__IdUsu__3D2915A8">
+          <End Role="Usuarios" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Usuario_Perfil" Type="Self.Usuario_Perfil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="Usuario_Perfil">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="db19925Entities2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AsignacionInstructores" EntityType="Self.AsignacionInstructore" />
           <EntitySet Name="Calificaciones" EntityType="Self.Calificacione" />
           <EntitySet Name="CategoriasCursos" EntityType="Self.CategoriasCurso" />
@@ -754,64 +931,83 @@
           <EntitySet Name="InventarioEquipos" EntityType="Self.InventarioEquipos" />
           <EntitySet Name="Modalidades" EntityType="Self.Modalidade" />
           <EntitySet Name="Pagos" EntityType="Self.Pago" />
+          <EntitySet Name="Perfiles" EntityType="Self.Perfile" />
           <EntitySet Name="ProgramacionesCursos" EntityType="Self.ProgramacionesCurso" />
           <EntitySet Name="Proveedores" EntityType="Self.Proveedore" />
           <EntitySet Name="Sedes" EntityType="Self.Sede" />
-          <AssociationSet Name="FK__Asignacio__IdIns__5441852A" Association="Self.FK__Asignacio__IdIns__5441852A">
+          <EntitySet Name="Usuario_Perfil" EntityType="Self.Usuario_Perfil" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuario" />
+          <AssociationSet Name="FK__Asignacio__IdIns__59C55456" Association="Self.FK__Asignacio__IdIns__59C55456">
             <End Role="Instructores" EntitySet="Instructores" />
             <End Role="AsignacionInstructores" EntitySet="AsignacionInstructores" />
           </AssociationSet>
-          <AssociationSet Name="FK__Asignacio__IdPro__5535A963" Association="Self.FK__Asignacio__IdPro__5535A963">
+          <AssociationSet Name="FK__Asignacio__IdPro__5AB9788F" Association="Self.FK__Asignacio__IdPro__5AB9788F">
             <End Role="ProgramacionesCursos" EntitySet="ProgramacionesCursos" />
             <End Role="AsignacionInstructores" EntitySet="AsignacionInstructores" />
           </AssociationSet>
-          <AssociationSet Name="FK__Calificac__IdIns__5BE2A6F2" Association="Self.FK__Calificac__IdIns__5BE2A6F2">
+          <AssociationSet Name="FK__Calificac__IdIns__6166761E" Association="Self.FK__Calificac__IdIns__6166761E">
             <End Role="Inscripciones" EntitySet="Inscripciones" />
             <End Role="Calificaciones" EntitySet="Calificaciones" />
           </AssociationSet>
-          <AssociationSet Name="FK__Cursos__IdCatego__4D94879B" Association="Self.FK__Cursos__IdCatego__4D94879B">
+          <AssociationSet Name="FK__Cursos__IdCatego__531856C7" Association="Self.FK__Cursos__IdCatego__531856C7">
             <End Role="CategoriasCursos" EntitySet="CategoriasCursos" />
             <End Role="Cursos" EntitySet="Cursos" />
           </AssociationSet>
-          <AssociationSet Name="FK__Compras__IdEquip__45F365D3" Association="Self.FK__Compras__IdEquip__45F365D3">
+          <AssociationSet Name="FK__Compras__IdEquip__4B7734FF" Association="Self.FK__Compras__IdEquip__4B7734FF">
             <End Role="Equipos" EntitySet="Equipos" />
             <End Role="Compras" EntitySet="Compras" />
           </AssociationSet>
-          <AssociationSet Name="FK__Compras__IdProve__44FF419A" Association="Self.FK__Compras__IdProve__44FF419A">
+          <AssociationSet Name="FK__Compras__IdProve__4A8310C6" Association="Self.FK__Compras__IdProve__4A8310C6">
             <End Role="Proveedores" EntitySet="Proveedores" />
             <End Role="Compras" EntitySet="Compras" />
           </AssociationSet>
-          <AssociationSet Name="FK__Cursos__IdModali__4CA06362" Association="Self.FK__Cursos__IdModali__4CA06362">
+          <AssociationSet Name="FK__Cursos__IdModali__5224328E" Association="Self.FK__Cursos__IdModali__5224328E">
             <End Role="Modalidades" EntitySet="Modalidades" />
             <End Role="Cursos" EntitySet="Cursos" />
           </AssociationSet>
-          <AssociationSet Name="FK__Programac__IdCur__5070F446" Association="Self.FK__Programac__IdCur__5070F446">
+          <AssociationSet Name="FK__Programac__IdCur__55F4C372" Association="Self.FK__Programac__IdCur__55F4C372">
             <End Role="Cursos" EntitySet="Cursos" />
             <End Role="ProgramacionesCursos" EntitySet="ProgramacionesCursos" />
           </AssociationSet>
-          <AssociationSet Name="FK__Inventari__IdEqu__48CFD27E" Association="Self.FK__Inventari__IdEqu__48CFD27E">
+          <AssociationSet Name="FK__Inventari__IdEqu__4E53A1AA" Association="Self.FK__Inventari__IdEqu__4E53A1AA">
             <End Role="Equipos" EntitySet="Equipos" />
             <End Role="InventarioEquipos" EntitySet="InventarioEquipos" />
           </AssociationSet>
-          <AssociationSet Name="FK__Inscripci__IdEst__5812160E" Association="Self.FK__Inscripci__IdEst__5812160E">
+          <AssociationSet Name="FK__Estudiant__IdUsu__40F9A68C" Association="Self.FK__Estudiant__IdUsu__40F9A68C">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Estudiantes" EntitySet="Estudiantes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Inscripci__IdEst__5D95E53A" Association="Self.FK__Inscripci__IdEst__5D95E53A">
             <End Role="Estudiantes" EntitySet="Estudiantes" />
             <End Role="Inscripciones" EntitySet="Inscripciones" />
           </AssociationSet>
-          <AssociationSet Name="FK__Inscripci__IdPro__59063A47" Association="Self.FK__Inscripci__IdPro__59063A47">
+          <AssociationSet Name="FK__Inscripci__IdPro__5E8A0973" Association="Self.FK__Inscripci__IdPro__5E8A0973">
             <End Role="ProgramacionesCursos" EntitySet="ProgramacionesCursos" />
             <End Role="Inscripciones" EntitySet="Inscripciones" />
           </AssociationSet>
-          <AssociationSet Name="FK__Pagos__IdInscrip__5EBF139D" Association="Self.FK__Pagos__IdInscrip__5EBF139D">
+          <AssociationSet Name="FK__Pagos__IdInscrip__6442E2C9" Association="Self.FK__Pagos__IdInscrip__6442E2C9">
             <End Role="Inscripciones" EntitySet="Inscripciones" />
             <End Role="Pagos" EntitySet="Pagos" />
           </AssociationSet>
-          <AssociationSet Name="FK__Inventari__IdSed__49C3F6B7" Association="Self.FK__Inventari__IdSed__49C3F6B7">
+          <AssociationSet Name="FK__Instructo__IdUsu__43D61337" Association="Self.FK__Instructo__IdUsu__43D61337">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Instructores" EntitySet="Instructores" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Inventari__IdSed__4F47C5E3" Association="Self.FK__Inventari__IdSed__4F47C5E3">
             <End Role="Sedes" EntitySet="Sedes" />
             <End Role="InventarioEquipos" EntitySet="InventarioEquipos" />
           </AssociationSet>
-          <AssociationSet Name="FK__Programac__IdSed__5165187F" Association="Self.FK__Programac__IdSed__5165187F">
+          <AssociationSet Name="FK__Usuario_P__IdPer__3E1D39E1" Association="Self.FK__Usuario_P__IdPer__3E1D39E1">
+            <End Role="Perfiles" EntitySet="Perfiles" />
+            <End Role="Usuario_Perfil" EntitySet="Usuario_Perfil" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Programac__IdSed__56E8E7AB" Association="Self.FK__Programac__IdSed__56E8E7AB">
             <End Role="Sedes" EntitySet="Sedes" />
             <End Role="ProgramacionesCursos" EntitySet="ProgramacionesCursos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Usuario_P__IdUsu__3D2915A8" Association="Self.FK__Usuario_P__IdUsu__3D2915A8">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Usuario_Perfil" EntitySet="Usuario_Perfil" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -819,9 +1015,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Academia_SistemasModelStoreContainer" CdmEntityContainer="Academia_SistemasEntities">
+        <EntityContainerMapping StorageEntityContainer="db19925ModelStoreContainer" CdmEntityContainer="db19925Entities2">
           <EntitySetMapping Name="AsignacionInstructores">
-            <EntityTypeMapping TypeName="Academia_SistemasModel.AsignacionInstructore">
+            <EntityTypeMapping TypeName="db19925Model.AsignacionInstructore">
               <MappingFragment StoreEntitySet="AsignacionInstructores">
                 <ScalarProperty Name="IdAsignacion" ColumnName="IdAsignacion" />
                 <ScalarProperty Name="IdInstructor" ColumnName="IdInstructor" />
@@ -831,7 +1027,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Calificaciones">
-            <EntityTypeMapping TypeName="Academia_SistemasModel.Calificacione">
+            <EntityTypeMapping TypeName="db19925Model.Calificacione">
               <MappingFragment StoreEntitySet="Calificaciones">
                 <ScalarProperty Name="IdCalificacion" ColumnName="IdCalificacion" />
                 <ScalarProperty Name="IdInscripcion" ColumnName="IdInscripcion" />
@@ -841,7 +1037,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CategoriasCursos">
-            <EntityTypeMapping TypeName="Academia_SistemasModel.CategoriasCurso">
+            <EntityTypeMapping TypeName="db19925Model.CategoriasCurso">
               <MappingFragment StoreEntitySet="CategoriasCursos">
                 <ScalarProperty Name="IdCategoria" ColumnName="IdCategoria" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -850,7 +1046,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Compras">
-            <EntityTypeMapping TypeName="Academia_SistemasModel.Compra">
+            <EntityTypeMapping TypeName="db19925Model.Compra">
               <MappingFragment StoreEntitySet="Compras">
                 <ScalarProperty Name="IdCompra" ColumnName="IdCompra" />
                 <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
@@ -862,7 +1058,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Cursos">
-            <EntityTypeMapping TypeName="Academia_SistemasModel.Curso">
+            <EntityTypeMapping TypeName="db19925Model.Curso">
               <MappingFragment StoreEntitySet="Cursos">
                 <ScalarProperty Name="IdCurso" ColumnName="IdCurso" />
                 <ScalarProperty Name="IdModalidad" ColumnName="IdModalidad" />
@@ -875,7 +1071,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Equipos">
-            <EntityTypeMapping TypeName="Academia_SistemasModel.Equipos">
+            <EntityTypeMapping TypeName="db19925Model.Equipos">
               <MappingFragment StoreEntitySet="Equipos">
                 <ScalarProperty Name="IdEquipo" ColumnName="IdEquipo" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -885,7 +1081,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Estudiantes">
-            <EntityTypeMapping TypeName="Academia_SistemasModel.Estudiante">
+            <EntityTypeMapping TypeName="db19925Model.Estudiante">
               <MappingFragment StoreEntitySet="Estudiantes">
                 <ScalarProperty Name="IdEstudiante" ColumnName="IdEstudiante" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -893,11 +1089,12 @@
                 <ScalarProperty Name="Correo" ColumnName="Correo" />
                 <ScalarProperty Name="Telefono" ColumnName="Telefono" />
                 <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Inscripciones">
-            <EntityTypeMapping TypeName="Academia_SistemasModel.Inscripcione">
+            <EntityTypeMapping TypeName="db19925Model.Inscripcione">
               <MappingFragment StoreEntitySet="Inscripciones">
                 <ScalarProperty Name="IdInscripcion" ColumnName="IdInscripcion" />
                 <ScalarProperty Name="IdEstudiante" ColumnName="IdEstudiante" />
@@ -907,7 +1104,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Instructores">
-            <EntityTypeMapping TypeName="Academia_SistemasModel.Instructore">
+            <EntityTypeMapping TypeName="db19925Model.Instructore">
               <MappingFragment StoreEntitySet="Instructores">
                 <ScalarProperty Name="Idinstructor" ColumnName="Idinstructor" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -915,11 +1112,12 @@
                 <ScalarProperty Name="Correo" ColumnName="Correo" />
                 <ScalarProperty Name="Telefono" ColumnName="Telefono" />
                 <ScalarProperty Name="Especialidad" ColumnName="Especialidad" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="InventarioEquipos">
-            <EntityTypeMapping TypeName="Academia_SistemasModel.InventarioEquipos">
+            <EntityTypeMapping TypeName="db19925Model.InventarioEquipos">
               <MappingFragment StoreEntitySet="InventarioEquipos">
                 <ScalarProperty Name="IdInventario" ColumnName="IdInventario" />
                 <ScalarProperty Name="IdEquipo" ColumnName="IdEquipo" />
@@ -930,7 +1128,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Modalidades">
-            <EntityTypeMapping TypeName="Academia_SistemasModel.Modalidade">
+            <EntityTypeMapping TypeName="db19925Model.Modalidade">
               <MappingFragment StoreEntitySet="Modalidades">
                 <ScalarProperty Name="IdModalidad" ColumnName="IdModalidad" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -938,7 +1136,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Pagos">
-            <EntityTypeMapping TypeName="Academia_SistemasModel.Pago">
+            <EntityTypeMapping TypeName="db19925Model.Pago">
               <MappingFragment StoreEntitySet="Pagos">
                 <ScalarProperty Name="IdCPago" ColumnName="IdCPago" />
                 <ScalarProperty Name="IdInscripcion" ColumnName="IdInscripcion" />
@@ -948,8 +1146,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Perfiles">
+            <EntityTypeMapping TypeName="db19925Model.Perfile">
+              <MappingFragment StoreEntitySet="Perfiles">
+                <ScalarProperty Name="IdPerfil" ColumnName="IdPerfil" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="ProgramacionesCursos">
-            <EntityTypeMapping TypeName="Academia_SistemasModel.ProgramacionesCurso">
+            <EntityTypeMapping TypeName="db19925Model.ProgramacionesCurso">
               <MappingFragment StoreEntitySet="ProgramacionesCursos">
                 <ScalarProperty Name="IdProgramacion" ColumnName="IdProgramacion" />
                 <ScalarProperty Name="IdCurso" ColumnName="IdCurso" />
@@ -961,7 +1167,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Proveedores">
-            <EntityTypeMapping TypeName="Academia_SistemasModel.Proveedore">
+            <EntityTypeMapping TypeName="db19925Model.Proveedore">
               <MappingFragment StoreEntitySet="Proveedores">
                 <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -972,13 +1178,33 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Sedes">
-            <EntityTypeMapping TypeName="Academia_SistemasModel.Sede">
+            <EntityTypeMapping TypeName="db19925Model.Sede">
               <MappingFragment StoreEntitySet="Sedes">
                 <ScalarProperty Name="IdSede" ColumnName="IdSede" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="Ciudad" ColumnName="Ciudad" />
                 <ScalarProperty Name="Direccion" ColumnName="Direccion" />
                 <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuario_Perfil">
+            <EntityTypeMapping TypeName="db19925Model.Usuario_Perfil">
+              <MappingFragment StoreEntitySet="Usuario_Perfil">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="IdPerfil" ColumnName="IdPerfil" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="db19925Model.Usuario">
+              <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Clave" ColumnName="Clave" />
+                <ScalarProperty Name="Salt" ColumnName="Salt" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -999,7 +1225,7 @@
         <DesignerProperty Name="EnablePluralization" Value="true" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
-        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->
