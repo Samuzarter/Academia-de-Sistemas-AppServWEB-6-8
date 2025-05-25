@@ -26,6 +26,10 @@ namespace Academia_Sistemas.Controllers
         {
             try
             {
+                if (datos.Usuario == null || datos.Estudiante == null)
+                {
+                    return $"Usuario o Estudiante no fueron ingresados";
+                }
                 clsUsuario UsuarioNuevo = new clsUsuario();
                 UsuarioNuevo.usuario = datos.Usuario;
 
