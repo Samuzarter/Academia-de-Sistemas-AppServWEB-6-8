@@ -26,6 +26,31 @@ Nombre NVARCHAR(100) NOT NULL,
 );
 GO
 
+CREATE TABLE [Usuarios] (
+IdUsuario INT IDENTITY(1,1) PRIMARY KEY,
+Username NVARCHAR(100) NOT NULL,
+Clave NVARCHAR(200) NULL,
+Salt NVARCHAR(200) NULL
+);
+GO
+
+CREATE TABLE [Perfiles] (
+IdPerfil INT IDENTITY(1,1) PRIMARY KEY,
+Nombre NVARCHAR(100) NOT NULL
+);
+GO
+
+CREATE TABLE [Usuario_Perfil] (
+Id INT IDENTITY(1,1) PRIMARY KEY,
+IdUsuario INT NOT NULL,
+IdPerfil INT NOT NULL,
+Activo BIT DEFAULT 1,
+
+FOREIGN KEY (IdUsuario) REFERENCES Usuarios(IdUsuario),
+FOREIGN KEY (IdPerfil) REFERENCES Perfiles(IdPerfil)
+);
+GO
+
 CREATE TABLE [Estudiantes](
 IdEstudiante INT IDENTITY(1,1) PRIMARY KEY,
 Nombre NVARCHAR(100) NOT NULL,
@@ -33,6 +58,8 @@ Apellido NVARCHAR(100) NOT NULL,
 Correo NVARCHAR(100) NOT NULL,
 Telefono NVARCHAR(20) NOT NULL, 
 Direccion NVARCHAR(150) NOT NULL,
+IdUsuario INT,
+FOREIGN KEY (IdUsuario) REFERENCES Usuarios(IdUsuario)
 );
 GO
 
@@ -43,6 +70,8 @@ Apellido NVARCHAR(100) NOT NULL,
 Correo NVARCHAR(100) NOT NULL,
 Telefono NVARCHAR(20) NOT NULL, 
 Especialidad NVARCHAR(100) NOT NULL,
+IdUsuario INT,
+FOREIGN KEY (IdUsuario) REFERENCES Usuarios(IdUsuario)
 );
 GO
 
