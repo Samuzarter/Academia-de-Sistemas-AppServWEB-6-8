@@ -28,8 +28,8 @@ namespace Academia_Sistemas.Models
         public string Direccion { get; set; }
         public Nullable<int> IdUsuario { get; set; }
     
+        public virtual Usuario Usuario { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Inscripcione> Inscripciones { get; set; }
-        public virtual Usuario Usuario { get; set; }
     }
 }

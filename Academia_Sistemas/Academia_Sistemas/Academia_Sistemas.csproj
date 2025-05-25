@@ -231,6 +231,8 @@
     <Compile Include="Clases\clsProveedores.cs" />
     <Compile Include="Clases\clsSedes.cs" />
     <Compile Include="Clases\clsInscripciones.cs" />
+    <Compile Include="Clases\clsUsuario.cs" />
+    <Compile Include="Clases\EstudianteUsuario.cs" />
     <Compile Include="Clases\TokenGenerator.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\CalificacionesController.cs" />
@@ -240,6 +242,7 @@
     <Compile Include="Controllers\EstudiantesController.cs" />
     <Compile Include="Controllers\InscripcionesController.cs" />
     <Compile Include="Controllers\InventarioEquiposController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ModalidadesController.cs" />
     <Compile Include="Controllers\CategoriasCursosController.cs" />
     <Compile Include="Controllers\InstructoresController.cs" />

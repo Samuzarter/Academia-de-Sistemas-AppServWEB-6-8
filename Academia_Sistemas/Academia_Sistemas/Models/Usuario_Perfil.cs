@@ -15,9 +15,9 @@ namespace Academia_Sistemas.Models
     public partial class Usuario_Perfil
     {
         public int Id { get; set; }
-        public Nullable<int> IdUsuario { get; set; }
-        public Nullable<int> IdPerfil { get; set; }
-        public bool Activo { get; set; }
+        public int IdUsuario { get; set; }
+        public int IdPerfil { get; set; }
+        public Nullable<bool> Activo { get; set; }
     
         public virtual Perfile Perfile { get; set; }
         public virtual Usuario Usuario { get; set; }
