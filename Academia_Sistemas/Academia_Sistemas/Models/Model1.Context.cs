@@ -13,10 +13,10 @@ namespace Academia_Sistemas.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class db19925Entities3 : DbContext
+    public partial class Academia_SistemasEntities : DbContext
     {
-        public db19925Entities3()
-            : base("name=db19925Entities3")
+        public Academia_SistemasEntities()
+            : base("name=Academia_SistemasEntities")
         {
         }
     
