@@ -32,10 +32,12 @@ namespace Academia_Sistemas.Models
         public virtual DbSet<Curso> Cursos { get; set; }
         public virtual DbSet<Equipos> Equipos { get; set; }
         public virtual DbSet<Estudiante> Estudiantes { get; set; }
+        public virtual DbSet<ImagenesModulo> ImagenesModulos { get; set; }
         public virtual DbSet<Inscripcione> Inscripciones { get; set; }
         public virtual DbSet<Instructore> Instructores { get; set; }
         public virtual DbSet<InventarioEquipos> InventarioEquipos { get; set; }
         public virtual DbSet<Modalidade> Modalidades { get; set; }
+        public virtual DbSet<Modulo> Modulos { get; set; }
         public virtual DbSet<Pago> Pagos { get; set; }
         public virtual DbSet<Perfile> Perfiles { get; set; }
         public virtual DbSet<ProgramacionesCurso> ProgramacionesCursos { get; set; }
