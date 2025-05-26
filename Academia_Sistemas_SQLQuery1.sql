@@ -92,6 +92,24 @@ Categoria NVARCHAR(100) NOT NULL,
 );
 GO
 
+CREATE TABLE Modulos (
+    IdModulo INT IDENTITY(1,1) PRIMARY KEY,
+    Titulo NVARCHAR(150) NOT NULL,
+    Contenido NVARCHAR(MAX) NOT NULL,
+    LinkVideo NVARCHAR(300),
+    IdCurso INT NOT NULL,
+    CONSTRAINT FK_Modulos_Cursos FOREIGN KEY (IdCurso) REFERENCES Cursos(IdCurso)
+);
+GO
+
+CREATE TABLE ImagenesModulos (
+    IdImagen INT IDENTITY(1,1) PRIMARY KEY,
+    NombreImagen NVARCHAR(200) NOT NULL,
+    IdModulo INT NOT NULL,
+    CONSTRAINT FK_Imagenes_Modulos FOREIGN KEY (IdModulo) REFERENCES Modulos(IdModulo)
+);
+GO
+
 -------FK-------------
 CREATE TABLE [Compras](
 IdCompra INT IDENTITY(1,1) PRIMARY KEY,
