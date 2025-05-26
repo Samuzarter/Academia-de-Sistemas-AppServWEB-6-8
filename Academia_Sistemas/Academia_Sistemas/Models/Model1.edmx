@@ -75,6 +75,14 @@
           <Property Name="Direccion" Type="nvarchar" MaxLength="150" Nullable="false" />
           <Property Name="IdUsuario" Type="int" />
         </EntityType>
+        <EntityType Name="ImagenesModulos">
+          <Key>
+            <PropertyRef Name="IdImagen" />
+          </Key>
+          <Property Name="IdImagen" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreImagen" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="IdModulo" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Inscripciones">
           <Key>
             <PropertyRef Name="IdInscripcion" />
@@ -112,6 +120,16 @@
           </Key>
           <Property Name="IdModalidad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Modulos">
+          <Key>
+            <PropertyRef Name="IdModulo" />
+          </Key>
+          <Property Name="IdModulo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Titulo" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Contenido" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="LinkVideo" Type="nvarchar" MaxLength="300" />
+          <Property Name="IdCurso" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Pagos">
           <Key>
@@ -395,6 +413,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Imagenes_Modulos">
+          <End Role="Modulos" Type="Self.Modulos" Multiplicity="1" />
+          <End Role="ImagenesModulos" Type="Self.ImagenesModulos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modulos">
+              <PropertyRef Name="IdModulo" />
+            </Principal>
+            <Dependent Role="ImagenesModulos">
+              <PropertyRef Name="IdModulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Modulos_Cursos">
+          <End Role="Cursos" Type="Self.Cursos" Multiplicity="1" />
+          <End Role="Modulos" Type="Self.Modulos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cursos">
+              <PropertyRef Name="IdCurso" />
+            </Principal>
+            <Dependent Role="Modulos">
+              <PropertyRef Name="IdCurso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="db19925ModelStoreContainer">
           <EntitySet Name="AsignacionInstructores" EntityType="Self.AsignacionInstructores" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Calificaciones" EntityType="Self.Calificaciones" Schema="dbo" store:Type="Tables" />
@@ -403,10 +445,12 @@
           <EntitySet Name="Cursos" EntityType="Self.Cursos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Equipos" EntityType="Self.Equipos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Estudiantes" EntityType="Self.Estudiantes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ImagenesModulos" EntityType="Self.ImagenesModulos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Inscripciones" EntityType="Self.Inscripciones" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Instructores" EntityType="Self.Instructores" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="InventarioEquipos" EntityType="Self.InventarioEquipos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Modalidades" EntityType="Self.Modalidades" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Modulos" EntityType="Self.Modulos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Pagos" EntityType="Self.Pagos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Perfiles" EntityType="Self.Perfiles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProgramacionesCursos" EntityType="Self.ProgramacionesCursos" Schema="dbo" store:Type="Tables" />
@@ -486,6 +530,14 @@
             <End Role="Usuarios" EntitySet="Usuarios" />
             <End Role="Usuario_Perfil" EntitySet="Usuario_Perfil" />
           </AssociationSet>
+          <AssociationSet Name="FK_Imagenes_Modulos" Association="Self.FK_Imagenes_Modulos">
+            <End Role="Modulos" EntitySet="Modulos" />
+            <End Role="ImagenesModulos" EntitySet="ImagenesModulos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Modulos_Cursos" Association="Self.FK_Modulos_Cursos">
+            <End Role="Cursos" EntitySet="Cursos" />
+            <End Role="Modulos" EntitySet="Modulos" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
@@ -549,6 +601,7 @@
           <NavigationProperty Name="CategoriasCurso" Relationship="Self.FK__Cursos__IdCatego__531856C7" FromRole="Cursos" ToRole="CategoriasCursos" />
           <NavigationProperty Name="Modalidade" Relationship="Self.FK__Cursos__IdModali__5224328E" FromRole="Cursos" ToRole="Modalidades" />
           <NavigationProperty Name="ProgramacionesCursos" Relationship="Self.FK__Programac__IdCur__55F4C372" FromRole="Cursos" ToRole="ProgramacionesCursos" />
+          <NavigationProperty Name="Modulos" Relationship="Self.FK_Modulos_Cursos" FromRole="Cursos" ToRole="Modulos" />
         </EntityType>
         <EntityType Name="Equipos">
           <Key>
@@ -574,6 +627,15 @@
           <Property Name="IdUsuario" Type="Int32" />
           <NavigationProperty Name="Usuario" Relationship="Self.FK__Estudiant__IdUsu__40F9A68C" FromRole="Estudiantes" ToRole="Usuarios" />
           <NavigationProperty Name="Inscripciones" Relationship="Self.FK__Inscripci__IdEst__5D95E53A" FromRole="Estudiantes" ToRole="Inscripciones" />
+        </EntityType>
+        <EntityType Name="ImagenesModulo">
+          <Key>
+            <PropertyRef Name="IdImagen" />
+          </Key>
+          <Property Name="IdImagen" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreImagen" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdModulo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Modulo" Relationship="Self.FK_Imagenes_Modulos" FromRole="ImagenesModulos" ToRole="Modulos" />
         </EntityType>
         <EntityType Name="Inscripcione">
           <Key>
@@ -621,6 +683,18 @@
           <Property Name="IdModalidad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Cursos" Relationship="Self.FK__Cursos__IdModali__5224328E" FromRole="Modalidades" ToRole="Cursos" />
+        </EntityType>
+        <EntityType Name="Modulo">
+          <Key>
+            <PropertyRef Name="IdModulo" />
+          </Key>
+          <Property Name="IdModulo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Titulo" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Contenido" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LinkVideo" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="IdCurso" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Curso" Relationship="Self.FK_Modulos_Cursos" FromRole="Modulos" ToRole="Cursos" />
+          <NavigationProperty Name="ImagenesModulos" Relationship="Self.FK_Imagenes_Modulos" FromRole="Modulos" ToRole="ImagenesModulos" />
         </EntityType>
         <EntityType Name="Pago">
           <Key>
@@ -798,6 +872,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Modulos_Cursos">
+          <End Role="Cursos" Type="Self.Curso" Multiplicity="1" />
+          <End Role="Modulos" Type="Self.Modulo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cursos">
+              <PropertyRef Name="IdCurso" />
+            </Principal>
+            <Dependent Role="Modulos">
+              <PropertyRef Name="IdCurso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Inventari__IdEqu__4E53A1AA">
           <End Role="Equipos" Type="Self.Equipos" Multiplicity="0..1" />
           <End Role="InventarioEquipos" Type="Self.InventarioEquipos" Multiplicity="*" />
@@ -831,6 +917,18 @@
             </Principal>
             <Dependent Role="Inscripciones">
               <PropertyRef Name="IdEstudiante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Imagenes_Modulos">
+          <End Role="Modulos" Type="Self.Modulo" Multiplicity="1" />
+          <End Role="ImagenesModulos" Type="Self.ImagenesModulo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modulos">
+              <PropertyRef Name="IdModulo" />
+            </Principal>
+            <Dependent Role="ImagenesModulos">
+              <PropertyRef Name="IdModulo" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -918,7 +1016,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="db19925Entities2" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="db19925Entities3" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AsignacionInstructores" EntityType="Self.AsignacionInstructore" />
           <EntitySet Name="Calificaciones" EntityType="Self.Calificacione" />
           <EntitySet Name="CategoriasCursos" EntityType="Self.CategoriasCurso" />
@@ -926,10 +1024,12 @@
           <EntitySet Name="Cursos" EntityType="Self.Curso" />
           <EntitySet Name="Equipos" EntityType="Self.Equipos" />
           <EntitySet Name="Estudiantes" EntityType="Self.Estudiante" />
+          <EntitySet Name="ImagenesModulos" EntityType="Self.ImagenesModulo" />
           <EntitySet Name="Inscripciones" EntityType="Self.Inscripcione" />
           <EntitySet Name="Instructores" EntityType="Self.Instructore" />
           <EntitySet Name="InventarioEquipos" EntityType="Self.InventarioEquipos" />
           <EntitySet Name="Modalidades" EntityType="Self.Modalidade" />
+          <EntitySet Name="Modulos" EntityType="Self.Modulo" />
           <EntitySet Name="Pagos" EntityType="Self.Pago" />
           <EntitySet Name="Perfiles" EntityType="Self.Perfile" />
           <EntitySet Name="ProgramacionesCursos" EntityType="Self.ProgramacionesCurso" />
@@ -969,6 +1069,10 @@
             <End Role="Cursos" EntitySet="Cursos" />
             <End Role="ProgramacionesCursos" EntitySet="ProgramacionesCursos" />
           </AssociationSet>
+          <AssociationSet Name="FK_Modulos_Cursos" Association="Self.FK_Modulos_Cursos">
+            <End Role="Cursos" EntitySet="Cursos" />
+            <End Role="Modulos" EntitySet="Modulos" />
+          </AssociationSet>
           <AssociationSet Name="FK__Inventari__IdEqu__4E53A1AA" Association="Self.FK__Inventari__IdEqu__4E53A1AA">
             <End Role="Equipos" EntitySet="Equipos" />
             <End Role="InventarioEquipos" EntitySet="InventarioEquipos" />
@@ -980,6 +1084,10 @@
           <AssociationSet Name="FK__Inscripci__IdEst__5D95E53A" Association="Self.FK__Inscripci__IdEst__5D95E53A">
             <End Role="Estudiantes" EntitySet="Estudiantes" />
             <End Role="Inscripciones" EntitySet="Inscripciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Imagenes_Modulos" Association="Self.FK_Imagenes_Modulos">
+            <End Role="Modulos" EntitySet="Modulos" />
+            <End Role="ImagenesModulos" EntitySet="ImagenesModulos" />
           </AssociationSet>
           <AssociationSet Name="FK__Inscripci__IdPro__5E8A0973" Association="Self.FK__Inscripci__IdPro__5E8A0973">
             <End Role="ProgramacionesCursos" EntitySet="ProgramacionesCursos" />
@@ -1015,7 +1123,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="db19925ModelStoreContainer" CdmEntityContainer="db19925Entities2">
+        <EntityContainerMapping StorageEntityContainer="db19925ModelStoreContainer" CdmEntityContainer="db19925Entities3">
           <EntitySetMapping Name="AsignacionInstructores">
             <EntityTypeMapping TypeName="db19925Model.AsignacionInstructore">
               <MappingFragment StoreEntitySet="AsignacionInstructores">
@@ -1093,6 +1201,15 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="ImagenesModulos">
+            <EntityTypeMapping TypeName="db19925Model.ImagenesModulo">
+              <MappingFragment StoreEntitySet="ImagenesModulos">
+                <ScalarProperty Name="IdImagen" ColumnName="IdImagen" />
+                <ScalarProperty Name="NombreImagen" ColumnName="NombreImagen" />
+                <ScalarProperty Name="IdModulo" ColumnName="IdModulo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Inscripciones">
             <EntityTypeMapping TypeName="db19925Model.Inscripcione">
               <MappingFragment StoreEntitySet="Inscripciones">
@@ -1132,6 +1249,17 @@
               <MappingFragment StoreEntitySet="Modalidades">
                 <ScalarProperty Name="IdModalidad" ColumnName="IdModalidad" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Modulos">
+            <EntityTypeMapping TypeName="db19925Model.Modulo">
+              <MappingFragment StoreEntitySet="Modulos">
+                <ScalarProperty Name="IdModulo" ColumnName="IdModulo" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="Contenido" ColumnName="Contenido" />
+                <ScalarProperty Name="LinkVideo" ColumnName="LinkVideo" />
+                <ScalarProperty Name="IdCurso" ColumnName="IdCurso" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -18,6 +18,7 @@ namespace Academia_Sistemas.Models
         public Curso()
         {
             this.ProgramacionesCursos = new HashSet<ProgramacionesCurso>();
+            this.Modulos = new HashSet<Modulo>();
         }
     
         public int IdCurso { get; set; }
@@ -32,5 +33,7 @@ namespace Academia_Sistemas.Models
         public virtual Modalidade Modalidade { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProgramacionesCurso> ProgramacionesCursos { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Modulo> Modulos { get; set; }
     }
 }

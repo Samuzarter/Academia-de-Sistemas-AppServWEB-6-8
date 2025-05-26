@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="865da318dfc9483fa43758e659092054" Name="Diagram1">
+      <Diagram DiagramId="68905f41e8714e849b8648abd24bf498" Name="Diagram1">
         <EntityTypeShape EntityType="db19925Model.AsignacionInstructore" Width="1.5" PointX="8.25" PointY="9" IsExpanded="true" />
         <EntityTypeShape EntityType="db19925Model.Calificacione" Width="1.5" PointX="13.5" PointY="7.625" IsExpanded="true" />
         <EntityTypeShape EntityType="db19925Model.CategoriasCurso" Width="1.5" PointX="1.5" PointY="12" IsExpanded="true" />
@@ -12,10 +12,12 @@
         <EntityTypeShape EntityType="db19925Model.Curso" Width="1.5" PointX="3.75" PointY="12.5" IsExpanded="true" />
         <EntityTypeShape EntityType="db19925Model.Equipos" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
         <EntityTypeShape EntityType="db19925Model.Estudiante" Width="1.5" PointX="9" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="db19925Model.ImagenesModulo" Width="1.5" PointX="8.25" PointY="13.125" IsExpanded="true" />
         <EntityTypeShape EntityType="db19925Model.Inscripcione" Width="1.5" PointX="11.25" PointY="8.75" IsExpanded="true" />
         <EntityTypeShape EntityType="db19925Model.Instructore" Width="1.5" PointX="6" PointY="4.625" IsExpanded="true" />
         <EntityTypeShape EntityType="db19925Model.InventarioEquipos" Width="1.5" PointX="3" PointY="8.875" IsExpanded="true" />
         <EntityTypeShape EntityType="db19925Model.Modalidade" Width="1.5" PointX="1.5" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="db19925Model.Modulo" Width="1.5" PointX="6" PointY="12.875" IsExpanded="true" />
         <EntityTypeShape EntityType="db19925Model.Pago" Width="1.5" PointX="13.5" PointY="10.25" IsExpanded="true" />
         <EntityTypeShape EntityType="db19925Model.Perfile" Width="1.5" PointX="3.75" PointY="17" IsExpanded="true" />
         <EntityTypeShape EntityType="db19925Model.ProgramacionesCurso" Width="1.5" PointX="6" PointY="8.5" IsExpanded="true" />
@@ -31,9 +33,11 @@
         <AssociationConnector Association="db19925Model.FK__Compras__IdProve__4A8310C6" ManuallyRouted="false" />
         <AssociationConnector Association="db19925Model.FK__Cursos__IdModali__5224328E" ManuallyRouted="false" />
         <AssociationConnector Association="db19925Model.FK__Programac__IdCur__55F4C372" ManuallyRouted="false" />
+        <AssociationConnector Association="db19925Model.FK_Modulos_Cursos" ManuallyRouted="false" />
         <AssociationConnector Association="db19925Model.FK__Inventari__IdEqu__4E53A1AA" ManuallyRouted="false" />
         <AssociationConnector Association="db19925Model.FK__Estudiant__IdUsu__40F9A68C" ManuallyRouted="false" />
         <AssociationConnector Association="db19925Model.FK__Inscripci__IdEst__5D95E53A" ManuallyRouted="false" />
+        <AssociationConnector Association="db19925Model.FK_Imagenes_Modulos" ManuallyRouted="false" />
         <AssociationConnector Association="db19925Model.FK__Inscripci__IdPro__5E8A0973" ManuallyRouted="false" />
         <AssociationConnector Association="db19925Model.FK__Pagos__IdInscrip__6442E2C9" ManuallyRouted="false" />
         <AssociationConnector Association="db19925Model.FK__Instructo__IdUsu__43D61337" ManuallyRouted="false" />

@@ -13,10 +13,10 @@ namespace Academia_Sistemas.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Academia_SistemasEntities : DbContext
+    public partial class db19925Entities3 : DbContext
     {
-        public Academia_SistemasEntities()
-            : base("name=Academia_SistemasEntities")
+        public db19925Entities3()
+            : base("name=db19925Entities3")
         {
         }
     
@@ -32,10 +32,12 @@ namespace Academia_Sistemas.Models
         public virtual DbSet<Curso> Cursos { get; set; }
         public virtual DbSet<Equipos> Equipos { get; set; }
         public virtual DbSet<Estudiante> Estudiantes { get; set; }
+        public virtual DbSet<ImagenesModulo> ImagenesModulos { get; set; }
         public virtual DbSet<Inscripcione> Inscripciones { get; set; }
         public virtual DbSet<Instructore> Instructores { get; set; }
         public virtual DbSet<InventarioEquipos> InventarioEquipos { get; set; }
         public virtual DbSet<Modalidade> Modalidades { get; set; }
+        public virtual DbSet<Modulo> Modulos { get; set; }
         public virtual DbSet<Pago> Pagos { get; set; }
         public virtual DbSet<Perfile> Perfiles { get; set; }
         public virtual DbSet<ProgramacionesCurso> ProgramacionesCursos { get; set; }
