@@ -9,6 +9,7 @@
 
 namespace Academia_Sistemas.Models
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     
@@ -18,8 +19,9 @@ namespace Academia_Sistemas.Models
         public int IdUsuario { get; set; }
         public int IdPerfil { get; set; }
         public Nullable<bool> Activo { get; set; }
-    
+        [JsonIgnore]
         public virtual Perfile Perfile { get; set; }
+        [JsonIgnore]
         public virtual Usuario Usuario { get; set; }
     }
 }

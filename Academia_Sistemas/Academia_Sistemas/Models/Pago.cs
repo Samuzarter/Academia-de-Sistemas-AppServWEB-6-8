@@ -9,6 +9,7 @@
 
 namespace Academia_Sistemas.Models
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     
@@ -19,7 +20,7 @@ namespace Academia_Sistemas.Models
         public System.DateTime FechaPago { get; set; }
         public decimal Monto { get; set; }
         public string MetodoPago { get; set; }
-    
+        [JsonIgnore]
         public virtual Inscripcione Inscripcione { get; set; }
     }
 }
