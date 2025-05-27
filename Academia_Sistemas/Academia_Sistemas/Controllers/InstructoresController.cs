@@ -5,6 +5,7 @@ using System.Web;
 using Academia_Sistemas.Clases;
 using Academia_Sistemas.Models;
 using System.Web.Http;
+using static Academia_Sistemas.Clases.clsInstructores;
 
 namespace Academia_Sistemas.Controllers
 {
@@ -26,14 +27,14 @@ namespace Academia_Sistemas.Controllers
         {
             try
             {
-                if(datos.Usuario == null || datos.Instructor == null)
+                if (datos.Usuario == null || datos.Instructor == null)
                 {
                     return $"Usuario o Instructor no fueron ingresados";
                 }
                 clsUsuario UsuarioNuevo = new clsUsuario();
                 UsuarioNuevo.usuario = datos.Usuario;
 
-                string UsuarioCreado = UsuarioNuevo.CrearUsuario(1); 
+                string UsuarioCreado = UsuarioNuevo.CrearUsuario(1);
 
                 if (!UsuarioCreado.Contains("exitosamente"))
                 {
@@ -68,5 +69,35 @@ namespace Academia_Sistemas.Controllers
             clsInstructores clsInstructore = new clsInstructores();
             return clsInstructore.Borrar(idInstructore);
         }
+
+        [HttpPut]
+        [Route("EditarCursoAsignado")]
+        public string EditarCursoAsignado(int idInstructor, int idCurso, string nuevaDescripcion, int nuevaDuracion)
+        {
+            clsInstructores clsInstructores = new clsInstructores();
+            return clsInstructores.EditarCursoAsignado(idInstructor, idCurso, nuevaDescripcion, nuevaDuracion);
+        }
+
+
+        [HttpGet]
+        [Route("VerCursosAsignados")]
+        public List<Curso> VerCursosAsignados(int idInstructor)
+        {
+            clsInstructores clsInsdtructore = new clsInstructores();
+            return clsInsdtructore.VerCursosAsignados(idInstructor);
+        }
+
+
+        [HttpPost]
+        [Route("EditarCalificacionPorCurso")]
+        public string EditarCalificacionPorCurso(int idInstructor, int idCurso, int idEstudiante, decimal nota, string observaciones)
+        {
+            clsInstructores clsInsdtructore = new clsInstructores();
+            return clsInsdtructore.EditarCalificacion(idInstructor, idCurso, idEstudiante, nota, observaciones);
+        }
+
+
+
     }
+
 }
