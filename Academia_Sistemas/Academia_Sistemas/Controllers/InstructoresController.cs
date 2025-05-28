@@ -109,8 +109,30 @@ namespace Academia_Sistemas.Controllers
             return clsInstructor.EditarCalificacion(idInstructor, idCurso, idEstudiante, calificacion);
         }
 
+        [HttpPost]
+        [Route("CrearModulos")]
+        public string CrearModulo(int idInstructor, Modulo nuevoModulo, List<string> nombresArchivosImagenes = null)
+        {
+            clsInstructores clsInstructores = new clsInstructores();
+            return clsInstructores.CrearModulo(idInstructor, nuevoModulo, nombresArchivosImagenes = null);
+        }
 
 
+        [HttpGet]
+        [Route("VerEquiposAsignados")]
+        public List<InventarioEquipos> VerEquiposAsignados(int idInstructor)
+        {
+            clsInstructores clsInstructores = new clsInstructores();
+            return clsInstructores.VerEquiposAsignados(idInstructor);
+        }
+
+        [HttpGet]
+        [Route("VerEstudiantesPorCurso")]
+        public List<Estudiante> VerEstudiantesPorCurso(int idInstructor, int idCurso)
+        {
+            clsInstructores clsInstructores = new clsInstructores();
+            return clsInstructores.VerEstudiantesPorCurso(idInstructor, idCurso);
+        }
 
     }
 

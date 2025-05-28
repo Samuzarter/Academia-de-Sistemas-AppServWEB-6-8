@@ -193,8 +193,97 @@ namespace Academia_Sistemas.Clases
             }
         }
 
-    }
+        public string CrearModulo(int idInstructor, Modulo nuevoModulo, List<string> nombresArchivosImagenes = null)
+        {
+            try
+            {
+                // Validar si el instructor está asignado al curso
+                var asignacionValida = (from ai in dbinstructores.AsignacionInstructores
+                                        join pc in dbinstructores.ProgramacionesCursos on ai.IdProgramacion equals pc.IdProgramacion
+                                        where ai.IdInstructor == idInstructor && pc.IdCurso == nuevoModulo.IdCurso
+                                        select ai).FirstOrDefault();
 
+                if (asignacionValida == null)
+                {
+                    return "El instructor no tiene asignado este curso, no puede crear módulos.";
+                }
+
+                // Agregar el nuevo módulo
+                dbinstructores.Modulos.Add(nuevoModulo);
+                dbinstructores.SaveChanges(); // Para obtener IdModulo
+
+                // Si se enviaron imágenes, usar la clase clsImagenesModulos para grabarlas
+                if (nombresArchivosImagenes != null && nombresArchivosImagenes.Count > 0)
+                {
+                    clsImagenesModulos manejadorImagenes = new clsImagenesModulos();
+                    manejadorImagenes.Archivos = nombresArchivosImagenes;
+                    manejadorImagenes.idModulo = nuevoModulo.IdModulo;
+                    string resultadoImagenes = manejadorImagenes.GrabarImagenes();
+
+                    if (!resultadoImagenes.Contains("correctamente"))
+                    {
+                        return "Módulo creado, pero hubo un error al guardar imágenes: " + resultadoImagenes;
+                    }
+                }
+
+                return "Módulo creado correctamente.";
+            }
+            catch (Exception ex)
+            {
+                return "Error al crear el módulo: " + ex.Message;
+            }
+        }
+
+        public List<InventarioEquipos> VerEquiposAsignados(int idInstructor)
+        {
+            try
+            {
+                // Buscar los equipos en las sedes donde el instructor tiene asignaciones
+                var equiposAsignados = (from ai in dbinstructores.AsignacionInstructores
+                                        join pc in dbinstructores.ProgramacionesCursos on ai.IdProgramacion equals pc.IdProgramacion
+                                        join eq in dbinstructores.InventarioEquipos on pc.IdSede equals eq.IdSede
+                                        where ai.IdInstructor == idInstructor
+                                        select eq).Distinct().ToList();
+
+                // Retornar lista vacía si no hay equipos asignados (sin lanzar excepción)
+                return equiposAsignados;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al obtener los equipos asignados: " + ex.Message);
+            }
+        }
+
+        public List<Estudiante> VerEstudiantesPorCurso(int idInstructor, int idCurso)
+        {
+            try
+            {
+                // Buscar las programaciones del curso asignadas al instructor
+                var programacionesAsignadas = (from ai in dbinstructores.AsignacionInstructores
+                                               join pc in dbinstructores.ProgramacionesCursos on ai.IdProgramacion equals pc.IdProgramacion
+                                               where ai.IdInstructor == idInstructor && pc.IdCurso == idCurso
+                                               select pc.IdProgramacion).ToList();
+
+                if (!programacionesAsignadas.Any())
+                {
+                    return new List<Estudiante>();
+                }
+
+                // Buscar estudiantes inscritos en esas programaciones (evitando nulos)
+                var estudiantes = (from ins in dbinstructores.Inscripciones
+                                   where ins.IdProgramacion.HasValue && programacionesAsignadas.Contains(ins.IdProgramacion.Value)
+                                   join est in dbinstructores.Estudiantes on ins.IdEstudiante equals est.IdEstudiante
+                                   select est).Distinct().ToList();
+
+                return estudiantes;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al obtener los estudiantes del curso: " + ex.Message);
+            }
+        }
+
+    }
 
 }
 
