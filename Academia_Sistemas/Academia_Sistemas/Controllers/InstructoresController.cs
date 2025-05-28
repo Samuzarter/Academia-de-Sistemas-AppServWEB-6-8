@@ -75,7 +75,13 @@ namespace Academia_Sistemas.Controllers
         public string EditarCursoAsignado(int idInstructor, int idCurso, string nuevaDescripcion, int nuevaDuracion)
         {
             clsInstructores clsInstructores = new clsInstructores();
-            return clsInstructores.EditarCursoAsignado(idInstructor, idCurso, nuevaDescripcion, nuevaDuracion);
+            Curso modCurso = new Curso
+            {
+                IdCurso = idCurso,
+                Descripcion = nuevaDescripcion,
+                Duracion = nuevaDuracion
+            };
+            return clsInstructores.EditarCursoAsignado(idInstructor, modCurso);
         }
 
 
@@ -92,9 +98,17 @@ namespace Academia_Sistemas.Controllers
         [Route("EditarCalificacionPorCurso")]
         public string EditarCalificacionPorCurso(int idInstructor, int idCurso, int idEstudiante, decimal nota, string observaciones)
         {
-            clsInstructores clsInsdtructore = new clsInstructores();
-            return clsInsdtructore.EditarCalificacion(idInstructor, idCurso, idEstudiante, nota, observaciones);
+            clsInstructores clsInstructor = new clsInstructores();
+
+            Calificacione calificacion = new Calificacione
+            {
+                Nota = nota,
+                Observaciones = observaciones
+            };
+
+            return clsInstructor.EditarCalificacion(idInstructor, idCurso, idEstudiante, calificacion);
         }
+
 
 
 

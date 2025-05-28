@@ -66,14 +66,14 @@ namespace Academia_Sistemas.Clases
             return "Instructor eliminado correctamente";
         }
 
-        public string EditarCursoAsignado(int idInstructor, int idCurso, string nuevaDescripcion, int nuevaDuracion)
+        public string EditarCursoAsignado(int idInstructor, Curso cursoEditado)
         {
             try
             {
                 // Verificar si el instructor está asignado a una programación que contenga ese curso
                 var asignacionValida = (from ai in dbinstructores.AsignacionInstructores
                                         join pc in dbinstructores.ProgramacionesCursos on ai.IdProgramacion equals pc.IdProgramacion
-                                        where ai.IdInstructor == idInstructor && pc.IdCurso == idCurso
+                                        where ai.IdInstructor == idInstructor && pc.IdCurso == cursoEditado.IdCurso
                                         select ai).FirstOrDefault();
 
                 if (asignacionValida == null)
@@ -82,15 +82,24 @@ namespace Academia_Sistemas.Clases
                 }
 
                 // Buscar el curso
-                Curso curso = dbinstructores.Cursos.Where(c => c.IdCurso == idCurso).FirstOrDefault();
+                Curso curso = dbinstructores.Cursos.Where(c => c.IdCurso == cursoEditado.IdCurso).FirstOrDefault();
                 if (curso == null)
                 {
                     return "Curso no encontrado.";
                 }
 
-                // Actualizar los campos permitidos
-                curso.Descripcion = nuevaDescripcion;
-                curso.Duracion = nuevaDuracion;
+                // Actualizar solo los campos que no son null
+                if (!string.IsNullOrEmpty(cursoEditado.Descripcion))
+                {
+                    curso.Descripcion = cursoEditado.Descripcion;
+                }
+
+                if (cursoEditado.Duracion > 0)
+                {
+                    curso.Duracion = cursoEditado.Duracion;
+                }
+
+                // Puedes agregar más campos aquí si se necesitan validar
 
                 dbinstructores.SaveChanges();
                 return "Curso actualizado correctamente.";
@@ -120,66 +129,73 @@ namespace Academia_Sistemas.Clases
             }
         }
 
-
-            public string EditarCalificacion(int idInstructor, int idCurso, int idEstudiante, decimal nuevaNota, string observaciones)
+        public string EditarCalificacion(int idInstructor, int idCurso, int idEstudiante, Calificacione calificacionEditada)
+        {
+            try
             {
-                try
+                // Validar si el instructor tiene asignado ese curso
+                var asignacionValida = (from ai in dbinstructores.AsignacionInstructores
+                                        join pc in dbinstructores.ProgramacionesCursos on ai.IdProgramacion equals pc.IdProgramacion
+                                        where ai.IdInstructor == idInstructor && pc.IdCurso == idCurso
+                                        select pc.IdProgramacion).ToList();
+
+                if (!asignacionValida.Any())
                 {
-                    // Validar si el instructor tiene asignado ese curso
-                    var asignacionValida = (from ai in dbinstructores.AsignacionInstructores
-                                            join pc in dbinstructores.ProgramacionesCursos on ai.IdProgramacion equals pc.IdProgramacion
-                                            where ai.IdInstructor == idInstructor && pc.IdCurso == idCurso
-                                            select pc.IdProgramacion).ToList();
-
-                    if (!asignacionValida.Any())
-                    {
-                        return "El instructor no tiene asignado este curso.";
-                    }
-
-                    // Buscar inscripción válida del estudiante en una programación del curso asignado
-                    var inscripcion = dbinstructores.Inscripciones
-                        .Where(i => i.IdEstudiante == idEstudiante && asignacionValida.Contains((int)i.IdProgramacion))
-                        .FirstOrDefault();
-
-                    if (inscripcion == null)
-                    {
-                        return "El estudiante no está inscrito en este curso impartido por el instructor.";
-                    }
-
-                    // Buscar la calificación
-                    var calificacion = dbinstructores.Calificaciones
-                        .Where(c => c.IdInscripcion == inscripcion.IdInscripcion)
-                        .FirstOrDefault();
-
-                    if (calificacion == null)
-                    {
-                        // Si no existe, se crea
-                        calificacion = new Calificacione
-                        {
-                            IdInscripcion = inscripcion.IdInscripcion,
-                            Nota = nuevaNota,
-                            Observaciones = observaciones
-                        };
-                        dbinstructores.Calificaciones.Add(calificacion);
-                    }
-                    else
-                    {
-                        // Si ya existe, se actualiza
-                        calificacion.Nota = nuevaNota;
-                        calificacion.Observaciones = observaciones;
-                    }
-
-                    dbinstructores.SaveChanges();
-                    return "Calificación actualizada correctamente.";
+                    return "El instructor no tiene asignado este curso.";
                 }
-                catch (Exception ex)
+
+                // Buscar inscripción válida del estudiante en una programación del curso asignado
+                var inscripcion = dbinstructores.Inscripciones
+                    .Where(i => i.IdEstudiante == idEstudiante && asignacionValida.Contains((int)i.IdProgramacion))
+                    .FirstOrDefault();
+
+                if (inscripcion == null)
                 {
-                    return "Error al editar calificación: " + ex.Message;
+                    return "El estudiante no está inscrito en este curso impartido por el instructor.";
                 }
+
+                // Buscar la calificación existente
+                var calificacion = dbinstructores.Calificaciones
+                    .Where(c => c.IdInscripcion == inscripcion.IdInscripcion)
+                    .FirstOrDefault();
+
+                if (calificacion == null)
+                {
+                    // Si no existe, crear una nueva calificación con los valores recibidos (si existen)
+                    calificacion = new Calificacione
+                    {
+                        IdInscripcion = inscripcion.IdInscripcion,
+                        Nota = calificacionEditada.Nota,
+                        Observaciones = calificacionEditada.Observaciones
+                    };
+                    dbinstructores.Calificaciones.Add(calificacion);
+                }
+                else
+                {
+                    // Solo actualiza si los campos no son nulos o vacíos
+                    if (calificacionEditada.Nota > 0)
+                    {
+                        calificacion.Nota = calificacionEditada.Nota;
+                    }
+
+                    if (!string.IsNullOrEmpty(calificacionEditada.Observaciones))
+                    {
+                        calificacion.Observaciones = calificacionEditada.Observaciones;
+                    }
+                }
+
+                dbinstructores.SaveChanges();
+                return "Calificación actualizada correctamente.";
+            }
+            catch (Exception ex)
+            {
+                return "Error al editar calificación: " + ex.Message;
             }
         }
 
-
     }
+
+
+}
 
 
