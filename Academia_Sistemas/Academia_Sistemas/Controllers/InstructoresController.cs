@@ -113,24 +113,10 @@ namespace Academia_Sistemas.Controllers
 
         [HttpPost]
         [Route("CrearModulos")]
-        public string CrearModulo(int idInstructor, Modulo nuevoModulo, HttpRequestMessage Request, string proceso)
+        public string CrearModulo(int idInstructor, Modulo nuevoModulo)
         {
             clsInstructores clsInstructores = new clsInstructores();
-            string resultado = clsInstructores.CrearModulo(idInstructor, nuevoModulo);
-
-            if (resultado.Contains("correctamente"))
-            {
-                clsUpload upload = new clsUpload();
-                upload.request = Request;
-                upload.Datos = nuevoModulo.IdModulo.ToString();
-                upload.Proceso = proceso;
-                return upload.GrabarArchivo(false).Result.Content.ReadAsStringAsync().Result;
-            }
-            else
-            {
-                // Retorna el mensaje de error recibido de CrearModulo
-                return resultado;
-            }
+            return clsInstructores.CrearModulo(idInstructor, nuevoModulo);
         }
 
         [HttpGet]
