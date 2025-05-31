@@ -5,6 +5,8 @@ using System.Web;
 using Academia_Sistemas.Clases;
 using Academia_Sistemas.Models;
 using System.Web.Http;
+using static Academia_Sistemas.Clases.clsInstructores;
+using System.Net.Http;
 
 namespace Academia_Sistemas.Controllers
 {
@@ -26,14 +28,14 @@ namespace Academia_Sistemas.Controllers
         {
             try
             {
-                if(datos.Usuario == null || datos.Instructor == null)
+                if (datos.Usuario == null || datos.Instructor == null)
                 {
                     return $"Usuario o Instructor no fueron ingresados";
                 }
                 clsUsuario UsuarioNuevo = new clsUsuario();
                 UsuarioNuevo.usuario = datos.Usuario;
 
-                string UsuarioCreado = UsuarioNuevo.CrearUsuario(1); 
+                string UsuarioCreado = UsuarioNuevo.CrearUsuario(1);
 
                 if (!UsuarioCreado.Contains("exitosamente"))
                 {
@@ -68,5 +70,71 @@ namespace Academia_Sistemas.Controllers
             clsInstructores clsInstructore = new clsInstructores();
             return clsInstructore.Borrar(idInstructore);
         }
+
+        [HttpPut]
+        [Route("EditarCursoAsignado")]
+        public string EditarCursoAsignado(int idInstructor, int idCurso, string nuevaDescripcion, int nuevaDuracion)
+        {
+            clsInstructores clsInstructores = new clsInstructores();
+            Curso modCurso = new Curso
+            {
+                IdCurso = idCurso,
+                Descripcion = nuevaDescripcion,
+                Duracion = nuevaDuracion
+            };
+            return clsInstructores.EditarCursoAsignado(idInstructor, modCurso);
+        }
+
+
+        [HttpGet]
+        [Route("VerCursosAsignados")]
+        public List<Curso> VerCursosAsignados(int idInstructor)
+        {
+            clsInstructores clsInsdtructore = new clsInstructores();
+            return clsInsdtructore.VerCursosAsignados(idInstructor);
+        }
+
+
+        [HttpPost]
+        [Route("EditarCalificacionPorCurso")]
+        public string EditarCalificacionPorCurso(int idInstructor, int idCurso, int idEstudiante, decimal nota, string observaciones)
+        {
+            clsInstructores clsInstructor = new clsInstructores();
+
+            Calificacione calificacion = new Calificacione
+            {
+                Nota = nota,
+                Observaciones = observaciones
+            };
+
+            return clsInstructor.EditarCalificacion(idInstructor, idCurso, idEstudiante, calificacion);
+        }
+
+
+        [HttpPost]
+        [Route("CrearModulos")]
+        public string CrearModulo(int idInstructor, Modulo nuevoModulo)
+        {
+            clsInstructores clsInstructores = new clsInstructores();
+            return clsInstructores.CrearModulo(idInstructor, nuevoModulo);
+        }
+
+        [HttpGet]
+        [Route("VerEquiposAsignados")]
+        public List<InventarioEquipos> VerEquiposAsignados(int idInstructor)
+        {
+            clsInstructores clsInstructores = new clsInstructores();
+            return clsInstructores.VerEquiposAsignados(idInstructor);
+        }
+
+        [HttpGet]
+        [Route("VerEstudiantesPorCurso")]
+        public List<Estudiante> VerEstudiantesPorCurso(int idInstructor, int idCurso)
+        {
+            clsInstructores clsInstructores = new clsInstructores();
+            return clsInstructores.VerEstudiantesPorCurso(idInstructor, idCurso);
+        }
+
     }
+
 }

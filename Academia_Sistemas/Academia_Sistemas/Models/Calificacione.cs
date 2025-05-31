@@ -9,6 +9,7 @@
 
 namespace Academia_Sistemas.Models
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     
@@ -18,7 +19,7 @@ namespace Academia_Sistemas.Models
         public Nullable<int> IdInscripcion { get; set; }
         public decimal Nota { get; set; }
         public string Observaciones { get; set; }
-    
+        [JsonIgnore]
         public virtual Inscripcione Inscripcione { get; set; }
     }
 }

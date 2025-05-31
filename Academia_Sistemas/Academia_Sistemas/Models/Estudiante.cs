@@ -9,6 +9,7 @@
 
 namespace Academia_Sistemas.Models
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     
@@ -27,7 +28,7 @@ namespace Academia_Sistemas.Models
         public string Telefono { get; set; }
         public string Direccion { get; set; }
         public Nullable<int> IdUsuario { get; set; }
-    
+        [JsonIgnore]
         public virtual Usuario Usuario { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Inscripcione> Inscripciones { get; set; }
