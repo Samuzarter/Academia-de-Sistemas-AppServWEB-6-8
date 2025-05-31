@@ -197,7 +197,7 @@ namespace Academia_Sistemas.Clases
         {
             try
             {
-                // Validar si el instructor está asignado al curso
+                // Validar si el instructor está asignado al curso 
                 var asignacionValida = (from ai in dbinstructores.AsignacionInstructores
                                         join pc in dbinstructores.ProgramacionesCursos on ai.IdProgramacion equals pc.IdProgramacion
                                         where ai.IdInstructor == idInstructor && pc.IdCurso == nuevoModulo.IdCurso
@@ -210,27 +210,7 @@ namespace Academia_Sistemas.Clases
 
                 // Agregar el nuevo módulo
                 dbinstructores.Modulos.Add(nuevoModulo);
-                dbinstructores.SaveChanges(); // Para obtener IdModulo
-
-                // Si se enviaron imágenes como parte de la entidad Modulo
-                if (nuevoModulo.ImagenesModulos != null && nuevoModulo.ImagenesModulos.Count > 0)
-                {
-                    // Extraer nombres de las imágenes
-                    List<string> nombresArchivosImagenes = nuevoModulo.ImagenesModulos
-                                                            .Select(img => img.NombreImagen)
-                                                            .ToList();
-
-                    // Grabar las imágenes usando la clase auxiliar
-                    clsImagenesModulos manejadorImagenes = new clsImagenesModulos();
-                    manejadorImagenes.idModulo = nuevoModulo.IdModulo.ToString();  // sigue siendo string
-                    manejadorImagenes.Archivos = nombresArchivosImagenes;
-                    string resultadoImagenes = manejadorImagenes.GrabarImagenes();
-
-                    if (!resultadoImagenes.Contains("correctamente"))
-                    {
-                        return "Módulo creado, pero hubo un error al guardar imágenes: " + resultadoImagenes;
-                    }
-                }
+                dbinstructores.SaveChanges(); // para obtener IdModulo
 
                 return "Módulo creado correctamente.";
             }
@@ -239,6 +219,7 @@ namespace Academia_Sistemas.Clases
                 return "Error al crear el módulo: " + ex.Message;
             }
         }
+
 
 
         public List<InventarioEquipos> VerEquiposAsignados(int idInstructor)

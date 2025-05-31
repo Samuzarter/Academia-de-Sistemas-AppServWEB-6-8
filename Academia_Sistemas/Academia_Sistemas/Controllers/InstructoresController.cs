@@ -6,6 +6,7 @@ using Academia_Sistemas.Clases;
 using Academia_Sistemas.Models;
 using System.Web.Http;
 using static Academia_Sistemas.Clases.clsInstructores;
+using System.Net.Http;
 
 namespace Academia_Sistemas.Controllers
 {
@@ -109,14 +110,28 @@ namespace Academia_Sistemas.Controllers
             return clsInstructor.EditarCalificacion(idInstructor, idCurso, idEstudiante, calificacion);
         }
 
+
         [HttpPost]
         [Route("CrearModulos")]
-        public string CrearModulo(int idInstructor, Modulo nuevoModulo)
+        public string CrearModulo(int idInstructor, Modulo nuevoModulo, HttpRequestMessage Request, string proceso)
         {
             clsInstructores clsInstructores = new clsInstructores();
-            return clsInstructores.CrearModulo(idInstructor, nuevoModulo);
-        }
+            string resultado = clsInstructores.CrearModulo(idInstructor, nuevoModulo);
 
+            if (resultado.Contains("correctamente"))
+            {
+                clsUpload upload = new clsUpload();
+                upload.request = Request;
+                upload.Datos = nuevoModulo.IdModulo.ToString();
+                upload.Proceso = proceso;
+                return upload.GrabarArchivo(false).Result.Content.ReadAsStringAsync().Result;
+            }
+            else
+            {
+                // Retorna el mensaje de error recibido de CrearModulo
+                return resultado;
+            }
+        }
 
         [HttpGet]
         [Route("VerEquiposAsignados")]
