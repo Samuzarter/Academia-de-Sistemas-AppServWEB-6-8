@@ -193,7 +193,7 @@ namespace Academia_Sistemas.Clases
             }
         }
 
-        public string CrearModulo(int idInstructor, Modulo nuevoModulo, List<string> nombresArchivosImagenes = null)
+        public string CrearModulo(int idInstructor, Modulo nuevoModulo)
         {
             try
             {
@@ -212,12 +212,18 @@ namespace Academia_Sistemas.Clases
                 dbinstructores.Modulos.Add(nuevoModulo);
                 dbinstructores.SaveChanges(); // Para obtener IdModulo
 
-                // Si se enviaron imágenes, usar la clase clsImagenesModulos para grabarlas
-                if (nombresArchivosImagenes != null && nombresArchivosImagenes.Count > 0)
+                // Si se enviaron imágenes como parte de la entidad Modulo
+                if (nuevoModulo.ImagenesModulos != null && nuevoModulo.ImagenesModulos.Count > 0)
                 {
+                    // Extraer nombres de las imágenes
+                    List<string> nombresArchivosImagenes = nuevoModulo.ImagenesModulos
+                                                            .Select(img => img.NombreImagen)
+                                                            .ToList();
+
+                    // Grabar las imágenes usando la clase auxiliar
                     clsImagenesModulos manejadorImagenes = new clsImagenesModulos();
+                    manejadorImagenes.idModulo = nuevoModulo.IdModulo.ToString();  // sigue siendo string
                     manejadorImagenes.Archivos = nombresArchivosImagenes;
-                    manejadorImagenes.idModulo = nuevoModulo.IdModulo;
                     string resultadoImagenes = manejadorImagenes.GrabarImagenes();
 
                     if (!resultadoImagenes.Contains("correctamente"))
@@ -233,6 +239,7 @@ namespace Academia_Sistemas.Clases
                 return "Error al crear el módulo: " + ex.Message;
             }
         }
+
 
         public List<InventarioEquipos> VerEquiposAsignados(int idInstructor)
         {

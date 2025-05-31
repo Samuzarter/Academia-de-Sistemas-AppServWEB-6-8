@@ -9,7 +9,7 @@ namespace Academia_Sistemas.Clases
     public class clsImagenesModulos
     {
         private Academia_SistemasEntities dbSuper = new Academia_SistemasEntities();
-        public int idModulo { get; set; }
+        public string idModulo { get; set; }
         public List<string> Archivos { get; set; }
         public string GrabarImagenes()
         {
@@ -20,7 +20,7 @@ namespace Academia_Sistemas.Clases
                     foreach (string Archivo in Archivos)
                     {
                         ImagenesModulo Imagen = new ImagenesModulo();
-                        Imagen.IdModulo = idModulo;
+                        Imagen.IdModulo = Convert.ToInt32(idModulo);
                         Imagen.NombreImagen = Archivo;
                         dbSuper.ImagenesModulos.Add(Imagen);
                         dbSuper.SaveChanges();

@@ -114,7 +114,7 @@ namespace Academia_Sistemas.Controllers
         public string CrearModulo(int idInstructor, Modulo nuevoModulo, List<string> nombresArchivosImagenes = null)
         {
             clsInstructores clsInstructores = new clsInstructores();
-            return clsInstructores.CrearModulo(idInstructor, nuevoModulo, nombresArchivosImagenes = null);
+            return clsInstructores.CrearModulo(idInstructor, nuevoModulo);
         }
 
 
