@@ -1,0 +1,2498 @@
+{
+	"info": {
+		"_postman_id": "f17c31bd-0432-42e7-bda1-d664c1c40842",
+		"name": "Academia de Sistemas",
+		"description": "Postman para realizar pruebas de los servicios del proyecto de Academia de Sistemas de la clase de **Aplicaciones y Servicios de los Miercoles de 6am a 8am.**\n\n_**Intregrantes:**_\n\n- Juan José Medina Sepúlveda\n    \n- Nathalie Gabriela Miranda Rejón\n    \n- Sebastían Jesús Pérez Araujo\n    \n- Samuel Quiroz Rincón",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "43028144"
+	},
+	"item": [
+		{
+			"name": "Asignacion Instructores",
+			"item": [
+				{
+					"name": "ConsultarxID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{servicio_AsignacionInstructores}}Consultar?IdAsignacionInstructore=1",
+							"host": [
+								"{{base_url}}{{servicio_AsignacionInstructores}}Consultar"
+							],
+							"query": [
+								{
+									"key": "IdAsignacionInstructore",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Insertar",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"IdInstructor\" : \"1\",\r\n    \"IdProgramacion\" : \"1\",\r\n    \"FechaAsignacion\" : \"2025-05-30\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{servicio_AsignacionInstructores}}Insertar?",
+							"host": [
+								"{{base_url}}{{servicio_AsignacionInstructores}}Insertar"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"IdAsignacion\" : \"4\",\r\n    \"IdInstructor\" : \"1\",\r\n    \"IdProgramacion\" : \"1\",\r\n    \"FechaAsignacion\" : \"2025-05-6\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{servicio_AsignacionInstructores}}Actualizar?",
+							"host": [
+								"{{base_url}}{{servicio_AsignacionInstructores}}Actualizar"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{servicio_AsignacionInstructores}}Eliminar?IdAsignacionInstructore=4",
+							"host": [
+								"{{base_url}}{{servicio_AsignacionInstructores}}Eliminar"
+							],
+							"query": [
+								{
+									"key": "IdAsignacionInstructore",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Calificaciones",
+			"item": [
+				{
+					"name": "ConsultarxID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{servicio_Calificaciones}}Consultar?IdCalificacion=1",
+							"host": [
+								"{{base_url}}{{servicio_Calificaciones}}Consultar"
+							],
+							"query": [
+								{
+									"key": "IdCalificacion",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Insertar",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"IdCalificacion\": 0,\r\n    \"IdInscripcion\": 1,\r\n    \"Nota\": 3.00,\r\n    \"Observaciones\": \"Que caja2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{servicio_Calificaciones}}Insertar?",
+							"host": [
+								"{{base_url}}{{servicio_Calificaciones}}Insertar"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"IdCalificacion\": 2,\r\n    \"IdInscripcion\": 1,\r\n    \"Nota\": 3.00,\r\n    \"Observaciones\": \"Que caja23\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{servicio_Calificaciones}}Actualizar?",
+							"host": [
+								"{{base_url}}{{servicio_Calificaciones}}Actualizar"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{servicio_Calificaciones}}Eliminar?IdCalificacion=2",
+							"host": [
+								"{{base_url}}{{servicio_Calificaciones}}Eliminar"
+							],
+							"query": [
+								{
+									"key": "IdCalificacion",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Categorias Curso",
+			"item": [
+				{
+					"name": "ConsultarxID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{servicio_CategoriasCurso}}Consultar?IdCategoriasCurso=1",
+							"host": [
+								"{{base_url}}{{servicio_CategoriasCurso}}Consultar"
+							],
+							"query": [
+								{
+									"key": "IdCategoriasCurso",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Insertar",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"IdCategoria\": 0,\r\n    \"Nombre\": \"Programación\",\r\n    \"Descripcion\": \"Cursos orientados a lenguajes y lógica de programación\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{servicio_CategoriasCurso}}Insertar?",
+							"host": [
+								"{{base_url}}{{servicio_CategoriasCurso}}Insertar"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"IdCategoria\": 3,\r\n    \"Nombre\": \"Programación123\",\r\n    \"Descripcion\": \"Cursos orientados a lenguajes y lógica de programación\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{servicio_CategoriasCurso}}Actualizar?",
+							"host": [
+								"{{base_url}}{{servicio_CategoriasCurso}}Actualizar"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ConsultarxID Copy",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{servicio_CategoriasCurso}}Eliminar?IdCategoriasCurso=3",
+							"host": [
+								"{{base_url}}{{servicio_CategoriasCurso}}Eliminar"
+							],
+							"query": [
+								{
+									"key": "IdCategoriasCurso",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Compras",
+			"item": [
+				{
+					"name": "ConsultarxID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{servicio_Compras}}Consultar?IdCompra=1",
+							"host": [
+								"{{base_url}}{{servicio_Compras}}Consultar"
+							],
+							"query": [
+								{
+									"key": "IdCompra",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Insertar",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"IdCompra\": 0,\r\n    \"IdProveedor\": 1,\r\n    \"IdEquipo\": 1,\r\n    \"FechaCompra\": \"2025-05-28T01:03:04.66\",\r\n    \"Cantidad\": 20,\r\n    \"CostoUnitario\": 2800.00\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{servicio_Compras}}Insertar?",
+							"host": [
+								"{{base_url}}{{servicio_Compras}}Insertar"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"IdCompra\": 3,\r\n    \"IdProveedor\": 1,\r\n    \"IdEquipo\": 1,\r\n    \"FechaCompra\": \"2025-05-28T01:03:04.66\",\r\n    \"Cantidad\": 50,\r\n    \"CostoUnitario\": 2800.00\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{servicio_Compras}}Actualizar?",
+							"host": [
+								"{{base_url}}{{servicio_Compras}}Actualizar"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{servicio_Compras}}Eliminar?IdCompra=3",
+							"host": [
+								"{{base_url}}{{servicio_Compras}}Eliminar"
+							],
+							"query": [
+								{
+									"key": "IdCompra",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cursos",
+			"item": [
+				{
+					"name": "ConsultarxID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{servicio_Cursos}}Consultar?IdCurso=1",
+							"host": [
+								"{{base_url}}{{servicio_Cursos}}Consultar"
+							],
+							"query": [
+								{
+									"key": "IdCurso",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{servicio_Cursos}}Eliminar?IdCurso=3",
+							"host": [
+								"{{base_url}}{{servicio_Cursos}}Eliminar"
+							],
+							"query": [
+								{
+									"key": "IdCurso",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Insertar",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"IdCurso\": 0,\r\n    \"IdModalidad\": 2,\r\n    \"IdCategoria\": 1,\r\n    \"Nombre\": \"Introducción a Python-2\",\r\n    \"Descripcion\": \"Prueba\",\r\n    \"Duracion\": 100,\r\n    \"Costo\": 350.00\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{servicio_Cursos}}Insertar?",
+							"host": [
+								"{{base_url}}{{servicio_Cursos}}Insertar"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"IdCurso\": 3,\r\n    \"IdModalidad\": 2,\r\n    \"IdCategoria\": 1,\r\n    \"Nombre\": \"Introducción a Python-2\",\r\n    \"Descripcion\": \"Prueba\",\r\n    \"Duracion\": 100,\r\n    \"Costo\": 500.00\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{servicio_Cursos}}Actualizar?",
+							"host": [
+								"{{base_url}}{{servicio_Cursos}}Actualizar"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Equipos",
+			"item": [
+				{
+					"name": "ConsultarxID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{servicio_Equipos}}Consultar?IdEquipo=1",
+							"host": [
+								"{{base_url}}{{servicio_Equipos}}Consultar"
+							],
+							"query": [
+								{
+									"key": "IdEquipo",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Insertar",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"IdEquipo\": 0,\r\n    \"Nombre\": \"Laptop ASUS Probook\",\r\n    \"Descripcion\": \"Laptop i5 con 8GB RAM\",\r\n    \"Categoria\": \"Computadoras\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{servicio_Equipos}}Insertar?",
+							"host": [
+								"{{base_url}}{{servicio_Equipos}}Insertar"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"IdEquipo\": 3,\r\n    \"Nombre\": \"Laptop ASUS Probook\",\r\n    \"Descripcion\": \"Laptop i5 con 16GB RAM\",\r\n    \"Categoria\": \"Computadoras\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{servicio_Equipos}}Actualizar?",
+							"host": [
+								"{{base_url}}{{servicio_Equipos}}Actualizar"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{servicio_Equipos}}Eliminar?IdEquipo=3",
+							"host": [
+								"{{base_url}}{{servicio_Equipos}}Eliminar"
+							],
+							"query": [
+								{
+									"key": "IdEquipo",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Estudiantes",
+			"item": [
+				{
+					"name": "ConsultarxID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"estudiante\": {\r\n    \"Nombre\": \"Samuel\",\r\n    \"Apellido\": \"QR\",\r\n    \"Correo\": \"samuel@email.com\",\r\n    \"Telefono\": \"3205551234\",\r\n    \"Direccion\": \"Cra 45 #12\"\r\n  },\r\n  \"usuario\": {\r\n    \"Username\": \"SAMuEl123\",\r\n    \"Clave\": \"claveSegura123\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{servicio_Estudiantes}}/Consultar?IdEstudiante=1",
+							"host": [
+								"{{base_url}}{{servicio_Estudiantes}}"
+							],
+							"path": [
+								"Consultar"
+							],
+							"query": [
+								{
+									"key": "IdEstudiante",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Insertar",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"estudiante\": {\r\n    \"Nombre\": \"Samuel\",\r\n    \"Apellido\": \"QR\",\r\n    \"Correo\": \"samuel@email.com\",\r\n    \"Telefono\": \"3205551234\",\r\n    \"Direccion\": \"Cra 45 #12\"\r\n  },\r\n  \"usuario\": {\r\n    \"Username\": \"SAMuEl123\",\r\n    \"Clave\": \"claveSegura123\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{servicio_Estudiantes}}/Insertar",
+							"host": [
+								"{{base_url}}{{servicio_Estudiantes}}"
+							],
+							"path": [
+								"Insertar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"IdEstudiante\": 1,\r\n    \"Nombre\": \"Sebastian\",\r\n    \"Apellido\": \"Pérez\",\r\n    \"Correo\": \"laura@email.com\",\r\n    \"Telefono\": \"3205551234\",\r\n    \"Direccion\": \"Cra 45 #25\",\r\n    \"IdUsuario\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{servicio_Estudiantes}}/Actualizar",
+							"host": [
+								"{{base_url}}{{servicio_Estudiantes}}"
+							],
+							"path": [
+								"Actualizar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"estudiante\": {\r\n    \"Nombre\": \"Samuel\",\r\n    \"Apellido\": \"QR\",\r\n    \"Correo\": \"samuel@email.com\",\r\n    \"Telefono\": \"3205551234\",\r\n    \"Direccion\": \"Cra 45 #12\"\r\n  },\r\n  \"usuario\": {\r\n    \"Username\": \"SAMuEl123\",\r\n    \"Clave\": \"claveSegura123\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{servicio_Estudiantes}}/Eliminar?IdEstudiante=3",
+							"host": [
+								"{{base_url}}{{servicio_Estudiantes}}"
+							],
+							"path": [
+								"Eliminar"
+							],
+							"query": [
+								{
+									"key": "IdEstudiante",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Inscripciones",
+			"item": [
+				{
+					"name": "ConsultarxID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{servicio_Inscripciones}}/Consultar?IdInscripcione=1",
+							"host": [
+								"{{base_url}}{{servicio_Inscripciones}}"
+							],
+							"path": [
+								"Consultar"
+							],
+							"query": [
+								{
+									"key": "IdInscripcione",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Insertar",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"IdInscripcion\": 0,\r\n    \"IdEstudiante\": 1,\r\n    \"IdProgramacion\": 1,\r\n    \"FechaInscripcion\": \"2025-05-28T01:02:55.653\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{servicio_Inscripciones}}/Insertar",
+							"host": [
+								"{{base_url}}{{servicio_Inscripciones}}"
+							],
+							"path": [
+								"Insertar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"IdInscripcion\": 3,\r\n    \"IdEstudiante\": 1,\r\n    \"IdProgramacion\": 1,\r\n    \"FechaInscripcion\": \"2025-05-31T01:02:55.653\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{servicio_Inscripciones}}/Actualizar",
+							"host": [
+								"{{base_url}}{{servicio_Inscripciones}}"
+							],
+							"path": [
+								"Actualizar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"estudiante\": {\r\n    \"Nombre\": \"Samuel\",\r\n    \"Apellido\": \"QR\",\r\n    \"Correo\": \"samuel@email.com\",\r\n    \"Telefono\": \"3205551234\",\r\n    \"Direccion\": \"Cra 45 #12\"\r\n  },\r\n  \"usuario\": {\r\n    \"Username\": \"SAMuEl123\",\r\n    \"Clave\": \"claveSegura123\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{servicio_Inscripciones}}/Eliminar?IdInscripcione=3",
+							"host": [
+								"{{base_url}}{{servicio_Inscripciones}}"
+							],
+							"path": [
+								"Eliminar"
+							],
+							"query": [
+								{
+									"key": "IdInscripcione",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Instructores",
+			"item": [
+				{
+					"name": "ConsultarxID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"Instructor\": {\r\n    \"Nombre\": \"Nathalie\",\r\n    \"Apellido\": \"Miranda\",\r\n    \"Correo\": \"nathalie@email.com\",\r\n    \"Telefono\": \"3205551234\",\r\n    \"Especialidad\": \"Mastería en UX/UI\"\r\n  },\r\n  \"usuario\": {\r\n    \"Username\": \"Nathyy123\",\r\n    \"Clave\": \"claveSegura123\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{servicio_Instructores}}Consultar?IdInstructore=1",
+							"host": [
+								"{{base_url}}{{servicio_Instructores}}Consultar"
+							],
+							"query": [
+								{
+									"key": "IdInstructore",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Insertar",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"Instructor\": {\r\n    \"Nombre\": \"Nathalie\",\r\n    \"Apellido\": \"Miranda\",\r\n    \"Correo\": \"nathalie@email.com\",\r\n    \"Telefono\": \"3205551234\",\r\n    \"Especialidad\": \"Mastería en UX/UI\"\r\n  },\r\n  \"usuario\": {\r\n    \"Username\": \"Nathyy123\",\r\n    \"Clave\": \"claveSegura123\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{servicio_Instructores}}Insertar",
+							"host": [
+								"{{base_url}}{{servicio_Instructores}}Insertar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Idinstructor\": 1,\r\n    \"Nombre\": \"Nathalie\",\r\n    \"Apellido\": \"Miranda\",\r\n    \"Correo\": \"nathalie@email.com\",\r\n    \"Telefono\": \"3205551234\",\r\n    \"Especialidad\": \"Mastería en UX/UI\",\r\n    \"IdUsuario\": 6\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{servicio_Instructores}}Actualizar",
+							"host": [
+								"{{base_url}}{{servicio_Instructores}}Actualizar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"Instructor\": {\r\n    \"Nombre\": \"Nathalie\",\r\n    \"Apellido\": \"Miranda\",\r\n    \"Correo\": \"nathalie@email.com\",\r\n    \"Telefono\": \"3205551234\",\r\n    \"Especialidad\": \"Mastería en UX/UI\"\r\n  },\r\n  \"usuario\": {\r\n    \"Username\": \"Nathyy123\",\r\n    \"Clave\": \"claveSegura123\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{servicio_Instructores}}Eliminar?IdInstructore=3",
+							"host": [
+								"{{base_url}}{{servicio_Instructores}}Eliminar"
+							],
+							"query": [
+								{
+									"key": "IdInstructore",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ver Cursos Asignados",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{servicio_Instructores}}VerCursosAsignados?idInstructor=1",
+							"host": [
+								"{{base_url}}{{servicio_Instructores}}VerCursosAsignados"
+							],
+							"query": [
+								{
+									"key": "idInstructor",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar Curso Asignado",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}{{servicio_Instructores}}EditarCursoAsignado?idInstructor=1&idCurso=1&nuevaDescripcion=Prueba&nuevaDuracion=100",
+							"host": [
+								"{{base_url}}{{servicio_Instructores}}EditarCursoAsignado"
+							],
+							"query": [
+								{
+									"key": "idInstructor",
+									"value": "1"
+								},
+								{
+									"key": "idCurso",
+									"value": "1"
+								},
+								{
+									"key": "nuevaDescripcion",
+									"value": "Prueba"
+								},
+								{
+									"key": "nuevaDuracion",
+									"value": "100"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar Calificacion Por Curso",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}{{servicio_Instructores}}EditarCalificacionPorCurso?idInstructor=1&idCurso=1&idEstudiante=1&nota=3&observaciones=Que caja",
+							"host": [
+								"{{base_url}}{{servicio_Instructores}}EditarCalificacionPorCurso"
+							],
+							"query": [
+								{
+									"key": "idInstructor",
+									"value": "1"
+								},
+								{
+									"key": "idCurso",
+									"value": "1"
+								},
+								{
+									"key": "idEstudiante",
+									"value": "1"
+								},
+								{
+									"key": "nota",
+									"value": "3"
+								},
+								{
+									"key": "observaciones",
+									"value": "Que caja"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ver Estudiantes Por Curso",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}{{servicio_Instructores}}VerEstudiantesPorCurso?idInstructor=1&idCurso=1",
+							"host": [
+								"{{base_url}}{{servicio_Instructores}}VerEstudiantesPorCurso"
+							],
+							"query": [
+								{
+									"key": "idInstructor",
+									"value": "1"
+								},
+								{
+									"key": "idCurso",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CrearModulos",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Titulo\" : \"POO3\",\r\n    \"Contenido\" : \"xd2\",\r\n    \"LinkVideo\" : \"https://www.youtube.com/watch?v=dQw4w9WgXcQ\",\r\n    \"IdCurso\" : \"1\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{servicio_Instructores}}CrearModulos?idInstructor=1",
+							"host": [
+								"{{base_url}}{{servicio_Instructores}}CrearModulos"
+							],
+							"query": [
+								{
+									"key": "idInstructor",
+									"value": "1"
+								},
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Inventario Equipos",
+			"item": [
+				{
+					"name": "ConsultarxID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{servicio_InventarioEquipos}}/Consultar?IdInventarioEquipo=1",
+							"host": [
+								"{{base_url}}{{servicio_InventarioEquipos}}"
+							],
+							"path": [
+								"Consultar"
+							],
+							"query": [
+								{
+									"key": "IdInventarioEquipo",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Insertar",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"IdInventario\": 0,\r\n    \"IdEquipo\": 1,\r\n    \"IdSede\": 1,\r\n    \"Cantidad\": 20,\r\n    \"FechaAsignacion\": \"2025-05-28T01:03:08.137\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{servicio_InventarioEquipos}}/Insertar",
+							"host": [
+								"{{base_url}}{{servicio_InventarioEquipos}}"
+							],
+							"path": [
+								"Insertar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"IdInventario\": 3,\r\n    \"IdEquipo\": 1,\r\n    \"IdSede\": 1,\r\n    \"Cantidad\": 50,\r\n    \"FechaAsignacion\": \"2025-05-28T01:03:08.137\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{servicio_InventarioEquipos}}/Actualizar",
+							"host": [
+								"{{base_url}}{{servicio_InventarioEquipos}}"
+							],
+							"path": [
+								"Actualizar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{servicio_InventarioEquipos}}/Eliminar?IdInventarioEquipo=3",
+							"host": [
+								"{{base_url}}{{servicio_InventarioEquipos}}"
+							],
+							"path": [
+								"Eliminar"
+							],
+							"query": [
+								{
+									"key": "IdInventarioEquipo",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "Ingresar",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Usuario\":\"Nathyy123\",\r\n    \"Clave\":\"claveSegura123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{servicio_Login}}Ingresar",
+							"host": [
+								"{{base_url}}{{servicio_Login}}Ingresar"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Modalidades",
+			"item": [
+				{
+					"name": "ConsultarxID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{servicio_Modalidades}}/Consultar?IdModalidade=1",
+							"host": [
+								"{{base_url}}{{servicio_Modalidades}}"
+							],
+							"path": [
+								"Consultar"
+							],
+							"query": [
+								{
+									"key": "IdModalidade",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Insertar",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"IdModalidad\": 0,\r\n    \"Nombre\": \"Presencial2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{servicio_Modalidades}}/Insertar?IdModalidade=1",
+							"host": [
+								"{{base_url}}{{servicio_Modalidades}}"
+							],
+							"path": [
+								"Insertar"
+							],
+							"query": [
+								{
+									"key": "IdModalidade",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"IdModalidad\": 3,\r\n    \"Nombre\": \"Presencial25\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{servicio_Modalidades}}/Actualizar",
+							"host": [
+								"{{base_url}}{{servicio_Modalidades}}"
+							],
+							"path": [
+								"Actualizar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{servicio_Modalidades}}/Eliminar?IdModalidade=3",
+							"host": [
+								"{{base_url}}{{servicio_Modalidades}}"
+							],
+							"path": [
+								"Eliminar"
+							],
+							"query": [
+								{
+									"key": "IdModalidade",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Modulos",
+			"item": [
+				{
+					"name": "ConsultarxID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Titulo\" : \"\",\r\n    \"Contenido\" : \"\",\r\n    \"LinkVideo\" : \"\",\r\n    \"IdCurso\" : \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{servicio_Modulos}}Consultar?IdModulo=1",
+							"host": [
+								"{{base_url}}{{servicio_Modulos}}Consultar"
+							],
+							"query": [
+								{
+									"key": "IdModulo",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Insertar",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"IdModulo\": 0,\r\n    \"Titulo\": \"Variables y Tipos de Datos-2\",\r\n    \"Contenido\": \"Introducción a las variables en Python\",\r\n    \"LinkVideo\": \"https://youtu.be/link1\",\r\n    \"IdCurso\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{servicio_Modulos}}Insertar",
+							"host": [
+								"{{base_url}}{{servicio_Modulos}}Insertar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"IdModulo\": 8,\r\n    \"Titulo\": \"Variables y Tipos de Datos-25\",\r\n    \"Contenido\": \"Introducción a las variables en Python\",\r\n    \"LinkVideo\": \"https://youtu.be/link1\",\r\n    \"IdCurso\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{servicio_Modulos}}Actualizar",
+							"host": [
+								"{{base_url}}{{servicio_Modulos}}Actualizar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Titulo\" : \"\",\r\n    \"Contenido\" : \"\",\r\n    \"LinkVideo\" : \"\",\r\n    \"IdCurso\" : \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{servicio_Modulos}}Eliminar?IdModulo=8",
+							"host": [
+								"{{base_url}}{{servicio_Modulos}}Eliminar"
+							],
+							"query": [
+								{
+									"key": "IdModulo",
+									"value": "8"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pagos",
+			"item": [
+				{
+					"name": "ConsultarxID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Titulo\" : \"\",\r\n    \"Contenido\" : \"\",\r\n    \"LinkVideo\" : \"\",\r\n    \"IdCurso\" : \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{servicio_Pagos}}Consultar?IdPago=1",
+							"host": [
+								"{{base_url}}{{servicio_Pagos}}Consultar"
+							],
+							"query": [
+								{
+									"key": "IdPago",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Insertar",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"IdCPago\": 0,\r\n    \"IdInscripcion\": 1,\r\n    \"FechaPago\": \"2025-05-28T01:03:01.743\",\r\n    \"Monto\": 450000.00,\r\n    \"MetodoPago\": \"Transferencia\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{servicio_Pagos}}Insertar",
+							"host": [
+								"{{base_url}}{{servicio_Pagos}}Insertar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"IdCPago\": 2,\r\n    \"IdInscripcion\": 1,\r\n    \"FechaPago\": \"2025-05-28T01:03:01.743\",\r\n    \"Monto\": 650000.00,\r\n    \"MetodoPago\": \"Transferencia\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{servicio_Pagos}}Actualizar",
+							"host": [
+								"{{base_url}}{{servicio_Pagos}}Actualizar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Titulo\" : \"\",\r\n    \"Contenido\" : \"\",\r\n    \"LinkVideo\" : \"\",\r\n    \"IdCurso\" : \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{servicio_Pagos}}Eliminar?IdPago=3",
+							"host": [
+								"{{base_url}}{{servicio_Pagos}}Eliminar"
+							],
+							"query": [
+								{
+									"key": "IdPago",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Programaciones Cursos",
+			"item": [
+				{
+					"name": "ConsultarxID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Titulo\" : \"\",\r\n    \"Contenido\" : \"\",\r\n    \"LinkVideo\" : \"\",\r\n    \"IdCurso\" : \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{servicio_ProgramacionesCursos}}Consultar?IdProgramacionesCurso=1",
+							"host": [
+								"{{base_url}}{{servicio_ProgramacionesCursos}}Consultar"
+							],
+							"query": [
+								{
+									"key": "IdProgramacionesCurso",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Insertar",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"IdProgramacion\": 0,\r\n    \"IdCurso\": 1,\r\n    \"IdSede\": 1,\r\n    \"FechaInicio\": \"2025-07-01T00:00:00\",\r\n    \"FechaFin\": \"2025-08-29T00:00:00\",\r\n    \"Cupos\": 30\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{servicio_ProgramacionesCursos}}Insertar",
+							"host": [
+								"{{base_url}}{{servicio_ProgramacionesCursos}}Insertar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"IdProgramacion\": 3,\r\n    \"IdCurso\": 1,\r\n    \"IdSede\": 1,\r\n    \"FechaInicio\": \"2025-07-01T00:00:00\",\r\n    \"FechaFin\": \"2025-08-29T00:00:00\",\r\n    \"Cupos\": 50\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{servicio_ProgramacionesCursos}}Actualizar",
+							"host": [
+								"{{base_url}}{{servicio_ProgramacionesCursos}}Actualizar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Titulo\" : \"\",\r\n    \"Contenido\" : \"\",\r\n    \"LinkVideo\" : \"\",\r\n    \"IdCurso\" : \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{servicio_ProgramacionesCursos}}Eliminar?IdProgramacionesCurso=3",
+							"host": [
+								"{{base_url}}{{servicio_ProgramacionesCursos}}Eliminar"
+							],
+							"query": [
+								{
+									"key": "IdProgramacionesCurso",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Proveedores",
+			"item": [
+				{
+					"name": "ConsultarxID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Titulo\" : \"\",\r\n    \"Contenido\" : \"\",\r\n    \"LinkVideo\" : \"\",\r\n    \"IdCurso\" : \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{servicio_Proveedores}}Consultar?IdProveedore=1",
+							"host": [
+								"{{base_url}}{{servicio_Proveedores}}Consultar"
+							],
+							"query": [
+								{
+									"key": "IdProveedore",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Insertar",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"IdProveedor\": 0,\r\n    \"Nombre\": \"Claro\",\r\n    \"Telefono\": \"987654321\",\r\n    \"Correo\": \"contacto@tigo.com\",\r\n    \"Direccion\": \"Av. Tecnológica 123, Lima\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{servicio_Proveedores}}Insertar",
+							"host": [
+								"{{base_url}}{{servicio_Proveedores}}Insertar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"IdProveedor\": 3,\r\n    \"Nombre\": \"Claro+\",\r\n    \"Telefono\": \"987654321\",\r\n    \"Correo\": \"contacto@tigo.com\",\r\n    \"Direccion\": \"Av. Tecnológica 123, Lima\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{servicio_Proveedores}}Actualizar",
+							"host": [
+								"{{base_url}}{{servicio_Proveedores}}Actualizar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Titulo\" : \"\",\r\n    \"Contenido\" : \"\",\r\n    \"LinkVideo\" : \"\",\r\n    \"IdCurso\" : \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{servicio_Proveedores}}Eliminar?IdProveedore=3",
+							"host": [
+								"{{base_url}}{{servicio_Proveedores}}Eliminar"
+							],
+							"query": [
+								{
+									"key": "IdProveedore",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Sedes",
+			"item": [
+				{
+					"name": "Insertar",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"InventarioEquipos\": [],\r\n    \"ProgramacionesCursos\": [],\r\n    \"IdSede\": 1,\r\n    \"Nombre\": \"Sede Principal\",\r\n    \"Ciudad\": \"Medellín\",\r\n    \"Direccion\": \"Calle 89 #54-67\",\r\n    \"Telefono\": \"3046531233\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{servicio_Sedes}}Insertar",
+							"host": [
+								"{{base_url}}{{servicio_Sedes}}Insertar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consultar",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{servicio_Sedes}}Consultar?IdSede=2",
+							"host": [
+								"{{base_url}}{{servicio_Sedes}}Consultar"
+							],
+							"query": [
+								{
+									"key": "IdSede",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"InventarioEquipos\": [],\r\n    \"ProgramacionesCursos\": [],\r\n    \"IdSede\": 1,\r\n    \"Nombre\": \"Sede Principal 2\",\r\n    \"Ciudad\": \"Medellín\",\r\n    \"Direccion\": \"Calle 89 #54-67\",\r\n    \"Telefono\": \"3046531233\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{servicio_Sedes}}Actualizar?IdSede=1",
+							"host": [
+								"{{base_url}}{{servicio_Sedes}}Actualizar"
+							],
+							"query": [
+								{
+									"key": "IdSede",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}{{servicio_Sedes}}Eliminar?IdSede=1",
+							"host": [
+								"{{base_url}}{{servicio_Sedes}}Eliminar"
+							],
+							"query": [
+								{
+									"key": "IdSede",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "UploadFiles",
+			"item": [
+				{
+					"name": "Insertar Foto Modulo",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "",
+									"type": "file",
+									"src": "/C:/Users/Asus/Pictures/foto_1.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}{{UploadFiles}}Datos=1&Proceso=Modulo",
+							"host": [
+								"{{base_url}}{{UploadFiles}}Datos=1&Proceso=Modulo"
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "https://localhost:44318/api/",
+			"type": "string"
+		},
+		{
+			"key": "servicio_AsignacionInstructores",
+			"value": "AsignacionInstructores/",
+			"type": "string"
+		},
+		{
+			"key": "servicio_Calificaciones",
+			"value": "Calificaciones/",
+			"type": "string"
+		},
+		{
+			"key": "servicio_CategoriasCurso",
+			"value": "CategoriasCurso/",
+			"type": "string"
+		},
+		{
+			"key": "servicio_Compras",
+			"value": "Compras/",
+			"type": "string"
+		},
+		{
+			"key": "servicio_Cursos",
+			"value": "Cursos/",
+			"type": "string"
+		},
+		{
+			"key": "servicio_Equipos",
+			"value": "Equipos/",
+			"type": "string"
+		},
+		{
+			"key": "servicio_Estudiantes",
+			"value": "Estudiantes/",
+			"type": "string"
+		},
+		{
+			"key": "servicio_Inscripciones",
+			"value": "Inscripciones/",
+			"type": "string"
+		},
+		{
+			"key": "servicio_Instructores",
+			"value": "Instructore/",
+			"type": "string"
+		},
+		{
+			"key": "servicio_InventarioEquipos",
+			"value": "InventarioEquipos/",
+			"type": "string"
+		},
+		{
+			"key": "servicio_Login",
+			"value": "Login/",
+			"type": "string"
+		},
+		{
+			"key": "servicio_Modalidades",
+			"value": "Modalidades/",
+			"type": "string"
+		},
+		{
+			"key": "servicio_Modulos",
+			"value": "Modulos/",
+			"type": "string"
+		},
+		{
+			"key": "servicio_Pagos",
+			"value": "Pagos/",
+			"type": "string"
+		},
+		{
+			"key": "servicio_ProgramacionesCursos",
+			"value": "ProgramacionesCursos/",
+			"type": "string"
+		},
+		{
+			"key": "servicio_Proveedores",
+			"value": "Proveedores/",
+			"type": "string"
+		},
+		{
+			"key": "servicio_Sedes",
+			"value": "Sedes/",
+			"type": "string"
+		},
+		{
+			"key": "UploadFiles",
+			"value": "UploadFiles/",
+			"type": "string"
+		}
+	]
+}
