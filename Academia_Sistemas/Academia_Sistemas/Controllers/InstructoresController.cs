@@ -111,7 +111,7 @@ namespace Academia_Sistemas.Controllers
 
         [HttpPost]
         [Route("CrearModulos")]
-        public string CrearModulo(int idInstructor, Modulo nuevoModulo, List<string> nombresArchivosImagenes = null)
+        public string CrearModulo(int idInstructor, Modulo nuevoModulo)
         {
             clsInstructores clsInstructores = new clsInstructores();
             return clsInstructores.CrearModulo(idInstructor, nuevoModulo);
