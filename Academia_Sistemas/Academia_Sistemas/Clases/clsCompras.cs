@@ -53,7 +53,7 @@ namespace Academia_Sistemas.Clases
 
         public string Borrar(int IdCompra)
         {
-            Compra co = Consultar(compra.IdCompra);
+            Compra co = Consultar(IdCompra);
             if (co == null)
             {
                 return "Compra no existe";

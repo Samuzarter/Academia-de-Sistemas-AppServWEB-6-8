@@ -53,7 +53,7 @@ namespace Academia_Sistemas.Clases
 
         public string Borrar(int Idmodulo)
         {
-            Modulo es = Consultar(modulo.IdModulo);
+            Modulo es = Consultar(Idmodulo);
             if (es == null)
             {
                 return "Modulo no existe";

@@ -53,7 +53,7 @@ namespace Academia_Sistemas.Clases
 
         public string Borrar(int IdProveedor)
         {
-            Proveedore pro = Consultar(proveedore.IdProveedor);
+            Proveedore pro = Consultar(IdProveedor);
             if (pro == null)
             {
                 return "Proveedore no existe";

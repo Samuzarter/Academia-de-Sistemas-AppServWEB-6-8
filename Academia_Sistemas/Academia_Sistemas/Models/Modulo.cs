@@ -28,6 +28,7 @@ namespace Academia_Sistemas.Models
         public int IdCurso { get; set; }
         [JsonIgnore]
         public virtual Curso Curso { get; set; }
+        [JsonIgnore]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ImagenesModulo> ImagenesModulos { get; set; }
     }

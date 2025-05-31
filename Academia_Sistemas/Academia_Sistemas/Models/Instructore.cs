@@ -32,6 +32,7 @@ namespace Academia_Sistemas.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         
         public virtual ICollection<AsignacionInstructore> AsignacionInstructores { get; set; }
+        [JsonIgnore]
         public virtual Usuario Usuario { get; set; }
     }
 }
