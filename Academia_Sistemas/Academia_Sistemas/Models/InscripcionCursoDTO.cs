@@ -18,6 +18,10 @@ namespace Academia_Sistemas.DTOs
         [Column("sede_id")]
         public int IdSede { get; set; }
 
+        public DateTime fecha_inicio { get; set; }
+
+        public DateTime fecha_fin { get; set; }
+
         public decimal Monto { get; set; }
         public string MetodoPago { get; set; }
     }

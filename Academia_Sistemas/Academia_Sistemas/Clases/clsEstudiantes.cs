@@ -87,6 +87,8 @@ namespace Academia_Sistemas.Clases
                     {
                         IdCurso = datos.IdCurso,
                         IdSede = datos.IdSede,
+                        FechaInicio = datos.fecha_inicio,
+                        FechaFin = datos.fecha_fin,
                         Cupos = 20 // puedes ajustar según necesidad
                     };
 
