@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Academia_Sistemas.Clases
 {
-    public class clsImagenesModulo
+    public class clsImagenesModulos
     {
         private Academia_SistemasEntities dbSuper = new Academia_SistemasEntities();
         public string idModulo { get; set; }

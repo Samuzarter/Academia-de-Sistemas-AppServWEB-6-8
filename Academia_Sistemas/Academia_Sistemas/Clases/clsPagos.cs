@@ -53,7 +53,7 @@ namespace Academia_Sistemas.Clases
 
         public string Borrar(int IdCPago)
         {
-            Pago pa = Consultar(pago.IdCPago);
+            Pago pa = Consultar(IdCPago);
             if (pa == null)
             {
                 return "Pago no existe";

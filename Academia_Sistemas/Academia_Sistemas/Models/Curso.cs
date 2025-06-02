@@ -9,6 +9,7 @@
 
 namespace Academia_Sistemas.Models
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     
@@ -28,11 +29,14 @@ namespace Academia_Sistemas.Models
         public string Descripcion { get; set; }
         public int Duracion { get; set; }
         public decimal Costo { get; set; }
-    
+        [JsonIgnore]
         public virtual CategoriasCurso CategoriasCurso { get; set; }
+        [JsonIgnore]
         public virtual Modalidade Modalidade { get; set; }
+        [JsonIgnore]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProgramacionesCurso> ProgramacionesCursos { get; set; }
+        [JsonIgnore]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Modulo> Modulos { get; set; }
     }

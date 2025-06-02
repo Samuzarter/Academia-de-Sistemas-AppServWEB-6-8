@@ -51,7 +51,7 @@ namespace Academia_Sistemas.Clases
 
         public string Borrar(int IdProgramacion)
         {
-            ProgramacionesCurso procu = Consultar(procurso.IdProgramacion);
+            ProgramacionesCurso procu = Consultar(IdProgramacion);
             if (procu == null)
             {
                 return "Proveedore no existe";

@@ -9,6 +9,7 @@
 
 namespace Academia_Sistemas.Models
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     
@@ -19,8 +20,10 @@ namespace Academia_Sistemas.Models
         public Nullable<int> IdSede { get; set; }
         public int Cantidad { get; set; }
         public System.DateTime FechaAsignacion { get; set; }
-    
+        [JsonIgnore]
+
         public virtual Equipos Equipos { get; set; }
+        [JsonIgnore]
         public virtual Sede Sede { get; set; }
     }
 }

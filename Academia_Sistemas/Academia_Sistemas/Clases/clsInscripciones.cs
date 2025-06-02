@@ -53,7 +53,7 @@ namespace Academia_Sistemas.Clases
 
         public string Borrar(int IdInscripcion)
         {
-            Inscripcione ins = Consultar(inscripcione.IdInscripcion);
+            Inscripcione ins = Consultar(IdInscripcion);
             if (ins == null)
             {
                 return "Inscripcion no existe";

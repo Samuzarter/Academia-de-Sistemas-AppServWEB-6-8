@@ -9,6 +9,7 @@
 
 namespace Academia_Sistemas.Models
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     
@@ -20,8 +21,9 @@ namespace Academia_Sistemas.Models
         public System.DateTime FechaCompra { get; set; }
         public int Cantidad { get; set; }
         public decimal CostoUnitario { get; set; }
-    
+        [JsonIgnore]
         public virtual Equipos Equipos { get; set; }
+        [JsonIgnore]
         public virtual Proveedore Proveedore { get; set; }
     }
 }
