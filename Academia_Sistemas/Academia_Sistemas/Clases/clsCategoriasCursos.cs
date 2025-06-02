@@ -53,7 +53,7 @@ namespace Academia_Sistemas.Clases
 
         public string Borrar(int IdCategoria)
         {
-            CategoriasCurso cat = Consultar(categoriasCurso.IdCategoria);
+            CategoriasCurso cat = Consultar(IdCategoria);
             if (cat == null)
             {
                 return "Categoria no existe";

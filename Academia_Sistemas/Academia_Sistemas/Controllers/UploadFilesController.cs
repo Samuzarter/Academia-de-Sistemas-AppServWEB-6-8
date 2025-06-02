@@ -9,7 +9,7 @@ using System.Web.Http;
 
 namespace Academia_Sistemas.Controllers
 {
-    [RoutePrefix("UploadFiles")]
+    [RoutePrefix("api/UploadFiles")]
     [Authorize]
     public class UploadFilesController : ApiController
     {

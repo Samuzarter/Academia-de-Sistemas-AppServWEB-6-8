@@ -56,7 +56,7 @@ namespace Academia_Sistemas.Clases
 
         public string Borrar(int Idinstructor)
         {
-            Instructore inst = Consultar(instructore.Idinstructor);
+            Instructore inst = Consultar(Idinstructor);
             if (inst == null)
             {
                 return "Instructor no existe";

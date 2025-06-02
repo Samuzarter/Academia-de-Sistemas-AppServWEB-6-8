@@ -53,7 +53,7 @@ namespace Academia_Sistemas.Clases
 
         public string Borrar(int IdCurso)
         {
-            Curso cu = Consultar(curso.IdCurso);
+            Curso cu = Consultar(IdCurso);
             if (cu == null)
             {
                 return "Curso no existe";

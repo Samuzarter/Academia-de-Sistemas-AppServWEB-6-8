@@ -53,7 +53,7 @@ namespace Academia_Sistemas.Clases
 
         public string Borrar(int IdInventarioEquipos)
         {
-            InventarioEquipos inv = Consultar(inventario.IdInventario);
+            InventarioEquipos inv = Consultar(IdInventarioEquipos);
             if (inv == null)
             {
                 return "Inventario no existe";

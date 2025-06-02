@@ -53,7 +53,7 @@ namespace Academia_Sistemas.Clases
 
         public string Borrar(int IdAsignacion)
         {
-            AsignacionInstructore asi = Consultar(asignacionInstructore.IdAsignacion);
+            AsignacionInstructore asi = Consultar(IdAsignacion);
             if (asi == null)
             {
                 return "Asignacion no existe";

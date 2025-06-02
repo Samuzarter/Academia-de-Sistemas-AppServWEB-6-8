@@ -53,7 +53,7 @@ namespace Academia_Sistemas.Clases
 
         public string Borrar(int IdCalificacion)
         {
-            Calificacione ca = Consultar(calificacione.IdCalificacion);
+            Calificacione ca = Consultar(IdCalificacion);
             if (ca == null)
             {
                 return "Calificacion no existe";
