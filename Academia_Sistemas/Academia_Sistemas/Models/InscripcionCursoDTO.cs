@@ -6,13 +6,12 @@ using System.Web;
 
 namespace Academia_Sistemas.DTOs
 {
-    public class EstudianteUsuarioCursoDTO
+    public class InscripcionCursoDTO
     {
-        public Estudiante Estudiante { get; set; }
-        public Usuario Usuario { get; set; }
+        public int IdEstudiante { get; set; }
         public int IdCurso { get; set; }
-        public int? IdSede { get; set; }
-        public string MetodoPago { get; set; }
+        public int IdSede { get; set; }
         public decimal Monto { get; set; }
+        public string MetodoPago { get; set; }
     }
 }
