@@ -54,7 +54,7 @@ namespace Academia_Sistemas.Clases
 
         public string Borrar(int IdEstudiante)
         {
-            Estudiante es = Consultar(estudiante.IdEstudiante);
+            Estudiante es = Consultar(IdEstudiante);
             if (es == null)
             {
                 return "Estudiante no existe";

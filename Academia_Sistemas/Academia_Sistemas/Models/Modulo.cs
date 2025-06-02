@@ -9,6 +9,7 @@
 
 namespace Academia_Sistemas.Models
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     
@@ -25,8 +26,9 @@ namespace Academia_Sistemas.Models
         public string Contenido { get; set; }
         public string LinkVideo { get; set; }
         public int IdCurso { get; set; }
-    
+        [JsonIgnore]
         public virtual Curso Curso { get; set; }
+        [JsonIgnore]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ImagenesModulo> ImagenesModulos { get; set; }
     }

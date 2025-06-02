@@ -53,7 +53,7 @@ namespace Academia_Sistemas.Clases
 
         public string Borrar(int IdEquipo)
         {
-            Equipos eq = Consultar(equipo.IdEquipo);
+            Equipos eq = Consultar(IdEquipo);
             if (eq == null)
             {
                 return "Equipo no existe";

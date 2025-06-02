@@ -9,6 +9,7 @@
 
 namespace Academia_Sistemas.Models
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     
@@ -18,8 +19,10 @@ namespace Academia_Sistemas.Models
         public Nullable<int> IdInstructor { get; set; }
         public Nullable<int> IdProgramacion { get; set; }
         public System.DateTime FechaAsignacion { get; set; }
-    
+
+        [JsonIgnore]
         public virtual Instructore Instructore { get; set; }
+        [JsonIgnore]
         public virtual ProgramacionesCurso ProgramacionesCurso { get; set; }
     }
 }

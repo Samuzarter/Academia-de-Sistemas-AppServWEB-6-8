@@ -122,7 +122,7 @@ namespace Academia_Sistemas.Clases
             switch (Proceso.ToUpper())
             {
                 case "Modulo":
-                    clsImagenesModulo ImagenesModulo = new clsImagenesModulo();
+                    clsImagenesModulos ImagenesModulo = new clsImagenesModulos();
                     ImagenesModulo.idModulo = Datos;//Debe venir la información que se procesa en la base de datos, para nuestro caso, el código del Modulo
                     ImagenesModulo.Archivos = Archivos;
                     return ImagenesModulo.GrabarImagenes();

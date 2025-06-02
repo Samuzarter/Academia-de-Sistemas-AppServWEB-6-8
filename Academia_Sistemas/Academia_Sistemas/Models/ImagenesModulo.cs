@@ -9,6 +9,7 @@
 
 namespace Academia_Sistemas.Models
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     
@@ -17,7 +18,7 @@ namespace Academia_Sistemas.Models
         public int IdImagen { get; set; }
         public string NombreImagen { get; set; }
         public int IdModulo { get; set; }
-    
+        [JsonIgnore]
         public virtual Modulo Modulo { get; set; }
     }
 }

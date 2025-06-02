@@ -53,7 +53,7 @@ namespace Academia_Sistemas.Clases
 
         public string Borrar(int IdModalidad)
         {
-            Modalidade mod = Consultar(modalidade.IdModalidad);
+            Modalidade mod = Consultar(IdModalidad);
             if (mod == null)
             {
                 return "Modalidade no existe";
