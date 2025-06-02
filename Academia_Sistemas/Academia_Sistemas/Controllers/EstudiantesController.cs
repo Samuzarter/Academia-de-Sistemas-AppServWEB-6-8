@@ -86,38 +86,6 @@ namespace Academia_Sistemas.Controllers
             return clsEstudiante.Borrar(idEstudiante);
         }
 
-        // GET api/Estudiantes/MiPerfil
-        [HttpGet]
-        [Route("MiPerfil")]
-        public IHttpActionResult MiPerfil()
-        {
-            try
-            {
-                // Obtener el IdUsuario del usuario autenticado
-                var claimsIdentity = User.Identity as ClaimsIdentity;
-                if (claimsIdentity == null)
-                    return Unauthorized();
-
-                var idUsuarioClaim = claimsIdentity.FindFirst("IdUsuario");
-                if (idUsuarioClaim == null)
-                    return Unauthorized();
-
-                int idUsuario = int.Parse(idUsuarioClaim.Value);
-
-                clsEstudiantes clsEstudiante = new clsEstudiantes();
-                var estudiante = clsEstudiante.ConsultarPorUsuario(idUsuario);
-
-                if (estudiante == null)
-                    return NotFound();
-
-                return Ok(estudiante);
-            }
-            catch (Exception ex)
-            {
-                return InternalServerError(ex);
-            }
-        }
-
         [HttpGet]
         [Route("CursosInscritos")]
         public List<Curso> CursosInscritos(int idEstudiante)
