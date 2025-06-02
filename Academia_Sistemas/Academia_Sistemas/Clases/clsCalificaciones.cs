@@ -62,5 +62,42 @@ namespace Academia_Sistemas.Clases
             dbCalificaciones.SaveChanges();
             return "Calificacion eliminada correctamente";
         }
+
+        public List<Calificacione> ConsultarPorEstudiante(int idEstudiante)
+        {
+            try
+            {
+                var calificaciones = dbCalificaciones.Calificaciones
+                    .Where(c => c.Inscripcione.IdEstudiante == idEstudiante)
+                    .ToList();
+
+                return calificaciones;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al consultar calificaciones por estudiante: " + ex.Message);
+            }
+        }
+
+        public List<decimal> ObtenerNotasPorEstudianteYCurso(int idEstudiante, int idCurso)
+        {
+            try
+            {
+                var notas = dbCalificaciones.Calificaciones
+                    .Where(c =>
+                        c.Inscripcione.IdEstudiante == idEstudiante &&
+                        c.Inscripcione.ProgramacionesCurso.IdCurso == idCurso)
+                    .Select(c => c.Nota)
+                    .ToList();
+
+                return notas;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al consultar notas: " + ex.Message);
+            }
+        }
+
+
     }
 }
