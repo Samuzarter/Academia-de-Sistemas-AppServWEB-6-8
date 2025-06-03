@@ -45,5 +45,24 @@ namespace Academia_Sistemas.Controllers
             clsCalificaciones clsCalificacion = new clsCalificaciones();
             return clsCalificacion.Borrar(idCalificacion);
         }
+
+        [HttpGet]
+        [Route("ConsultarPorEstudiante")]
+        public List<Calificacione> ConsultarPorEstudiante(int idEstudiante)
+        {
+            clsCalificaciones clsCalificacion = new clsCalificaciones();
+            return clsCalificacion.ConsultarPorEstudiante(idEstudiante);
+        }
+
+        [HttpGet]
+        [Route("ConsultarNotasPorCurso")]
+        public List<decimal> ConsultarNotasPorCurso(int idEstudiante, int idCurso)
+        {
+            clsCalificaciones clsCalificacion = new clsCalificaciones();
+            return clsCalificacion.ObtenerNotasPorEstudianteYCurso(idEstudiante, idCurso);
+        }
+
+
+
     }
 }
