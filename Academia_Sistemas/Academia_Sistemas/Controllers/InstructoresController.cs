@@ -7,9 +7,11 @@ using Academia_Sistemas.Models;
 using System.Web.Http;
 using static Academia_Sistemas.Clases.clsInstructores;
 using System.Net.Http;
+using System.Web.Http.Cors;
 
 namespace Academia_Sistemas.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     [RoutePrefix("api/Instructore")]
     public class InstructoresController : ApiController
     {

@@ -1,21 +1,25 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>EMPLEADOS</title>
+
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <link href="Estilos/css/all.min.css" rel="stylesheet" />
     <link href="Estilos/adminlte.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+
+    <!-- jQuery y DataTables -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 </head>
 <body class="hold-transition sidebar-mini">
     <section class="content">
         <div class="container-fluid">
             <div class="row">
-                <!-- left column -->
-                <div class="col-md-12" id="dvMenu">
-                </div>
+                <div class="col-md-12" id="dvMenu"></div>
                 <div class="col-md-12">
                     <div class="card card-primary">
                         <div class="card-header">
@@ -23,12 +27,15 @@
                         </div>
                         <form id="frmIncapacidades">
                             <div class="card-body">
+
+                                <!-- Datos Entrada -->
                                 <div class="card card-gray-dark">
                                     <div class="card-header">
                                         <h3 class="card-title">DATOS ENTRADA</h3>
                                     </div>
                                     <div class="card-body">
                                         <div class="row">
+                                            <!-- 4 datos -->
                                             <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label for="txtDato1">Dato 1</label>
@@ -54,6 +61,7 @@
                                                 </div>
                                             </div>
                                         </div>
+
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
@@ -69,13 +77,15 @@
                                             </div>
                                             <div class="col-md-3">
                                                 <div class="form-group">
-                                                    <label for="txtDato1">Dato 7</label>
+                                                    <label for="txtDato7">Dato 7</label>
                                                     <input type="date" class="form-control" id="txtDato7" placeholder="Dato 7">
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+
+                                <!-- Botones -->
                                 <div class="card card-danger">
                                     <div class="card-header">
                                         <h3 class="card-title">PROCESO</h3>
@@ -84,26 +94,47 @@
                                         <div class="row">
                                             <div class="col-md-3">
                                                 <br />
-                                                <button type="button" id="btnInsertar" class="btn-block btn-lg btn-primary">INSERTAR</button>
+                                                <button type="button" id="btnInsertar" class="btn btn-primary btn-block btn-lg">INSERTAR</button>
                                             </div>
                                             <div class="col-md-3">
                                                 <br />
-                                                <button type="button" id="btnActualizar" class="btn-block btn-lg btn-primary">ACTUALIZAR</button>
+                                                <button type="button" id="btnActualizar" class="btn btn-primary btn-block btn-lg">ACTUALIZAR</button>
                                             </div>
                                             <div class="col-md-3">
                                                 <br />
-                                                <button type="button" id="btnEliminar" class="btn-block btn-lg btn-primary">ELIMINAR</button>
+                                                <button type="button" id="btnEliminar" class="btn btn-primary btn-block btn-lg">ELIMINAR</button>
                                             </div>
                                             <div class="col-md-3">
                                                 <br />
-                                                <button type="button" id="btnConsultar" class="btn-block btn-lg btn-primary">CONSULTAR</button>
+                                                <button type="button" id="btnConsultar" class="btn btn-primary btn-block btn-lg">CONSULTAR</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
+
                             <div class="card-footer">
-                                <div id="dvMensaje" class=""></div>
+                                <div id="dvMensaje"></div>
+                            </div>
+
+                            <!-- Tabla -->
+                            <div class="card card-success">
+                                <div class="card-header">
+                                    <h3 class="card-title">LISTADO DE CURSOS</h3>
+                                </div>
+                                <div class="card-body">
+                                    <table id="tblCursos" class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <!-- Encabezados llenados dinámicamente -->
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- Datos llenados dinámicamente -->
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </form>
                     </div>
@@ -111,8 +142,10 @@
             </div>
         </div>
     </section>
-    <script src="../Scripts/jquery-3.4.1.min.js"></script>
-    <script src="../Scripts/bootstrap.bundle.min.js"></script>
-    <script src="Scripts/Pagina1.js"></script>
+
+    <!-- Scripts locales -->
+    <script src="Scripts/bootstrap.bundle.min.js"></script>
+    <script src="Scripts/Comunes/CRUD.js"></script>
+    <script src="Scripts/Cursos.js"></script>
 </body>
 </html>

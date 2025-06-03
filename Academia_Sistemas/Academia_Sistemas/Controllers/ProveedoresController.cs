@@ -5,9 +5,11 @@ using System.Web;
 using Academia_Sistemas.Clases;
 using Academia_Sistemas.Models;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace Academia_Sistemas.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     [RoutePrefix("api/Proveedores")]
     public class ProveedoresController : ApiController
     {
