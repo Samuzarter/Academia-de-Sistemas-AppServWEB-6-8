@@ -29,7 +29,7 @@ namespace Academia_Sistemas.Models
         public System.DateTime FechaFin { get; set; }
         public int Cupos { get; set; }
         [JsonIgnore]
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AsignacionInstructore> AsignacionInstructores { get; set; }
         [JsonIgnore]

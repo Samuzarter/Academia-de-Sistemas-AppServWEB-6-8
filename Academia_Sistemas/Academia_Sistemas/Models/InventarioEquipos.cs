@@ -21,7 +21,7 @@ namespace Academia_Sistemas.Models
         public int Cantidad { get; set; }
         public System.DateTime FechaAsignacion { get; set; }
         [JsonIgnore]
-
+    
         public virtual Equipos Equipos { get; set; }
         [JsonIgnore]
         public virtual Sede Sede { get; set; }
