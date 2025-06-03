@@ -20,6 +20,15 @@ namespace Academia_Sistemas.Controllers
             return clsCurso.Consultar(IdCurso); ;
         }
 
+        [HttpGet]
+        [Route("ConsultarTodos")]
+        public List<Curso> ConsultarTodos()
+        {
+            clsCursos clsCurso = new clsCursos();
+            return clsCurso.ConsultarTodos();
+        }
+
+
         [HttpPost]
         [Route("Insertar")]
         public string Insertar(Curso Curso)
