@@ -125,6 +125,7 @@
     <Content Include="Paginas\Equipos.html" />
     <Content Include="Paginas\EstudiantesPorCurso.html" />
     <Content Include="Paginas\CursosInstructor.html" />
+    <Content Include="Paginas\CursosInscritos.html" />
     <Content Include="Paginas\Estilos\adminlte.css" />
     <Content Include="Paginas\Estilos\adminlte.min.css" />
     <Content Include="Paginas\Estilos\all.min.css" />
@@ -160,6 +161,8 @@
     <Content Include="Paginas\Estilos\webfonts\fa-brands-400.svg" />
     <Content Include="Paginas\Estilos\webfonts\fa-regular-400.svg" />
     <Content Include="Paginas\Estilos\webfonts\fa-solid-900.svg" />
+    <Content Include="Paginas\InscribirseCurso.html" />
+    <Content Include="Paginas\PagosEstudiante.html" />
     <Content Include="Paginas\Login.html" />
     <Content Include="Paginas\Menu.html" />
     <Content Include="Paginas\MenuLateral.html" />
@@ -175,6 +178,8 @@
     <Content Include="Paginas\Scripts\Equipos.js" />
     <Content Include="Paginas\Scripts\EstudiantesPorCurso.js" />
     <Content Include="Paginas\Scripts\CursosInstructor.js" />
+    <Content Include="Paginas\Scripts\CursosInscritos.js" />
+    <Content Include="Paginas\Scripts\InscribirseCurso.js" />
     <Content Include="Paginas\Scripts\Login.js" />
     <Content Include="Paginas\Scripts\Login_1.js" />
     <Content Include="Paginas\Scripts\Menu.js" />
