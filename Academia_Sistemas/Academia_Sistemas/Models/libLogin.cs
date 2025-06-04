@@ -14,5 +14,6 @@
         public bool Autenticado { get; set; }
         public string Token { get; set; }
         public string Mensaje { get; set; }
+        public int IdPersona { get; set; }
     }
 }
