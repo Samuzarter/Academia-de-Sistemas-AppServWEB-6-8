@@ -94,6 +94,21 @@ namespace Academia_Sistemas.Controllers
             return clsEstudiante.ObtenerCursosInscritos(idEstudiante);
         }
 
+        [HttpGet]
+        [Route("ListarTodos")]
+        public IHttpActionResult ListarTodos()
+        {
+            try
+            {
+                clsEstudiantes clsEstudiante = new clsEstudiantes();
+                var estudiantes = clsEstudiante.ListarTodos();
+                return Ok(estudiantes);
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+        }
 
     }
 }
