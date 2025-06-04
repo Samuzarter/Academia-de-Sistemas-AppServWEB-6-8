@@ -127,8 +127,6 @@ namespace Academia_Sistemas.Clases
             }
         }
 
-
-
         public List<Curso> ObtenerCursosInscritos(int idEstudiante)
         {
             using (var db = new Academia_SistemasEntities())
@@ -140,6 +138,17 @@ namespace Academia_Sistemas.Clases
                     .ToList();
 
                 return cursos;
+            }
+        }
+        public List<Estudiante> ListarTodos()
+        {
+            try
+            {
+                return dbEstudiantes.Estudiantes.ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al listar estudiantes: " + ex.Message);
             }
         }
 
