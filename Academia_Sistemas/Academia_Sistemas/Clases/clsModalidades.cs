@@ -39,6 +39,13 @@ namespace Academia_Sistemas.Clases
             }
         }
 
+        public List<Modalidade> ConsultarTodos()
+        {
+            return dbModalidad.Modalidades
+                .OrderBy(m => m.Nombre) 
+                .ToList();
+        }
+
         public string Actualizar()
         {
             Modalidade mod = Consultar(modalidade.IdModalidad);

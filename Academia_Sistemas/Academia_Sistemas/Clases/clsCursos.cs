@@ -38,6 +38,13 @@ namespace Academia_Sistemas.Clases
                 throw new Exception("Error al consultar curso: " + ex.Message);
             }
         }
+        public List<Curso> ConsultarTodos()
+        {
+            return dbCursos.Cursos
+                .OrderBy(c => c.Nombre) // Ordena los cursos por su nombre
+                .ToList(); // Consulta todos los cursos
+        }
+
 
         public string Actualizar()
         {

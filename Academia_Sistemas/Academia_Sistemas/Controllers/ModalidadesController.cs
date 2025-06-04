@@ -5,9 +5,11 @@ using System.Web;
 using Academia_Sistemas.Clases;
 using Academia_Sistemas.Models;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace Academia_Sistemas.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     [RoutePrefix("api/Modalidades")]
     public class ModalidadesController : ApiController
     {
@@ -19,6 +21,15 @@ namespace Academia_Sistemas.Controllers
             clsModalidades clsModalidade = new clsModalidades();
             return clsModalidade.Consultar(IdModalidade); ;
         }
+
+        [HttpGet]
+        [Route("ConsultarTodos")]
+        public List<Modalidade> ConsultarTodos()
+        {
+            clsModalidades clsModalidad = new clsModalidades();
+            return clsModalidad.ConsultarTodos();
+        }
+
 
         [HttpPost]
         [Route("Insertar")]

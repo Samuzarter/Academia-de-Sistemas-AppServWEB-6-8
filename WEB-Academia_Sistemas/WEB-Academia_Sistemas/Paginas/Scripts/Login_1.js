@@ -1,5 +1,5 @@
 ﻿async function Ingresar() {
-    let BaseURL = "http://joseitm20251.runasp.net";//"http://localhost:54671";// "http://joseitm20251.runasp.net";//
+    let BaseURL = "http://acsiappservweb.runasp.net";//"http://localhost:54671";// "http://joseitm20251.runasp.net";//
     let URL = BaseURL + "/api/Login/Ingresar";
     const login = new Login($("#txtUsuario").val(), $("#txtClave").val());
     const Respuesta = await EjecutarComandoServicioRpta("POST", URL, login);

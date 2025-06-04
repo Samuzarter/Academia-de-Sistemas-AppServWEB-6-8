@@ -76,7 +76,7 @@ namespace Academia_Sistemas.Clases
             {
                 //Si el Usuario y la clave son correctas, se genera el token
                 string token = TokenGenerator.GenerateTokenJwt(login.Usuario);
-                //Consulta la información del Usuario y el perfil
+                //Consulta la información del usuario y el perfil
                 return from U in dbSuper.Set<Usuario>()
                        join UP in dbSuper.Set<Usuario_Perfil>()
                        on U.IdUsuario equals UP.IdUsuario
@@ -89,6 +89,7 @@ namespace Academia_Sistemas.Clases
                            Usuario = U.Username,
                            Autenticado = true,
                            Perfil = P.Nombre,
+                           PaginaInicio = P.PaginaNavegar,
                            Token = token,
                            Mensaje = ""
                        };

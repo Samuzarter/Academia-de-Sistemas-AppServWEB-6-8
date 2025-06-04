@@ -27,7 +27,7 @@ namespace Academia_Sistemas.Models
         public Nullable<int> IdProgramacion { get; set; }
         public System.DateTime FechaInscripcion { get; set; }
         [JsonIgnore]
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Calificacione> Calificaciones { get; set; }
         [JsonIgnore]

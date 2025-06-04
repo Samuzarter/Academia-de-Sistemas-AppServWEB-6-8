@@ -7,9 +7,11 @@ using Academia_Sistemas.Models;
 using System.Web.Http;
 using System.Security.Claims;
 using Academia_Sistemas.DTOs;
+using System.Web.Http.Cors;
 
 namespace Academia_Sistemas.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     [RoutePrefix("api/Estudiantes")]
     public class EstudiantesController : ApiController
     {

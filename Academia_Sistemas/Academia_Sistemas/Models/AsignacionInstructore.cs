@@ -12,7 +12,7 @@ namespace Academia_Sistemas.Models
     using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-    
+
     public partial class AsignacionInstructore
     {
         public int IdAsignacion { get; set; }

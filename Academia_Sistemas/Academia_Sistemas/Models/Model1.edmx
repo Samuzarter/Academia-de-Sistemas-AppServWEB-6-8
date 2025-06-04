@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="db19925Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="db19925Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AsignacionInstructores">
           <Key>
             <PropertyRef Name="IdAsignacion" />
@@ -147,6 +147,7 @@
           </Key>
           <Property Name="IdPerfil" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="PaginaNavegar" Type="nvarchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="ProgramacionesCursos">
           <Key>
@@ -539,8 +540,7 @@
             <End Role="Modulos" EntitySet="Modulos" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="db19925Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -714,6 +714,7 @@
           <Property Name="IdPerfil" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Usuario_Perfil" Relationship="Self.FK__Usuario_P__IdPer__3E1D39E1" FromRole="Perfiles" ToRole="Usuario_Perfil" />
+          <Property Name="PaginaNavegar" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="ProgramacionesCurso">
           <Key>
@@ -1277,6 +1278,7 @@
           <EntitySetMapping Name="Perfiles">
             <EntityTypeMapping TypeName="db19925Model.Perfile">
               <MappingFragment StoreEntitySet="Perfiles">
+                <ScalarProperty Name="PaginaNavegar" ColumnName="PaginaNavegar" />
                 <ScalarProperty Name="IdPerfil" ColumnName="IdPerfil" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
               </MappingFragment>

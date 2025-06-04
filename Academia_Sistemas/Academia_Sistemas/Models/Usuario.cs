@@ -28,7 +28,7 @@ namespace Academia_Sistemas.Models
         public string Clave { get; set; }
         public string Salt { get; set; }
         [JsonIgnore]
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Estudiante> Estudiantes { get; set; }
         [JsonIgnore]

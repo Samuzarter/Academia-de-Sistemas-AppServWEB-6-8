@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>EMPLEADOS</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link href="Estilos/css/all.min.css" rel="stylesheet" />
+    <link href="Estilos/adminlte.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+
+    <!-- jQuery y DataTables -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+</head>
+<body class="hold-transition sidebar-mini">
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12" id="dvMenu"></div>
+                <div class="col-md-12">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">TITULO PAGINA</h3>
+                        </div>
+                        <form id="frmIncapacidades">
+                            
+                            <div class="card-footer">
+                                <div id="dvMensaje"></div>
+                            </div>
+
+                            <!-- Tabla -->
+                            <div class="card card-success">
+                                <div class="card-header">
+                                    <h3 class="card-title">LISTADO DE CURSOS</h3>
+                                </div>
+                                <div class="card-body">
+                                    <table id="tblCursos" class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Nombre del Curso</th>
+                                                <th>Descripción</th>
+                                                <th>Duración</th>
+                                                <th>Costo</th>
+                                                <th>Categoría</th>
+                                                <th>Modalidad</th>
+                                                <th>Acción</th> 
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scripts locales -->
+    <script src="Scripts/bootstrap.bundle.min.js"></script>
+    <script src="Scripts/Comunes/CRUD.js"></script>
+    <script src="Scripts/Cursos.js"></script>
+</body>
+</html>

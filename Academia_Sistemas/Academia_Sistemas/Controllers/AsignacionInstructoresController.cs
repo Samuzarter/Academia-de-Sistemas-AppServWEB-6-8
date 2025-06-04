@@ -5,9 +5,11 @@ using System.Web;
 using System.Web.Http;
 using Academia_Sistemas.Models;
 using Academia_Sistemas.Clases;
+using System.Web.Http.Cors;
 
 namespace Academia_Sistemas.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     [RoutePrefix("api/AsignacionInstructores")]
     public class AsignacionInstructoresController : ApiController
     {

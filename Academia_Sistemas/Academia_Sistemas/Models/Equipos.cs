@@ -27,7 +27,7 @@ namespace Academia_Sistemas.Models
         public string Descripcion { get; set; }
         public string Categoria { get; set; }
         [JsonIgnore]
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Compra> Compras { get; set; }
         [JsonIgnore]

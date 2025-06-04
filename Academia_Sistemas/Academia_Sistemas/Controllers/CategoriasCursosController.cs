@@ -5,9 +5,11 @@ using System.Web;
 using Academia_Sistemas.Clases;
 using Academia_Sistemas.Models;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace Academia_Sistemas.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     [RoutePrefix("api/CategoriasCurso")]
     public class CategoriasCursoController : ApiController
     {
@@ -19,6 +21,15 @@ namespace Academia_Sistemas.Controllers
             clsCategoriasCursos clsCategoriasCurso = new clsCategoriasCursos();
             return clsCategoriasCurso.Consultar(IdCategoriasCurso); ;
         }
+
+        [HttpGet]
+        [Route("ConsultarTodos")]
+        public List<CategoriasCurso> ConsultarTodos()
+        {
+            clsCategoriasCursos clsCategoriasCurso = new clsCategoriasCursos();
+            return clsCategoriasCurso.ConsultarTodos();
+        }
+
 
         [HttpPost]
         [Route("Insertar")]

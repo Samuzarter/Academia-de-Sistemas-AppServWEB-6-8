@@ -1,6 +1,6 @@
 ﻿async function Ingresar() {
     // var, let, const
-    let BaseURL = "https://localhost:44318";
+    let BaseURL = "http://acsiappservweb.runasp.net/";
     let URL = BaseURL + "api/Login/Ingresar";
     const login = new Login($("#txtUsuario").val(), $("#txtClave").val(),"");;
     const Respuesta = await EjecutarComandoServicioRpta("POST", URL, login);
@@ -9,7 +9,7 @@
         //Hubo un error al procesar el comando
         $("#dvMensaje").removeClass("alert alert-success");
         $("#dvMensaje").addClass("alert alert-danger");
-        $("#dvMensaje").html("No se pudo respuesta por parte del servicio");
+        $("#dvMensaje").html("No se pudo obtgener respuesta por parte del servicio");
     }
     else {
         if (Respuesta[0].Autenticado == false) {
