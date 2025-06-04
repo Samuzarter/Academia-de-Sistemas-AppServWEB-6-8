@@ -23,12 +23,10 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-4">
-                                    <label for="txtIdInstructor">ID INSTRUCTOR</label>
-                                    <input type="number" class="form-control" id="txtIdInstructor" placeholder="ID del Instructor" />
-                                </div>
-                                <div class="col-md-4">
-                                    <label for="txtIdCurso">ID CURSO</label>
-                                    <input type="number" class="form-control" id="txtIdCurso" placeholder="ID del Curso" />
+                                    <label for="ddlCursos">CURSO</label>
+                                    <select id="ddlCursos" class="form-control">
+                                        <option value="">Seleccione un curso</option>
+                                    </select>
                                 </div>
                                 <div class="col-md-4">
                                     <br />
@@ -41,7 +39,7 @@
                                     <table id="tblEstudiantes" class="table table-bordered table-striped" style="width:100%;">
                                         <thead>
                                             <tr>
-                                                <th>Documento</th>
+                                                <th>IdEstudiante</th>
                                                 <th>Nombre</th>
                                                 <th>Apellido</th>
                                                 <th>Correo</th>
@@ -64,6 +62,7 @@
     <script src="../Scripts/bootstrap.bundle.min.js"></script>
     <script src="../Scripts/jquery.dataTables.min.js"></script>
     <script src="../Scripts/dataTables.bootstrap4.min.js"></script>
+    <script src="Scripts/Comunes/CRUD.js"></script>
     <script src="Scripts/EstudiantesPorCurso.js"></script>
 </body>
 </html>
