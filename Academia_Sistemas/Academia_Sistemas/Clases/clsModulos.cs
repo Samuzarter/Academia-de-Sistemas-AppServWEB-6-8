@@ -38,6 +38,21 @@ namespace Academia_Sistemas.Clases
                 throw new Exception("Error al consultar Modulo: " + ex.Message);
             }
         }
+        public List<Modulo> ConsultarPorCurso(int idCurso)
+        {
+            using (var db = new Academia_SistemasEntities())
+            {
+                return db.Modulos.Where(m => m.IdCurso == idCurso).ToList();
+            }
+        }
+        public List<Modulo> ConsultarTodos()
+        {
+            using (var db = new Academia_SistemasEntities()) // o tu contexto real
+            {
+                return db.Modulos.ToList();
+            }
+        }
+
 
         public string Actualizar()
         {

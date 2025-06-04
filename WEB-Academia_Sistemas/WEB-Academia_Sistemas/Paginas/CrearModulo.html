@@ -3,53 +3,90 @@
 <head>
     <meta charset="utf-8" />
     <title>Crear Módulo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Estilos -->
     <link href="Estilos/css/all.min.css" rel="stylesheet" />
     <link href="Estilos/adminlte.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
 </head>
 <body class="hold-transition sidebar-mini">
-    <section class="content">
+
+    <!-- Menú Navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Instructor</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarInstructor" aria-controls="navbarInstructor" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarInstructor">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="PaginaInstructor.html">Inicio</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="paginasInstructor" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Páginas básicas
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="paginasInstructor">
+                        <a class="dropdown-item" href="EstudiantesPorCurso.html">Estudiantes por Curso</a>
+                        <a class="dropdown-item" href="CursosInstructor.html">Cursos del Instructor</a>
+                        <a class="dropdown-item" href="Equipos.html">Equipos</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="crudInstructor" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        CRUD Básico
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="crudInstructor">
+                        <a class="dropdown-item" href="ModulosInstructor.html">Módulos del Instructor</a>
+                        <a class="dropdown-item" href="CrearModulo.html">Crear Módulo</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Contenido principal -->
+    <section class="content mt-4">
         <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12" id="dvMenu"></div>
-                <div class="col-md-12">
-                    <div class="card card-primary">
-                        <div class="card-header">
-                            <h3 class="card-title">CREAR MÓDULO</h3>
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">CREAR MÓDULO</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="txtIdInstructor">ID INSTRUCTOR</label>
+                            <input type="number" class="form-control" id="txtIdInstructor" placeholder="ID del Instructor" />
                         </div>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <label for="txtIdInstructor">ID INSTRUCTOR</label>
-                                    <input type="number" class="form-control" id="txtIdInstructor" placeholder="ID del Instructor" />
-                                </div>
-                                <div class="col-md-4">
-                                    <label for="txtIdCurso">ID CURSO</label>
-                                    <input type="number" class="form-control" id="txtIdCurso" placeholder="ID del Curso" />
-                                </div>
-                                <div class="col-md-4">
-                                    <label for="txtTitulo">TÍTULO DEL MÓDULO</label>
-                                    <input type="text" class="form-control" id="txtTitulo" placeholder="Título" />
-                                </div>
-                                <div class="col-md-6 mt-2">
-                                    <label for="txtContenido">CONTENIDO</label>
-                                    <textarea class="form-control" id="txtContenido" rows="4" placeholder="Contenido del módulo"></textarea>
-                                </div>
-                                <div class="col-md-6 mt-2">
-                                    <label for="txtLinkVideo">LINK DEL VIDEO</label>
-                                    <input type="text" class="form-control" id="txtLinkVideo" placeholder="Link de video (opcional)" />
-                                </div>
-                                <div class="col-md-12 mt-3">
-                                    <button class="btn btn-lg btn-primary btn-block" onclick="CrearModulo()">CREAR MÓDULO</button>
-                                </div>
-                            </div>
-                            <div id="dvMensaje" class="mt-3 text-success"></div>
+                        <div class="col-md-4">
+                            <label for="txtIdCurso">ID CURSO</label>
+                            <input type="number" class="form-control" id="txtIdCurso" placeholder="ID del Curso" />
+                        </div>
+                        <div class="col-md-4">
+                            <label for="txtTitulo">TÍTULO DEL MÓDULO</label>
+                            <input type="text" class="form-control" id="txtTitulo" placeholder="Título" />
+                        </div>
+                        <div class="col-md-6 mt-2">
+                            <label for="txtContenido">CONTENIDO</label>
+                            <textarea class="form-control" id="txtContenido" rows="4" placeholder="Contenido del módulo"></textarea>
+                        </div>
+                        <div class="col-md-6 mt-2">
+                            <label for="txtLinkVideo">LINK DEL VIDEO</label>
+                            <input type="text" class="form-control" id="txtLinkVideo" placeholder="Link de video (opcional)" />
+                        </div>
+                        <div class="col-md-12 mt-3">
+                            <button class="btn btn-lg btn-primary btn-block" onclick="CrearModulo()">CREAR MÓDULO</button>
                         </div>
                     </div>
+                    <div id="dvMensaje" class="mt-3 text-success"></div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Scripts -->
     <script src="../Scripts/jquery-3.4.1.min.js"></script>
     <script src="../Scripts/bootstrap.bundle.min.js"></script>
     <script src="Scripts/CrearModulo.js"></script>

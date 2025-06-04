@@ -1,19 +1,31 @@
 ﻿var BaseURL = "http://acsiappservweb.runasp.net/";
 
 $(function () {
-    $("#dvMenu").load("../Paginas/Menu.html");
-    $('#tblCursosInscritos').DataTable(); // Inicializar tabla vacía
+    $("#dvMenu1").load("../Paginas/MenuEstudiante.html");
+
+    // Inicializar la tabla si no está ya inicializada
+    if (!$.fn.DataTable.isDataTable('#tblCursosInscritos')) {
+        $('#tblCursosInscritos').DataTable({
+            language: {
+                url: "//cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json"
+            }
+        });
+    }
 });
 
 async function ConsultarCursos() {
-    const idEstudiante = getCookie("Id");
+    const idEstudiante = getCookie("Id"); // Se espera que ya esté autenticado
+
+    if (!idEstudiante) {
+        $("#dvMensaje").html("No se encontró el ID del estudiante en las cookies.");
+        return;
+    }
+
     const URL = BaseURL + "api/Estudiantes/CursosInscritos?idEstudiante=" + idEstudiante;
 
     try {
-        // Ya no verificamos token ni enviamos Authorization porque el endpoint no tiene auth
         const response = await fetch(URL, {
-            method: 'GET',
-            // No headers necesarios si no hay auth
+            method: 'GET'
         });
 
         if (!response.ok) {
@@ -24,16 +36,16 @@ async function ConsultarCursos() {
         const tabla = $('#tblCursosInscritos').DataTable();
         tabla.clear();
 
-        if (cursos.length === 0) {
-            $("#dvMensaje").html("El estudiante no se encuentra inscrito en ningún curso.");
+        if (!cursos || cursos.length === 0) {
+            $("#dvMensaje").html("El estudiante no está inscrito en ningún curso.");
         } else {
             cursos.forEach(curso => {
                 tabla.row.add([
+                    curso.IdCurso,
                     curso.Nombre,
                     curso.Descripcion,
                     curso.Duracion,
-                    curso.FechaInicio ? curso.FechaInicio.split('T')[0] : '',
-                    curso.FechaFin ? curso.FechaFin.split('T')[0] : ''
+                    curso.Costo
                 ]);
             });
             tabla.draw();

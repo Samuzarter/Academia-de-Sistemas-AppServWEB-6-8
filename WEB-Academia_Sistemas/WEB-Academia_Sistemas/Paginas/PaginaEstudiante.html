@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Estudiante - Bienvenida</title>
+
+    <!-- Fuentes y estilos -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link href="Estilos/css/all.min.css" rel="stylesheet" />
+    <link href="Estilos/adminlte.min.css" rel="stylesheet" />
+    <link href="Estilos/dataTables.min.css" rel="stylesheet" />
+    <link href="Estilos/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body class="hold-transition sidebar-mini">
+
+    <!-- Menú del Estudiante -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Estudiante</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarEstudiante" aria-controls="navbarEstudiante" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarEstudiante">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Inicio <span class="sr-only">(actual)</span></a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="paginasEstudiante" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Páginas básicas
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="paginasEstudiante">
+                        <a class="dropdown-item" href="Cursos.html">Cursos</a>
+                        <a class="dropdown-item" href="CursosInscritos.html">Cursos Inscritos</a>
+                        <a class="dropdown-item" href="PagosEstudiante.html">Pagos</a>
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="procesosEstudiante" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Procesos
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="procesosEstudiante">
+                        <a class="dropdown-item" href="InscribirseCurso.html">Inscribirse a un curso</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Contenido principal -->
+    <section class="content mt-5">
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-md-10">
+                    <div class="jumbotron text-center bg-light shadow rounded">
+                        <h1 class="display-4">¡Bienvenido, Estudiante!</h1>
+                        <p class="lead">Nos alegra tenerte con nosotros. Aquí puedes explorar cursos, inscribirte y realizar tus pagos.</p>
+                        <hr class="my-4">
+                        <p>Utiliza el menú superior para navegar por las distintas secciones.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="../Scripts/jquery-3.4.1.min.js"></script>
+    <script src="../Scripts/bootstrap.bundle.min.js"></script>
+    <script src="../Scripts/jquery.dataTables.min.js"></script>
+    <script src="../Scripts/dataTables.bootstrap4.min.js"></script>
+</body>
+</html>

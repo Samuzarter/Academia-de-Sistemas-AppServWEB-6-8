@@ -1,7 +1,7 @@
 ﻿var BaseURL = "http://acsiappservweb.runasp.net/";
 
 jQuery(function () {
-    $("#dvMenu").load("../Paginas/Menu.html");
+    $("#dvMenu").load("../Paginas/MenuInstructor.html");
     $("#tblEstudiantes").DataTable(); // Inicializar tabla
     LlenarCursosDelInstructor(); 
 });
