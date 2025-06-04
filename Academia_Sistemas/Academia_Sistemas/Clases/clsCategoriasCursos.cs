@@ -39,6 +39,13 @@ namespace Academia_Sistemas.Clases
             }
         }
 
+        public List<CategoriasCurso> ConsultarTodos()
+        {
+            return dbCatCursos.CategoriasCursos
+                .OrderBy(c => c.Nombre) 
+                .ToList();
+        }
+
         public string Actualizar()
         {
             CategoriasCurso cat = Consultar(categoriasCurso.IdCategoria);

@@ -22,6 +22,15 @@ namespace Academia_Sistemas.Controllers
             return clsModalidade.Consultar(IdModalidade); ;
         }
 
+        [HttpGet]
+        [Route("ConsultarTodos")]
+        public List<Modalidade> ConsultarTodos()
+        {
+            clsModalidades clsModalidad = new clsModalidades();
+            return clsModalidad.ConsultarTodos();
+        }
+
+
         [HttpPost]
         [Route("Insertar")]
         public string Insertar(Modalidade Modalidade)

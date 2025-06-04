@@ -26,94 +26,7 @@
                             <h3 class="card-title">TITULO PAGINA</h3>
                         </div>
                         <form id="frmIncapacidades">
-                            <div class="card-body">
-
-                                <!-- Datos Entrada -->
-                                <div class="card card-gray-dark">
-                                    <div class="card-header">
-                                        <h3 class="card-title">DATOS ENTRADA</h3>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <!-- 4 datos -->
-                                            <div class="col-md-3">
-                                                <div class="form-group">
-                                                    <label for="txtDato1">Dato 1</label>
-                                                    <input type="text" class="form-control" id="txtDato1" placeholder="Dato 1">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="form-group">
-                                                    <label for="txtDato2">Dato 2</label>
-                                                    <input type="text" class="form-control" id="txtDato2" placeholder="Dato 2">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="form-group">
-                                                    <label for="txtDato3">Dato 3</label>
-                                                    <input type="text" class="form-control" id="txtDato3" placeholder="Dato 3">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="form-group">
-                                                    <label for="txtDato4">Dato 4</label>
-                                                    <input type="text" class="form-control" id="txtDato4" placeholder="Dato 4">
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="txtDato5">Dato 5</label>
-                                                    <input type="text" class="form-control" id="txtDato5" placeholder="Dato 5">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="form-group">
-                                                    <label for="txtDato6">Dato 6</label>
-                                                    <input type="text" class="form-control" id="txtDato6" placeholder="Dato 6">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="form-group">
-                                                    <label for="txtDato7">Dato 7</label>
-                                                    <input type="date" class="form-control" id="txtDato7" placeholder="Dato 7">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Botones -->
-                                <div class="card card-danger">
-                                    <div class="card-header">
-                                        <h3 class="card-title">PROCESO</h3>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-3">
-                                                <br />
-                                                <button type="button" id="btnInsertar" class="btn btn-primary btn-block btn-lg">INSERTAR</button>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <br />
-                                                <button type="button" id="btnActualizar" class="btn btn-primary btn-block btn-lg">ACTUALIZAR</button>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <br />
-                                                <button type="button" id="btnEliminar" class="btn btn-primary btn-block btn-lg">ELIMINAR</button>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <br />
-                                                <button type="button" id="btnConsultar" class="btn btn-primary btn-block btn-lg">CONSULTAR</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-
+                            
                             <div class="card-footer">
                                 <div id="dvMensaje"></div>
                             </div>
@@ -127,15 +40,23 @@
                                     <table id="tblCursos" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
-                                                <!-- Encabezados llenados dinámicamente -->
+                                                <th>ID</th>
+                                                <th>Nombre del Curso</th>
+                                                <th>Descripción</th>
+                                                <th>Duración</th>
+                                                <th>Costo</th>
+                                                <th>Categoría</th>
+                                                <th>Modalidad</th>
+                                                <th>Acción</th> 
                                             </tr>
                                         </thead>
+
                                         <tbody>
-                                            <!-- Datos llenados dinámicamente -->
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
+
                         </form>
                     </div>
                 </div>
