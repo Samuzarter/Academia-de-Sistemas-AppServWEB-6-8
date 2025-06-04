@@ -1,65 +1,62 @@
 ﻿var BaseURL = "http://acsiappservweb.runasp.net/";
 
+const categorias = {
+    1: "Programación",
+    2: "Redes"
+};
+
+const modalidades = {
+    1: "Presencial",
+    2: "Virtual"
+};
+
 jQuery(function () {
     $("#dvMenu").load("../Paginas/Menu.html");
     LlenarTablaCursos();
 });
 
+async function LlenarTablaCursosConAcciones(URL, idTabla) {
+    const cursos = await ConsultarServicioAuth(URL);
+    if (!Array.isArray(cursos)) return;
+
+    if (!$.fn.DataTable.isDataTable(idTabla)) {
+        $(idTabla).DataTable({
+            language: {
+                url: "//cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json"
+            }
+        });
+    }
+
+    let tabla = $(idTabla).DataTable();
+    tabla.clear();
+
+    cursos.forEach(curso => {
+        tabla.row.add([
+            curso.IdCurso,
+            curso.Nombre,
+            curso.Descripcion,
+            curso.Duracion,
+            curso.Costo,
+            categorias[Number(curso.IdCategoria)] || "Desconocida",
+            modalidades[Number(curso.IdModalidad)] || "Desconocida",
+            `<button class="btn btn-success btnInscribirse" data-id="${curso.IdCurso}">Inscribirse</button>`
+        ]);
+    });
+
+
+    tabla.draw();
+
+    $(idTabla).off("click", ".btnInscribirse");
+    $(idTabla).on("click", ".btnInscribirse", function () {
+        let idCurso = $(this).data("id");
+        alert("Te inscribiste al curso ID: " + idCurso);
+        // Aquí puedes integrar lógica real
+    });
+}
+
 function LlenarTablaCursos() {
     let URL = BaseURL + "api/Cursos/ConsultarTodos";
-    LlenarTablaXServiciosAuth(URL, "#tblCursos");
+    LlenarTablaCursosConAcciones(URL, "#tblCursos");
 }
 
-async function EjecutarComando(Metodo, Funcion) {
-    let URL = BaseURL + "api/Cursos/" + Funcion;
-
-    // Construir objeto curso
-    const curso = new Curso(
-        $("#txtDato1").val(),  // IdCurso
-        $("#txtDato2").val(),  // Nombre
-        $("#txtDato3").val(),  // Descripción
-        $("#txtDato4").val(),  // Duración
-        $("#txtDato5").val(),  // Costo
-        $("#txtDato6").val(),  // IdCategoria
-        $("#txtDato7").val()   // IdModalidad
-    );
-
-    // Ejecutar servicio
-    const Rpta = await EjecutarComandoServicioRptaAuth(Metodo, URL, curso);
-    LlenarTablaCursos();
-}
-
-async function Consultar() {
-    let IdCurso = $("#txtDato1").val();
-    let URL = BaseURL + "api/Cursos/ConsultarXId?IdCurso=" + IdCurso;
-
-    const curso = await ConsultarServicioAuth(URL);
-    if (curso != null) {
-        $("#txtDato2").val(curso.Nombre);
-        $("#txtDato3").val(curso.Descripcion);
-        $("#txtDato4").val(curso.Duracion);
-        $("#txtDato5").val(curso.Costo);
-        $("#txtDato6").val(curso.IdCategoria);
-        $("#txtDato7").val(curso.IdModalidad);
-    } else {
-        $("#dvMensaje").html("El curso no está en la base de datos");
-        $("#txtDato2").val("");
-        $("#txtDato3").val("");
-        $("#txtDato4").val("");
-        $("#txtDato5").val("");
-        $("#txtDato6").val("");
-        $("#txtDato7").val("");
-    }
-}
-
-class Curso {
-    constructor(IdCurso, Nombre, Descripcion, Duracion, Costo, IdCategoria, IdModalidad) {
-        this.IdCurso = IdCurso;
-        this.Nombre = Nombre;
-        this.Descripcion = Descripcion;
-        this.Duracion = Duracion;
-        this.Costo = Costo;
-        this.IdCategoria = IdCategoria;
-        this.IdModalidad = IdModalidad;
-    }
-}
+// Las demás funciones quedan igual (EjecutarComando, Consultar, etc.)

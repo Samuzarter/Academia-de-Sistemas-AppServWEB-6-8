@@ -76,14 +76,22 @@ namespace Academia_Sistemas.Clases
             {
                 //Si el Usuario y la clave son correctas, se genera el token
                 string token = TokenGenerator.GenerateTokenJwt(login.Usuario);
+
+                Usuario Usuario = dbSuper.Usuarios.FirstOrDefault(u => u.Username == login.Usuario);
+
+                // Buscar si es Instructor o Estudiante
+                var estudiante = dbSuper.Estudiantes.FirstOrDefault(e => e.IdUsuario == Usuario.IdUsuario);
+                var instructor = dbSuper.Instructores.FirstOrDefault(i => i.IdUsuario == Usuario.IdUsuario);
+
+                // Determinar ID de persona
+                int idPersona = estudiante != null ? estudiante.IdEstudiante :
+                                instructor != null ? instructor.Idinstructor : 0;
+
                 //Consulta la información del usuario y el perfil
                 return from U in dbSuper.Set<Usuario>()
-                       join UP in dbSuper.Set<Usuario_Perfil>()
-                       on U.IdUsuario equals UP.IdUsuario
-                       join P in dbSuper.Set<Perfile>()
-                       on UP.IdPerfil equals P.IdPerfil
-                       where U.Username == login.Usuario &&
-                               U.Clave == login.Clave
+                       join UP in dbSuper.Set<Usuario_Perfil>() on U.IdUsuario equals UP.IdUsuario
+                       join P in dbSuper.Set<Perfile>() on UP.IdPerfil equals P.IdPerfil
+                       where U.Username == login.Usuario && U.Clave == login.Clave
                        select new LoginRespuesta
                        {
                            Usuario = U.Username,
@@ -91,8 +99,10 @@ namespace Academia_Sistemas.Clases
                            Perfil = P.Nombre,
                            PaginaInicio = P.PaginaNavegar,
                            Token = token,
-                           Mensaje = ""
+                           Mensaje = "",
+                           IdPersona = idPersona 
                        };
+
             }
             else
             {
