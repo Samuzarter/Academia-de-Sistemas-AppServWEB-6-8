@@ -1,16 +1,8 @@
 ﻿var BaseURL = "http://acsiappservweb.runasp.net/";
 
 $(function () {
-    $("#dvMenu1").load("../Paginas/MenuEstudiante.html");
+    $("#dvMenu").load("../Paginas/MenuEstudiante.html");
 
-    // Inicializar la tabla si no está ya inicializada
-    if (!$.fn.DataTable.isDataTable('#tblCursosInscritos')) {
-        $('#tblCursosInscritos').DataTable({
-            language: {
-                url: "//cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json"
-            }
-        });
-    }
 });
 
 async function ConsultarCursos() {
