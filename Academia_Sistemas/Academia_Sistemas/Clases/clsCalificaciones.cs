@@ -98,6 +98,18 @@ namespace Academia_Sistemas.Clases
             }
         }
 
+        public List<Calificacione> ListarTodos()
+        {
+            try
+            {
+                return dbCalificaciones.Calificaciones.ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al listar calificaciones: " + ex.Message);
+            }
+        }
+
 
     }
 }
