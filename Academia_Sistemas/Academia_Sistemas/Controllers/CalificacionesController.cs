@@ -62,6 +62,22 @@ namespace Academia_Sistemas.Controllers
             return clsCalificacion.ObtenerNotasPorEstudianteYCurso(idEstudiante, idCurso);
         }
 
+        [HttpGet]
+        [Route("ListarTodos")]
+        public IHttpActionResult ListarTodos()
+        {
+            try
+            {
+                clsCalificaciones clsCalif = new clsCalificaciones();
+                var calificaciones = clsCalif.ListarTodos();
+                return Ok(calificaciones);
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+        }
+
 
 
     }
