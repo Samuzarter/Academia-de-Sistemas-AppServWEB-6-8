@@ -6,7 +6,7 @@ $(function () {
 });
 
 async function ConsultarCursos() {
-    const idEstudiante = $("#txtIdEstudiante").val();
+    const idEstudiante = getCookie("Id");
     const URL = BaseURL + "api/Estudiantes/CursosInscritos?idEstudiante=" + idEstudiante;
 
     try {
