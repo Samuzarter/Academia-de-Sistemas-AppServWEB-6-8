@@ -1,12 +1,13 @@
 ﻿var BaseURL = "http://acsiappservweb.runasp.net/";
 
 jQuery(function () {
-    $("#dvMenu").load("../Paginas/Menu.html");
+    $("#dvMenu").load("../Paginas/MenuInstructor.html");
     LlenarTablaCursos();
 });
 
 function LlenarTablaCursos() {
-    let URL = BaseURL + "api/CursoInstructor/ConsultarTodos";
+    const idInstructor = getCookie("Id");
+    let URL = BaseURL + `api/Instructore/VerCursosAsignados?IdInstructor=${idInstructor}`;
     LlenarTablaXServiciosAuth(URL, "#tblCursos");
 }
 

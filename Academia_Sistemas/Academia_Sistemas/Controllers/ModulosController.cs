@@ -21,6 +21,21 @@ namespace Academia_Sistemas.Controllers
             clsModulos clsModulo = new clsModulos();
             return clsModulo.Consultar(IdModulo); ;
         }
+        [HttpGet]
+        [Route("ConsultarPorCurso")]
+        public List<Modulo> ConsultarPorCurso(int idCurso)
+        {
+            clsModulos clsModulo = new clsModulos();
+            return clsModulo.ConsultarPorCurso(idCurso);
+        }
+        [HttpGet]
+        [Route("ConsultarTodos")]
+        public List<Modulo> ConsultarTodos()
+        {
+            clsModulos clsModulo = new clsModulos();
+            return clsModulo.ConsultarTodos();
+        }
+
 
         [HttpPost]
         [Route("Insertar")]

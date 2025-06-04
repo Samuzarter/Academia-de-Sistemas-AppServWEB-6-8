@@ -39,7 +39,7 @@ async function LlenarTablaCursosConAcciones(URL, idTabla) {
             curso.Costo,
             categorias[Number(curso.IdCategoria)] || "Desconocida",
             modalidades[Number(curso.IdModalidad)] || "Desconocida",
-            `<button class="btn btn-success btnInscribirse" data-id="${curso.IdCurso}">Inscribirse</button>`
+            `<a href="InscribirseCurso.html?idCurso=${curso.IdCurso}" class="btn btn-success">Inscribirse</a>`
         ]);
     });
 

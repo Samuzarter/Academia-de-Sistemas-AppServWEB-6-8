@@ -1,7 +1,7 @@
 ﻿const BaseURL = "http://acsiappservweb.runasp.net/";
 
 jQuery(function () {
-    $("#dvMenu").load("../Paginas/Menu.html");
+    $("#dvMenu").load("../Paginas/MenuInstructor.html");
 });
 
 async function CrearModulo() {

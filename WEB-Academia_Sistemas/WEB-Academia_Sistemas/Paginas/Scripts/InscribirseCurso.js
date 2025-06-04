@@ -1,7 +1,7 @@
 ﻿var BaseURL = "http://acsiappservweb.runasp.net/";
 
 $(function () {
-    $("#dvMenu").load("../Paginas/Menu.html");
+    $("#dvMenu").load("../Paginas/MenuEstudiante.html");
 });
 
 async function Inscribirse() {
