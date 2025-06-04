@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <title>Crear Módulo</title>
+    <link href="Estilos/css/all.min.css" rel="stylesheet" />
+    <link href="Estilos/adminlte.min.css" rel="stylesheet" />
+</head>
+<body class="hold-transition sidebar-mini">
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12" id="dvMenu"></div>
+                <div class="col-md-12">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">CREAR MÓDULO</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label for="txtIdInstructor">ID INSTRUCTOR</label>
+                                    <input type="number" class="form-control" id="txtIdInstructor" placeholder="ID del Instructor" />
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="txtIdCurso">ID CURSO</label>
+                                    <input type="number" class="form-control" id="txtIdCurso" placeholder="ID del Curso" />
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="txtTitulo">TÍTULO DEL MÓDULO</label>
+                                    <input type="text" class="form-control" id="txtTitulo" placeholder="Título" />
+                                </div>
+                                <div class="col-md-6 mt-2">
+                                    <label for="txtContenido">CONTENIDO</label>
+                                    <textarea class="form-control" id="txtContenido" rows="4" placeholder="Contenido del módulo"></textarea>
+                                </div>
+                                <div class="col-md-6 mt-2">
+                                    <label for="txtLinkVideo">LINK DEL VIDEO</label>
+                                    <input type="text" class="form-control" id="txtLinkVideo" placeholder="Link de video (opcional)" />
+                                </div>
+                                <div class="col-md-12 mt-3">
+                                    <button class="btn btn-lg btn-primary btn-block" onclick="CrearModulo()">CREAR MÓDULO</button>
+                                </div>
+                            </div>
+                            <div id="dvMensaje" class="mt-3 text-success"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="../Scripts/jquery-3.4.1.min.js"></script>
+    <script src="../Scripts/bootstrap.bundle.min.js"></script>
+    <script src="Scripts/CrearModulo.js"></script>
+</body>
+</html>

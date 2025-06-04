@@ -9,3 +9,5 @@ Academia_Sistemas/Academia_Sistemas/obj/
 WEB-Academia_Sistemas/WEB-Academia_Sistemas/.vs/
 WEB-Academia_Sistemas/WEB-Academia_Sistemas/bin/
 WEB-Academia_Sistemas/WEB-Academia_Sistemas/obj/
+WEB-Academia_Sistemas/WEB-Academia_Sistemas/bin/*.dll
+WEB-Academia_Sistemas/WEB-Academia_Sistemas/bin/*.pdb
